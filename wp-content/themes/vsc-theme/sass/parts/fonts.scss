@@ -1,0 +1,37 @@
+$desktop-width: 1366px;
+$table-width: 767px;
+$table-width-for-hide: 767px;
+$mobile-width: 425px;
+@function widthCalc($int) {
+  @return calc(#{$int}vw / 19.2);
+}
+@function widthCalcFixedSize($int,$divided:1920) {
+  @return calc(#{$int}vw / 13.66);
+}
+@mixin fontSize($int) {
+  font-size: widthCalcFixedSize($int);
+  @media (min-width: $desktop-width) {
+    font-size: widthCalc($int);
+  }
+  @media (max-width: $table-width) {
+
+    @if ($int==24) {
+      font-size: 18px !important;
+    }
+    @if ($int==21) {
+      font-size: 18px !important;
+    }
+    @if ($int==30) {
+      font-size: 22px !important;
+    }
+    @if ($int==35) {
+      font-size: 22px !important;
+    }
+    @if ($int==45) {
+      font-size: 25px !important;
+    }
+  }
+}
+%fs21{
+  @include fontSize(21);
+}
