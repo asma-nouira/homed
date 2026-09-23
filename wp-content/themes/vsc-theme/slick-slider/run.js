@@ -1,5 +1,5 @@
 jQuery(document).on('ready', function() {
-    jQuery(".center-slider-full").slick({
+    jQuery(".hero-slider > .vce-row-content").slick({
         centerMode: true,
         centerPadding: '0',
         slidesToShow: 1,

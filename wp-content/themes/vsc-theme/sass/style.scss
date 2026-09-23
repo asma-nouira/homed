@@ -59,7 +59,11 @@ body{
 	margin:0;
 	color:$black;
 }
-
+.hero-slider{
+	.slider-col{
+padding: calc(310vw / 19.2) calc(1160vw / 19.2) calc(325vw / 19.2) calc(230vw / 19.2);
+	}
+}
 
 
 
