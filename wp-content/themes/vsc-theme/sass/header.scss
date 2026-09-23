@@ -7,21 +7,21 @@
    ========================================================= */
 
 // ---- Couleurs
-$brown        : #7A4535;
+$brown        : #592C22;
 $beige        : #DED7CD;
 $menu-color   : #0F0E0E;
 $border-light : #eee9e3;
 
 // ---- Dimensions (px @1920)
 $header-height    : 125;
-$header-padding-x : 90;
+$header-padding-x : 88;
 $logo-width       : 255;
 $menu-font-size   : 18;
 $menu-gap         : 40;
 $btn-gap-first    : 24;
 $btn-gap          : 10;
-$btn-height       : 62;
-$btn-padding-x    : 11;
+$btn-height       : 64;
+$btn-padding-x    : 28;
 
 // Sous ce point, on passe au menu hamburger (doit correspondre à BREAKPOINT dans js/navigation.js)
 $menu-breakpoint  : 1199px;
@@ -79,7 +79,7 @@ html.nav-locked {
   box-sizing: border-box;
   width: 100%;
   height: widthCalc($header-height);
-  min-height: 125px;
+  min-height: 70px;
   padding: 0 widthCalc($header-padding-x);
   background: #fff;
 
@@ -129,7 +129,7 @@ html.nav-locked {
 
   a {
     color: $menu-color;
-    line-height: 1.33;
+    line-height: 1.4;
     transition: color .2s ease, background-color .2s ease;
 
     &:hover,
@@ -246,6 +246,23 @@ html.nav-locked {
         white-space: nowrap;
       }
 
+      // Contactez-nous : même style que le bouton téléphone (pas de changement de couleur du texte au survol)
+      &.menu-btn:hover > a {
+        color: #fff;
+      }
+
+      // Survol / ouvert : lien + chevron en brun, chevron vers le haut
+      &:hover > a,
+      &.is-open > a,
+      &:hover > .submenu-toggle,
+      &.is-open > .submenu-toggle {
+        color: $brown;
+      }
+      &:hover > .submenu-toggle::before {
+        margin-top: 4px;
+        transform: rotate(225deg);
+      }
+
       > .submenu-toggle {
         width: widthCalc(22);
         min-width: 16px;
@@ -275,6 +292,10 @@ html.nav-locked {
         padding: widthCalc(8) widthCalc(20);
         font-size: fluid(16, 13px);
       }
+    }
+
+    .sub-menu .submenu-toggle {
+      display: none;
     }
 
     > li:hover > .sub-menu,

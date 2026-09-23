@@ -9,6 +9,12 @@ $vsc_phone     = get_theme_mod( 'vsc_header_phone', '(514) 697-9045' );
 $vsc_phone_tel = preg_replace( '/[^0-9+]/', '', get_theme_mod( 'vsc_header_phone_tel', '+15146979045' ) );
 $vsc_rdv_label = get_theme_mod( 'vsc_header_rdv_label', 'Prendre rendez-vous' );
 $vsc_rdv_url   = get_theme_mod( 'vsc_header_rdv_url', '' );
+
+// Pas de lien configuré → on pointe vers la page Contactez-nous (ou l'accueil)
+if ( ! $vsc_rdv_url ) {
+	$vsc_contact = get_page_by_path( 'contactez-nous' );
+	$vsc_rdv_url = $vsc_contact ? get_permalink( $vsc_contact ) : home_url( '/' );
+}
 ?>
 <!doctype html>
 <html <?php language_attributes(); ?>>
@@ -58,7 +64,7 @@ $vsc_rdv_url   = get_theme_mod( 'vsc_header_rdv_url', '' );
 					<a class="header-btn header-btn--light" href="tel:<?php echo esc_attr( $vsc_phone_tel ); ?>"><?php echo esc_html( $vsc_phone ); ?></a>
 				<?php endif; ?>
 
-				<?php if ( $vsc_rdv_url ) : ?>
+				<?php if ( $vsc_rdv_label ) : ?>
 					<a class="header-btn header-btn--dark" href="<?php echo esc_url( $vsc_rdv_url ); ?>"<?php echo ( false === strpos( $vsc_rdv_url, home_url() ) ) ? ' target="_blank" rel="noopener"' : ''; ?>><?php echo esc_html( $vsc_rdv_label ); ?></a>
 				<?php endif; ?>
 			</div>
