@@ -118,4 +118,12 @@ ul {
   padding-right: 0;
   padding-top: 0;
 }
+
+h1 {
+  font-family: "Manrope Light";
+  font-weight: 300;
+  font-size: 2.8645833333vw;
+  line-height: 1.09;
+  letter-spacing: -0.45px;
+}
 /*# sourceMappingURL=../css/mobile.css.map */
