@@ -1,0 +1,109 @@
+@import './statics.scss';
+@import './parts/fonts.scss';
+
+/* =========================================================
+   ANIMATIONS AU DÉFILEMENT (js/reveal.js)
+   L'état « caché » ne s'applique que si JS tourne (html.vsc-anim),
+   donc sans JS tout le contenu reste visible.
+   ========================================================= */
+
+// ---- Réglages
+$reveal-distance : 30;                          // px @1920 : distance du mouvement
+$reveal-duration : .9s;
+$reveal-ease     : cubic-bezier(.22, .61, .36, 1); // démarre vite, se pose en douceur
+$reveal-radius   : 20;                          // px @1920 : arrondi de la photo (reveal-image)
+
+.vsc-anim {
+
+  .reveal,
+  .reveal-left,
+  .reveal-right {
+    opacity: 0;
+    transition:
+      opacity $reveal-duration $reveal-ease,
+      transform $reveal-duration $reveal-ease;
+    transition-delay: var(--reveal-delay, 0s);
+    will-change: opacity, transform;
+  }
+
+  .reveal       { transform: translateY(widthCalc($reveal-distance)); }
+  .reveal-left  { transform: translateX(widthCalc(-$reveal-distance * 2)); }
+  .reveal-right { transform: translateX(widthCalc($reveal-distance * 2)); }
+
+  .reveal.is-visible,
+  .reveal-left.is-visible,
+  .reveal-right.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  // ---------- Photo : rideau + zoom arrière
+  .reveal-image {
+    overflow: hidden;
+    clip-path: inset(100% 0 0 0 round widthCalc($reveal-radius));
+    transition: clip-path 1.2s $reveal-ease;
+    transition-delay: var(--reveal-delay, 0s);
+
+    img,
+    .vce-asset-background-simple-item {
+      transform: scale(1.12);
+      transition: transform 1.6s $reveal-ease;
+      transition-delay: var(--reveal-delay, 0s);
+    }
+
+    &.is-visible {
+      clip-path: inset(0 0 0 0 round widthCalc($reveal-radius));
+
+      img,
+      .vce-asset-background-simple-item {
+        transform: scale(1);
+      }
+    }
+  }
+
+  // ---------- Séparateur qui se dessine
+  .reveal-line {
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 1s $reveal-ease;
+    transition-delay: var(--reveal-delay, 0s);
+
+    &.is-visible {
+      transform: scaleX(1);
+    }
+  }
+
+  // ---------- Retards manuels : delay-1 … delay-6 (0,15 s par cran)
+  @for $i from 1 through 6 {
+    .delay-#{$i} {
+      --reveal-delay: #{$i * .15}s;
+    }
+  }
+
+  // Mouvement plus court sur mobile
+  @media (max-width: $table-width) {
+    .reveal       { transform: translateY(20px); }
+    .reveal-left  { transform: translateX(-30px); }
+    .reveal-right { transform: translateX(30px); }
+  }
+}
+
+// Chiffres : largeur fixe pendant le comptage (pas de « saut » du texte à côté)
+.count-up {
+  font-variant-numeric: tabular-nums;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vsc-anim {
+    .reveal,
+    .reveal-left,
+    .reveal-right,
+    .reveal-image,
+    .reveal-line {
+      opacity: 1 !important;
+      transform: none !important;
+      clip-path: none !important;
+      transition: none !important;
+    }
+  }
+}
