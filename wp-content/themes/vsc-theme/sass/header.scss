@@ -177,7 +177,7 @@ html.nav-locked {
 
 // Boutons pilule (Contactez-nous + header-actions)
 .main-navigation .menu-btn > a,
-.main-navigation .header-btn {
+.main-navigation .header-btn, .cta-btn > a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -185,7 +185,7 @@ html.nav-locked {
   min-height: 42px;
   padding: 0 widthCalc($btn-padding-x);
   font-family: $font-bold;
-  font-weight: 500;
+  font-weight: 700;
   font-size: fluid($menu-font-size, 14px);
   white-space: nowrap;
   color: $brown;
