@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .center {
   text-align: center;
 }
@@ -66,5 +67,281 @@ ul {
 .full-width .vce.vce-single-image-wrapper figure .vce-single-image-figure-inner {
   width: 100% !important;
   height: auto;
+}
+
+.center {
+  text-align: center;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.white {
+  color: white;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+@media (max-width: 767px) {
+  .nowrap {
+    white-space: inherit;
+  }
+}
+
+p {
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+
+h1, h2, h3 {
+  margin-block-start: 0;
+  margin-block-end: 0;
+  font-weight: inherit;
+}
+
+.vce {
+  margin-bottom: 0;
+}
+
+ul {
+  margin-block-start: 0;
+  margin-block-end: 0;
+  padding-inline-start: 0;
+}
+
+.test-bloc {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.full-width .vce.vce-single-image-wrapper {
+  width: 100%;
+  height: auto;
+}
+.full-width .vce.vce-single-image-wrapper figure {
+  width: 100%;
+  height: auto;
+}
+.full-width .vce.vce-single-image-wrapper figure .vce-single-image-figure-inner {
+  width: 100% !important;
+  height: auto;
+}
+
+/* =========================================================
+   HEADER — Homedental (maquette Homepage_V05 FR+)
+   Valeurs en px @1920 → vw via widthCalc() (px / 19.2)
+   ========================================================= */
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  width: 100%;
+  height: calc(125vw / 19.2);
+  padding: 0 calc(88vw / 19.2);
+  background: #fff;
+}
+@media (max-width: 767px) {
+  .site-header {
+    position: relative;
+    height: 70px;
+    padding: 0 20px;
+  }
+}
+
+/* ---------- Logo ---------- */
+.site-branding {
+  display: flex;
+  align-items: center;
+}
+.site-branding .custom-logo-link {
+  display: block;
+  line-height: 0;
+}
+.site-branding .custom-logo {
+  width: calc(255vw / 19.2);
+  height: auto;
+}
+@media (max-width: 767px) {
+  .site-branding .custom-logo {
+    width: 150px;
+  }
+}
+
+/* ---------- Menu ---------- */
+.main-navigation {
+  font-family: "Manrope Regular", "Manrope", Arial, sans-serif;
+  font-weight: 400;
+  /* ----- Mobile / tablette ----- */
+}
+.main-navigation ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.main-navigation #primary-menu {
+  display: flex;
+  align-items: center;
+}
+.main-navigation #primary-menu > li + li {
+  margin-left: calc(40vw / 19.2);
+}
+.main-navigation #primary-menu > li.menu-btn {
+  margin-left: calc(24vw / 19.2);
+}
+.main-navigation #primary-menu > li.menu-btn + li.menu-btn {
+  margin-left: calc(10vw / 19.2);
+}
+.main-navigation li {
+  position: relative;
+}
+.main-navigation a {
+  display: flex;
+  align-items: center;
+  color: #1a1a1a;
+  font-size: calc(18vw / 19.2);
+  line-height: 1.4;
+  white-space: nowrap;
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+.main-navigation a:hover, .main-navigation a:focus {
+  color: #592c22;
+}
+.main-navigation .current-menu-item > a,
+.main-navigation .current-menu-ancestor > a,
+.main-navigation .current-menu-parent > a {
+  color: #592c22;
+}
+.main-navigation .menu-item-has-children > a::after {
+  content: "";
+  display: inline-block;
+  width: calc(7vw / 19.2);
+  height: calc(7vw / 19.2);
+  margin-left: calc(10vw / 19.2);
+  margin-top: calc(-4vw / 19.2);
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg);
+}
+.main-navigation .menu-btn > a {
+  justify-content: center;
+  height: calc(64vw / 19.2);
+  padding: 0 calc(28vw / 19.2);
+  font-family: "Manrope Medium", "Manrope", Arial, sans-serif;
+  font-weight: 500;
+  color: #592c22;
+  background: #ded7cd;
+  border-radius: 999px;
+}
+.main-navigation .menu-btn > a:hover, .main-navigation .menu-btn > a:focus {
+  color: #fff;
+  background: #592c22;
+}
+.main-navigation .menu-btn--dark > a {
+  color: #fff;
+  background: #592c22;
+}
+.main-navigation .menu-btn--dark > a:hover, .main-navigation .menu-btn--dark > a:focus {
+  color: #592c22;
+  background: #ded7cd;
+}
+.main-navigation .sub-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 999;
+  min-width: calc(240vw / 19.2);
+  padding: calc(15vw / 19.2) 0;
+  background: #fff;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.2s ease;
+}
+.main-navigation .sub-menu a {
+  padding: calc(8vw / 19.2) calc(20vw / 19.2);
+  font-size: calc(16vw / 19.2);
+}
+.main-navigation li:hover > .sub-menu,
+.main-navigation li.focus > .sub-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+.main-navigation .menu-toggle {
+  display: none;
+}
+@media (max-width: 767px) {
+  .main-navigation .menu-toggle {
+    display: block;
+    padding: 8px 14px;
+    font-family: "Manrope Regular", "Manrope", Arial, sans-serif;
+    font-size: 16px;
+    color: #592c22;
+    background: none;
+    border: 1px solid #592c22;
+    border-radius: 999px;
+    cursor: pointer;
+  }
+  .main-navigation #primary-menu {
+    display: none;
+  }
+  .main-navigation.toggled #primary-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  }
+  .main-navigation.toggled #primary-menu > li + li,
+  .main-navigation.toggled #primary-menu > li.menu-btn,
+  .main-navigation.toggled #primary-menu > li.menu-btn + li.menu-btn {
+    margin-left: 0;
+    margin-top: 12px;
+  }
+  .main-navigation a {
+    font-size: 18px;
+  }
+  .main-navigation .menu-item-has-children > a::after {
+    width: 7px;
+    height: 7px;
+    margin-left: 10px;
+    margin-top: -4px;
+  }
+  .main-navigation .menu-btn > a {
+    height: 50px;
+    padding: 0 24px;
+  }
+  .main-navigation .sub-menu {
+    position: static;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    box-shadow: none;
+    padding: 8px 0 0 15px;
+  }
+  .main-navigation .sub-menu a {
+    padding: 5px 0;
+    font-size: 16px;
+  }
 }
 /*# sourceMappingURL=../css/header.css.map */

@@ -1,3 +1,262 @@
 @import './statics.scss';
+@import './statics.scss';
+@import './parts/fonts.scss';
 
+/* =========================================================
+   HEADER — Homedental (maquette Homepage_V05 FR+)
+   Valeurs en px @1920 → vw via widthCalc() (px / 19.2)
+   ========================================================= */
+
+// ---- Couleurs
+$brown        : #592c22;   // bouton « Prendre rendez-vous », item actif
+$beige        : #ded7cd;   // boutons « Contactez-nous » / téléphone
+$menu-color   : #1a1a1a;
+
+// ---- Dimensions (px @1920)
+$header-height    : 125;
+$header-padding-x : 88;
+$logo-width       : 255;
+$menu-font-size   : 18;
+$menu-gap         : 40;   // entre les liens texte
+$btn-gap-first    : 24;   // entre le dernier lien et le 1er bouton
+$btn-gap          : 10;   // entre les boutons
+$btn-height       : 64;
+$btn-padding-x    : 28;
+
+// ---- Polices
+$font-menu : 'Manrope Regular', 'Manrope', Arial, sans-serif;
+$font-btn  : 'Manrope Medium', 'Manrope', Arial, sans-serif;
+
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  width: 100%;
+  height: widthCalc($header-height);
+  padding: 0 widthCalc($header-padding-x);
+  background: #fff;
+
+  @media (max-width: $table-width) {
+    position: relative;
+    height: 70px;
+    padding: 0 20px;
+  }
+}
+
+/* ---------- Logo ---------- */
+.site-branding {
+  display: flex;
+  align-items: center;
+
+  .custom-logo-link {
+    display: block;
+    line-height: 0;
+  }
+  .custom-logo {
+    width: widthCalc($logo-width);
+    height: auto;
+
+    @media (max-width: $table-width) {
+      width: 150px;
+    }
+  }
+}
+
+/* ---------- Menu ---------- */
+.main-navigation {
+  font-family: $font-menu;
+  font-weight: 400;
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  #primary-menu {
+    display: flex;
+    align-items: center;
+
+    > li + li {
+      margin-left: widthCalc($menu-gap);
+    }
+    > li.menu-btn {
+      margin-left: widthCalc($btn-gap-first);
+    }
+    > li.menu-btn + li.menu-btn {
+      margin-left: widthCalc($btn-gap);
+    }
+  }
+
+  li {
+    position: relative;
+  }
+
+  a {
+    display: flex;
+    align-items: center;
+    color: $menu-color;
+    font-size: widthCalc($menu-font-size);
+    line-height: 1.4;
+    white-space: nowrap;
+    transition: color .2s ease, background-color .2s ease;
+
+    &:hover,
+    &:focus {
+      color: $brown;
+    }
+  }
+
+  // Item actif (ex. « Nos services »)
+  .current-menu-item > a,
+  .current-menu-ancestor > a,
+  .current-menu-parent > a {
+    color: $brown;
+  }
+
+  // Chevron sur les items avec sous-menu
+  .menu-item-has-children > a::after {
+    content: '';
+    display: inline-block;
+    width: widthCalc(7);
+    height: widthCalc(7);
+    margin-left: widthCalc(10);
+    margin-top: widthCalc(-4);
+    border-right: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    transform: rotate(45deg);
+  }
+
+  // ---------- Boutons (classes CSS ajoutées dans Apparence > Menus)
+  .menu-btn > a {
+    justify-content: center;
+    height: widthCalc($btn-height);
+    padding: 0 widthCalc($btn-padding-x);
+    font-family: $font-btn;
+    font-weight: 500;
+    color: $brown;
+    background: $beige;
+    border-radius: 999px;
+
+    &:hover,
+    &:focus {
+      color: #fff;
+      background: $brown;
+    }
+  }
+
+  .menu-btn--dark > a {
+    color: #fff;
+    background: $brown;
+
+    &:hover,
+    &:focus {
+      color: $brown;
+      background: $beige;
+    }
+  }
+
+  // ---------- Sous-menus
+  .sub-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 999;
+    min-width: widthCalc(240);
+    padding: widthCalc(15) 0;
+    background: #fff;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .08);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all .2s ease;
+
+    a {
+      padding: widthCalc(8) widthCalc(20);
+      font-size: widthCalc(16);
+    }
+  }
+
+  li:hover > .sub-menu,
+  li.focus > .sub-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .menu-toggle {
+    display: none;
+  }
+
+  /* ----- Mobile / tablette ----- */
+  @media (max-width: $table-width) {
+    .menu-toggle {
+      display: block;
+      padding: 8px 14px;
+      font-family: $font-menu;
+      font-size: 16px;
+      color: $brown;
+      background: none;
+      border: 1px solid $brown;
+      border-radius: 999px;
+      cursor: pointer;
+    }
+
+    #primary-menu {
+      display: none;
+    }
+
+    &.toggled #primary-menu {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      position: absolute;
+      top: 70px;
+      left: 0;
+      right: 0;
+      z-index: 999;
+      padding: 20px;
+      background: #fff;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, .08);
+
+      > li + li,
+      > li.menu-btn,
+      > li.menu-btn + li.menu-btn {
+        margin-left: 0;
+        margin-top: 12px;
+      }
+    }
+
+    a {
+      font-size: 18px;
+    }
+
+    .menu-item-has-children > a::after {
+      width: 7px;
+      height: 7px;
+      margin-left: 10px;
+      margin-top: -4px;
+    }
+
+    .menu-btn > a {
+      height: 50px;
+      padding: 0 24px;
+    }
+
+    .sub-menu {
+      position: static;
+      opacity: 1;
+      visibility: visible;
+      transform: none;
+      box-shadow: none;
+      padding: 8px 0 0 15px;
+
+      a {
+        padding: 5px 0;
+        font-size: 16px;
+      }
+    }
+  }
+}
 
