@@ -125,13 +125,6 @@ function vsc_theme_scripts() {
 add_action( 'wp_enqueue_scripts', 'vsc_theme_scripts' );
 
 
-// Active l'état « caché » avant l'affichage (pas de clignotement).
-// Filet de sécurité : si reveal.js ne se charge pas, tout redevient visible après 3 s.
-add_action( 'wp_head', function () {
-	echo "<script>document.documentElement.classList.add('vsc-anim');setTimeout(function(){if(!window.vscReveal){document.documentElement.classList.remove('vsc-anim');}},3000);</script>\n";
-}, 0 );
-
-
 add_action('wp_footer',function(){
 	wp_enqueue_style('vsc-mobile-style',get_template_directory_uri().'/css/mobile.css',array(),null);
 	wp_enqueue_style('vsc-theme-style',get_template_directory_uri().'/css/style.css',array(),null);
