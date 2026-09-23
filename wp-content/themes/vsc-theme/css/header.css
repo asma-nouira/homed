@@ -256,8 +256,8 @@ html.nav-locked {
   background: #592C22;
 }
 .main-navigation .header-btn--dark:hover, .main-navigation .header-btn--dark:focus-visible {
-  color: #592C22;
-  background: #DED7CD;
+  color: #592C22 !important;
+  background: #DED7CD !important;
 }
 
 .menu-toggle {

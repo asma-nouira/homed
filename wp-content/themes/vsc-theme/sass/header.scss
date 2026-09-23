@@ -246,8 +246,8 @@ html.nav-locked {
 
   &:hover,
   &:focus-visible {
-    color: $brown;
-    background: $beige;
+    color: $brown!important;
+    background: $beige!important;
   }
 }
 
