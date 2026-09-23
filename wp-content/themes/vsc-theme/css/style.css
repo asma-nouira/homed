@@ -244,6 +244,7 @@ body {
   max-width: 20.7291666667vw;
   margin-left: auto;
   margin-right: auto;
+  list-style: none !important;
 }
 @media (max-width: 767px) {
   .hero-slider .slick-dots {

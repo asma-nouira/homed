@@ -80,6 +80,7 @@ padding: calc(310vw / 19.2) calc(1160vw / 19.2) calc(325vw / 19.2) calc(230vw / 
     max-width: calc(398vw / 19.2);
     margin-left: auto;
     margin-right: auto;
+	 list-style: none !important;
   @media (max-width: $table-width) {
     bottom: 28px;
   }
