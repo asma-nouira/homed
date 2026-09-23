@@ -36,6 +36,47 @@ $font-bold : 'Manrope Bold', 'Manrope', Arial, sans-serif;
   @return unquote("max(#{$min}, #{widthCalc($px)})");
 }
 
+@mixin mega-menu {
+  position: static;
+
+  > .sub-menu {
+    left: 0;
+    right: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: widthCalc(40) widthCalc(60);
+    min-width: 0;
+    padding: widthCalc(50) widthCalc($header-padding-x) widthCalc(60);
+
+    > li > a {
+      padding: 0 0 widthCalc(12);
+      margin-bottom: widthCalc(10);
+      font-family: $font-bold;
+      font-weight: 500;
+      font-size: fluid(18, 14px);
+      color: $brown;
+      border-bottom: 1px solid $border-light;
+    }
+
+    .submenu-toggle { display: none; }
+
+    .sub-menu {
+      position: static;
+      min-width: 0;
+      padding: 0;
+      border: 0;
+      box-shadow: none;
+      opacity: 1;
+      visibility: inherit;
+      transform: none;
+
+      a {
+        padding: widthCalc(6) 0;
+        font-size: fluid(16, 13px);
+      }
+    }
+  }
+}
 // ---- Accessibilité
 .screen-reader-text {
   position: absolute !important;
@@ -195,7 +236,7 @@ html.nav-locked {
 
   &:hover,
   &:focus-visible {
-    color: #fff;
+    color: #fff!important;
     background: $brown;
   }
 }
@@ -299,6 +340,10 @@ html.nav-locked {
     .sub-menu .submenu-toggle {
       display: none;
     }
+    .sub-menu .sub-menu {
+  top: widthCalc(-15);
+  left: 100%;
+}
 
     > li:hover > .sub-menu,
     > li.is-open > .sub-menu {
@@ -308,50 +353,19 @@ html.nav-locked {
     }
 
     // ---------- Méga-menu (ex. « Nos services »)
-    > li.has-mega {
-      position: static; // le panneau se positionne par rapport au header
+   > li.has-mega {
+  @include mega-menu;
+}
+> li:has(> .sub-menu > li > .sub-menu) {
+  @include mega-menu;
+}
 
-      > .sub-menu {
-        left: 0;
-        right: 0;
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: widthCalc(40) widthCalc(60);
-        min-width: 0;
-        padding: widthCalc(50) widthCalc($header-padding-x) widthCalc(60);
-
-        > li > a {
-          padding: 0 0 widthCalc(12);
-          margin-bottom: widthCalc(10);
-          font-family: $font-bold;
-          font-weight: 500;
-          font-size: fluid(18, 14px);
-          color: $brown;
-          border-bottom: 1px solid $border-light;
-        }
-
-        // pas de chevron dans le méga-menu desktop : le 3e niveau est toujours visible
-        .submenu-toggle {
-          display: none;
-        }
-
-        .sub-menu {
-          position: static;
-          min-width: 0;
-          padding: 0;
-          border: 0;
-          box-shadow: none;
-          opacity: 1;
-          visibility: inherit;
-          transform: none;
-
-          a {
-            padding: widthCalc(6) 0;
-            font-size: fluid(16, 13px);
-          }
-        }
-      }
-    }
+> li:not(.has-mega) > .sub-menu > li:hover > .sub-menu,
+> li:not(.has-mega) > .sub-menu > li.is-open > .sub-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
   }
 
   .header-actions {

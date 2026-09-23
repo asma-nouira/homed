@@ -27,6 +27,29 @@
 		return window.innerWidth <= BREAKPOINT;
 	};
 
+	/* ---------- Classes de secours (si le filtre PHP n'a pas tourné) ---------- */
+	Array.prototype.forEach.call( menu.children, function ( li ) {
+		// Méga-menu : item de 1er niveau avec 3 niveaux
+		if ( li.querySelector( ':scope > .sub-menu > li > .sub-menu' ) ) {
+			li.classList.add( 'has-mega' );
+		}
+		// Bouton « Contactez-nous »
+		var a = li.querySelector( ':scope > a' );
+		if ( a && 0 === a.textContent.trim().toLowerCase().indexOf( 'contact' ) ) {
+			li.classList.add( 'menu-btn' );
+		}
+		// Survol desktop : ferme le sous-menu ouvert au clic sur un autre item
+		li.addEventListener( 'mouseenter', function () {
+			if ( ! isMobile() ) {
+				Array.prototype.forEach.call( menu.querySelectorAll( ':scope > li.is-open' ), function ( other ) {
+					if ( other !== li ) {
+						setOpen( other, false );
+					}
+				} );
+			}
+		} );
+	} );
+
 	/* ---------- Boutons chevron sur les items parents ---------- */
 	var parents = menu.querySelectorAll( '.menu-item-has-children' );
 
