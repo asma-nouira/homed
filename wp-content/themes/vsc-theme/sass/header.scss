@@ -14,14 +14,14 @@ $border-light : #eee9e3;
 
 // ---- Dimensions (px @1920)
 $header-height    : 125;
-$header-padding-x : 88;
+$header-padding-x : 90;
 $logo-width       : 255;
 $menu-font-size   : 18;
 $menu-gap         : 40;
 $btn-gap-first    : 24;
 $btn-gap          : 10;
-$btn-height       : 64;
-$btn-padding-x    : 28;
+$btn-height       : 62;
+$btn-padding-x    : 11;
 
 // Sous ce point, on passe au menu hamburger (doit correspondre à BREAKPOINT dans js/navigation.js)
 $menu-breakpoint  : 1199px;
@@ -129,7 +129,7 @@ html.nav-locked {
 
   a {
     color: $menu-color;
-    line-height: 1.4;
+    line-height: 1.33;
     transition: color .2s ease, background-color .2s ease;
 
     &:hover,

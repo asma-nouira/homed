@@ -137,7 +137,7 @@ html.nav-locked {
   width: 100%;
   height: calc(125vw / 19.2);
   min-height: 125px;
-  padding: 0 calc(88vw / 19.2);
+  padding: 0 calc(90vw / 19.2);
   background: #fff;
 }
 @media (max-width: 1199px) {
@@ -186,7 +186,7 @@ html.nav-locked {
 }
 .main-navigation a {
   color: #0F0E0E;
-  line-height: 1.4;
+  line-height: 1.33;
   transition: color 0.2s ease, background-color 0.2s ease;
 }
 .main-navigation a:hover, .main-navigation a:focus-visible {
@@ -230,9 +230,9 @@ html.nav-locked {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  height: calc(64vw / 19.2);
+  height: calc(62vw / 19.2);
   min-height: 42px;
-  padding: 0 calc(28vw / 19.2);
+  padding: 0 calc(11vw / 19.2);
   font-family: "Manrope Bold", "Manrope", Arial, sans-serif;
   font-weight: 500;
   font-size: max(14px, calc(18vw / 19.2));
@@ -333,7 +333,7 @@ html.nav-locked {
     grid-template-columns: repeat(3, 1fr);
     gap: calc(40vw / 19.2) calc(60vw / 19.2);
     min-width: 0;
-    padding: calc(50vw / 19.2) calc(88vw / 19.2) calc(60vw / 19.2);
+    padding: calc(50vw / 19.2) calc(90vw / 19.2) calc(60vw / 19.2);
   }
   #primary-menu > li.has-mega > .sub-menu > li > a {
     padding: 0 0 calc(12vw / 19.2);
