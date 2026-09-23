@@ -128,6 +128,11 @@ h1 {
   color: #DED7CD;
 }
 
+em {
+  font-style: normal;
+  white-space: nowrap;
+}
+
 .fs95 h1, .fs95 h2, .fs95 p, .fs95 h3, .fs95 {
   font-size: calc(95vw / 13.66);
 }
