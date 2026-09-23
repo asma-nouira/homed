@@ -68,6 +68,18 @@ padding: calc(310vw / 19.2) calc(1160vw / 19.2) calc(325vw / 19.2) calc(230vw / 
 		margin-left: auto;
         margin-right: auto;
 	}
+	.hero-slider.vce-row .slick-dots {
+  position: absolute;
+  bottom: widthCalc(107);
+  counter-reset: hero-dot;
+
+  li { counter-increment: hero-dot; }
+
+  button {
+    font-size: 0; // cache le « 1 » de Slick
+    &::before { content: counter(hero-dot, decimal-leading-zero); }
+  }
+}
 }
 
 
