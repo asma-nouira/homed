@@ -240,10 +240,6 @@ body {
   z-index: 3;
   display: flex;
   justify-content: center;
-  border-bottom: 1px solid white;
-  max-width: 20.7291666667vw;
-  margin-left: auto;
-  margin-right: auto;
   list-style: none !important;
 }
 @media (max-width: 767px) {

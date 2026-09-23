@@ -8,6 +8,7 @@ jQuery(document).on('ready', function() {
         infinite: true,
         dots: true,
         arrows:false,
+        
         responsive: [
             {
                 breakpoint: 1366,
@@ -36,7 +37,11 @@ jQuery(document).on('ready', function() {
                     slidesToShow: 1
                 }
             }
-        ]
+        ],
+            customPaging: function (slider, i) {
+        var num = (i + 1 < 10 ? '0' : '') + (i + 1);
+        return '<button type="button">' + num + '</button>';
+    }
     })
 .on('setPosition', function (event, slick) {
         slick.$slides.css('height', slick.$slideTrack.height() + 'px');
