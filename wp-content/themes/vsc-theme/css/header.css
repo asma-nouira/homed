@@ -186,11 +186,13 @@ html.nav-locked {
 }
 .main-navigation a {
   color: #0F0E0E;
-  line-height: 1.4;
+  line-height: 1.33;
   transition: color 0.2s ease, background-color 0.2s ease;
 }
 .main-navigation a:hover, .main-navigation a:focus-visible {
   color: #592C22;
+  font-family: "Manrope Bold";
+  font-weight: 700;
 }
 .main-navigation .current-menu-item > a,
 .main-navigation .current-menu-ancestor > a,
