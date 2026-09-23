@@ -240,32 +240,22 @@ body {
   z-index: 3;
   display: flex;
   justify-content: center;
+  border-bottom: 1px solid white;
+  max-width: 20.7291666667vw;
+  margin-left: auto;
+  margin-right: auto;
 }
 @media (max-width: 767px) {
   .hero-slider .slick-dots {
     bottom: 28px;
   }
 }
-.hero-slider .slick-dots .slick-dots {
-  position: static;
-  display: flex;
-  gap: calc(30vw / 19.2);
-  width: auto;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-@media (max-width: 767px) {
-  .hero-slider .slick-dots .slick-dots {
-    gap: 14px;
-  }
-}
-.hero-slider .slick-dots .slick-dots li {
+.hero-slider .slick-dots li {
   width: auto;
   height: auto;
   margin: 0;
 }
-.hero-slider .slick-dots .slick-dots button {
+.hero-slider .slick-dots button {
   position: relative;
   display: block;
   width: calc(110vw / 19.2);
@@ -282,10 +272,10 @@ body {
   cursor: pointer;
   transition: color 0.2s ease;
 }
-.hero-slider .slick-dots .slick-dots button::before {
+.hero-slider .slick-dots button::before {
   display: none;
 }
-.hero-slider .slick-dots .slick-dots button::after {
+.hero-slider .slick-dots button::after {
   content: "";
   position: absolute;
   left: 0;
@@ -294,15 +284,15 @@ body {
   height: 2px;
   background: rgba(255, 255, 255, 0.3);
 }
-.hero-slider .slick-dots .slick-dots button span {
+.hero-slider .slick-dots button span {
   position: relative;
   display: block;
   font-size: inherit;
 }
-.hero-slider .slick-dots .slick-dots button:hover, .hero-slider .slick-dots .slick-dots button:focus-visible {
+.hero-slider .slick-dots button:hover, .hero-slider .slick-dots button:focus-visible {
   color: #fff;
 }
-.hero-slider .slick-dots .slick-dots li button span::after {
+.hero-slider .slick-dots li button span::after {
   content: "";
   position: absolute;
   left: 0;
@@ -314,10 +304,10 @@ body {
   transform: scaleX(0);
   transform-origin: left center;
 }
-.hero-slider .slick-dots .slick-dots li.slick-active button {
+.hero-slider .slick-dots li.slick-active button {
   color: #fff;
 }
-.hero-slider .slick-dots .slick-dots li.slick-active button span::after {
+.hero-slider .slick-dots li.slick-active button span::after {
   transform: scaleX(1);
 }
 /*# sourceMappingURL=../css/style.css.map */
