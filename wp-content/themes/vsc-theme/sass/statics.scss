@@ -89,10 +89,14 @@ ul{
   font-size: calc(22vw / 19.2);
   padding: 0  calc(55vw / 19.2);
   height: calc(79vw / 19.2);
+  border-radius: calc(44vw / 19.2);
   min-height: 70px;
   text-align: center;
   white-space: nowrap;
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width:calc(264vw / 19.2) ;
     transition: color .2s ease, background-color .2s ease;
     &:hover,
   &:focus-visible {

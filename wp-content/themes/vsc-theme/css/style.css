@@ -98,10 +98,14 @@ ul {
   font-size: 1.1458333333vw;
   padding: 0 2.8645833333vw;
   height: 4.1145833333vw;
+  border-radius: 2.2916666667vw;
   min-height: 70px;
   text-align: center;
   white-space: nowrap;
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 13.75vw;
   transition: color 0.2s ease, background-color 0.2s ease;
 }
 .inter-cta:hover, .inter-cta:focus-visible {
@@ -214,7 +218,7 @@ body {
   color: #0F0E0E;
 }
 
-.hero-slider .slider-col {
+.hero-slider .slider-col > .vce-col-inner {
   padding: 16.1458333333vw 60.4166666667vw 16.9270833333vw 11.9791666667vw;
 }
 /*# sourceMappingURL=../css/style.css.map */
