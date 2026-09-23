@@ -125,13 +125,6 @@ function vsc_theme_scripts() {
 add_action( 'wp_enqueue_scripts', 'vsc_theme_scripts' );
 
 
-function vsc_theme_animation_assets() {
-	$uri = get_template_directory_uri();
-	wp_enqueue_style( 'vsc-animations', $uri . '/css/animations.css', array(), vsc_theme_ver( '/css/animations.css' ) );
-	wp_enqueue_script( 'vsc-reveal', $uri . '/js/reveal.js', array(), vsc_theme_ver( '/js/reveal.js' ), true );
-}
-add_action( 'wp_enqueue_scripts', 'vsc_theme_animation_assets' );
-
 // Active l'état « caché » avant l'affichage (pas de clignotement).
 // Filet de sécurité : si reveal.js ne se charge pas, tout redevient visible après 3 s.
 add_action( 'wp_head', function () {
