@@ -69,15 +69,102 @@ padding: calc(310vw / 19.2) calc(1160vw / 19.2) calc(325vw / 19.2) calc(230vw / 
         margin-right: auto;
 	}
  .slick-dots {
-  position: absolute;
+ position: absolute;
+  left: 0;
+  right: 0;
   bottom: widthCalc(107);
-  counter-reset: hero-dot;
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+ 
+  @media (max-width: $table-width) {
+    bottom: 28px;
+  }
 
-  li { counter-increment: hero-dot; }
-
-  button {
-    font-size: 0; // cache le « 1 » de Slick
-    &::before { content: counter(hero-dot, decimal-leading-zero); }
+   .slick-dots {
+    position: static;
+    display: flex;
+    gap: widthCalc(30);
+    width: auto;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+ 
+    @media (max-width: $table-width) {
+      gap: 14px;
+    }
+ 
+    li {
+      width: auto;
+      height: auto;
+      margin: 0;
+    }
+ 
+    button {
+      position: relative;
+      display: block;
+      width: widthCalc(110);
+      min-width: 60px;
+      height: auto;
+      padding: 0 0 widthCalc(12);
+      font-family: 'Inter';
+      font-size: fluid(24, 14px);
+      line-height: 1;
+      color: rgba(255, 255, 255, .6);
+      text-align: center;
+      background: none;
+      border: 0;
+      cursor: pointer;
+      transition: color .2s ease;
+ 
+      // Slick-theme ajoute un « • » : on l'enlève
+      &::before {
+        display: none;
+      }
+ 
+      // Ligne de fond
+      &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 2px;
+        background: rgba(255, 255, 255, .3);
+      }
+ 
+      span {
+        position: relative;
+        display: block;
+        font-size: inherit;
+      }
+ 
+      &:hover,
+      &:focus-visible {
+        color: #fff;
+      }
+    }
+ 
+    // Barre de progression sur la slide active
+    li button span::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: calc(-1 * #{widthCalc(12)});
+      z-index: 1;
+      height: 2px;
+      background: #fff;
+      transform: scaleX(0);
+      transform-origin: left center;
+    }
+ 
+    li.slick-active button {
+      color: #fff;
+    }
+    li.slick-active button span::after {
+      transform: scaleX(1);
+    }
   }
 }
 }

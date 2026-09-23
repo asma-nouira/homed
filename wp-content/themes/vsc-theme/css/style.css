@@ -234,16 +234,90 @@ body {
 }
 .hero-slider .slick-dots {
   position: absolute;
+  left: 0;
+  right: 0;
   bottom: calc(107vw / 19.2);
-  counter-reset: hero-dot;
+  z-index: 3;
+  display: flex;
+  justify-content: center;
 }
-.hero-slider .slick-dots li {
-  counter-increment: hero-dot;
+@media (max-width: 767px) {
+  .hero-slider .slick-dots {
+    bottom: 28px;
+  }
 }
-.hero-slider .slick-dots button {
-  font-size: 0;
+.hero-slider .slick-dots .slick-dots {
+  position: static;
+  display: flex;
+  gap: calc(30vw / 19.2);
+  width: auto;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
-.hero-slider .slick-dots button::before {
-  content: counter(hero-dot, decimal-leading-zero);
+@media (max-width: 767px) {
+  .hero-slider .slick-dots .slick-dots {
+    gap: 14px;
+  }
+}
+.hero-slider .slick-dots .slick-dots li {
+  width: auto;
+  height: auto;
+  margin: 0;
+}
+.hero-slider .slick-dots .slick-dots button {
+  position: relative;
+  display: block;
+  width: calc(110vw / 19.2);
+  min-width: 60px;
+  height: auto;
+  padding: 0 0 calc(12vw / 19.2);
+  font-family: "Inter";
+  font-size: fluid(24, 14px);
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.6);
+  text-align: center;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+.hero-slider .slick-dots .slick-dots button::before {
+  display: none;
+}
+.hero-slider .slick-dots .slick-dots button::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.3);
+}
+.hero-slider .slick-dots .slick-dots button span {
+  position: relative;
+  display: block;
+  font-size: inherit;
+}
+.hero-slider .slick-dots .slick-dots button:hover, .hero-slider .slick-dots .slick-dots button:focus-visible {
+  color: #fff;
+}
+.hero-slider .slick-dots .slick-dots li button span::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: calc(-1 * calc(12vw / 19.2));
+  z-index: 1;
+  height: 2px;
+  background: #fff;
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+.hero-slider .slick-dots .slick-dots li.slick-active button {
+  color: #fff;
+}
+.hero-slider .slick-dots .slick-dots li.slick-active button span::after {
+  transform: scaleX(1);
 }
 /*# sourceMappingURL=../css/style.css.map */
