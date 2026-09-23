@@ -58,6 +58,12 @@ body{
 	line-height: 1.33;
 	margin:0;
 	color:$black;
+	p{
+		padding-bottom: calc(20vw / 19.2);
+		&:last-child{
+			padding-bottom: 0;
+		}
+	}
 }
 .hero-slider{
 	.slider-col .vce-text-block{

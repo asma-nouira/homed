@@ -249,6 +249,12 @@ body {
   margin: 0;
   color: #0F0E0E;
 }
+body p {
+  padding-bottom: 1.0416666667vw;
+}
+body p:last-child {
+  padding-bottom: 0;
+}
 
 .hero-slider .slider-col .vce-text-block {
   padding: 16.1458333333vw 60.4166666667vw 16.9270833333vw 11.9791666667vw;
