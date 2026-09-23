@@ -112,4 +112,10 @@ ul {
   color: #DED7CD !important;
   background: #7A4535;
 }
+
+.vce-element--has-background > .vce-col-inner > .vce-col-content {
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 0;
+}
 /*# sourceMappingURL=../css/mobile.css.map */

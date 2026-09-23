@@ -114,6 +114,12 @@ ul {
   background: #7A4535;
 }
 
+.vce-element--has-background > .vce-col-inner > .vce-col-content {
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 0;
+}
+
 .fs95 h1, .fs95 h2, .fs95 p, .fs95 h3, .fs95 {
   font-size: calc(95vw / 13.66);
 }
