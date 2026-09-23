@@ -278,8 +278,8 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  height: 2px;
-  background: rgba(255, 255, 255, 0.3);
+  height: 1px;
+  background: rgb(255, 255, 255);
 }
 .hero-slider .slick-dots button span {
   position: relative;
