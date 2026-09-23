@@ -232,18 +232,18 @@ body {
   margin-left: auto;
   margin-right: auto;
 }
-.hero-slider .hero-slider.vce-row .slick-dots {
+.hero-slider .slick-dots {
   position: absolute;
   bottom: calc(107vw / 19.2);
   counter-reset: hero-dot;
 }
-.hero-slider .hero-slider.vce-row .slick-dots li {
+.hero-slider .slick-dots li {
   counter-increment: hero-dot;
 }
-.hero-slider .hero-slider.vce-row .slick-dots button {
+.hero-slider .slick-dots button {
   font-size: 0;
 }
-.hero-slider .hero-slider.vce-row .slick-dots button::before {
+.hero-slider .slick-dots button::before {
   content: counter(hero-dot, decimal-leading-zero);
 }
 /*# sourceMappingURL=../css/style.css.map */
