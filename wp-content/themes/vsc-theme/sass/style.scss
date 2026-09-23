@@ -60,7 +60,7 @@ body{
 	color:$black;
 }
 .hero-slider{
-	.slider-col > .vce-col-inner{
+	.slider-col .vce-text-block{
 padding: calc(310vw / 19.2) calc(1160vw / 19.2) calc(325vw / 19.2) calc(230vw / 19.2);
 	}
 }
