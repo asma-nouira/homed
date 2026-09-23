@@ -132,4 +132,8 @@ em {
   font-style: normal;
   white-space: nowrap;
 }
+
+.br-30 img {
+  border-radius: 30px;
+}
 /*# sourceMappingURL=../css/mobile.css.map */

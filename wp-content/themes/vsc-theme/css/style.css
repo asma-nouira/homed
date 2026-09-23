@@ -133,6 +133,10 @@ em {
   white-space: nowrap;
 }
 
+.br-30 img {
+  border-radius: 30px;
+}
+
 .fs95 h1, .fs95 h2, .fs95 p, .fs95 h3, .fs95 {
   font-size: calc(95vw / 13.66);
 }
