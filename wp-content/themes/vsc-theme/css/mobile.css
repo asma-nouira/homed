@@ -1,3 +1,25 @@
+.brown {
+  color: #7A4535;
+}
+
+.black {
+  color: #0F0E0E;
+}
+
+.beige {
+  color: #DED7CD;
+}
+
+.bold {
+  font-family: "Manrope Bold";
+  font-weight: 700;
+}
+
+.medium {
+  font-family: "Manrope Medium";
+  font-weight: 500;
+}
+
 .center {
   text-align: center;
 }

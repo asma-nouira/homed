@@ -1,5 +1,4 @@
 @import './statics.scss';
-@import './statics.scss';
 @import './parts/fonts.scss';
 
 /* =========================================================
@@ -8,46 +7,99 @@
    ========================================================= */
 
 // ---- Couleurs
-$brown        : #592c22;   // bouton « Prendre rendez-vous », item actif
-$beige        : #ded7cd;   // boutons « Contactez-nous » / téléphone
-$menu-color   : #1a1a1a;
+$brown        : #7A4535;
+$beige        : #DED7CD;
+$menu-color   : #0F0E0E;
+$border-light : #eee9e3;
 
 // ---- Dimensions (px @1920)
 $header-height    : 125;
 $header-padding-x : 88;
 $logo-width       : 255;
 $menu-font-size   : 18;
-$menu-gap         : 40;   // entre les liens texte
-$btn-gap-first    : 24;   // entre le dernier lien et le 1er bouton
-$btn-gap          : 10;   // entre les boutons
+$menu-gap         : 40;
+$btn-gap-first    : 24;
+$btn-gap          : 10;
 $btn-height       : 64;
 $btn-padding-x    : 28;
 
+// Sous ce point, on passe au menu hamburger (doit correspondre à BREAKPOINT dans js/navigation.js)
+$menu-breakpoint  : 1199px;
+$menu-desktop     : $menu-breakpoint + 1;
+
 // ---- Polices
 $font-menu : 'Manrope Regular', 'Manrope', Arial, sans-serif;
-$font-btn  : 'Manrope Medium', 'Manrope', Arial, sans-serif;
+$font-bold : 'Manrope Bold', 'Manrope', Arial, sans-serif;
 
+// widthCalc() avec un plancher en px pour rester lisible sur les petits desktops
+@function fluid($px, $min) {
+  @return unquote("max(#{$min}, #{widthCalc($px)})");
+}
+
+// ---- Accessibilité
+.screen-reader-text {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+
+  &:focus {
+    z-index: 100000;
+    top: 5px;
+    left: 5px;
+    width: auto;
+    height: auto;
+    padding: 12px 20px;
+    clip: auto;
+    clip-path: none;
+    background: #fff;
+    color: $brown;
+  }
+}
+
+html.nav-locked {
+  overflow: hidden;
+}
+
+/* =========================================================
+   STRUCTURE
+   ========================================================= */
 .site-header {
+  position: relative;
+  z-index: 100;
   display: flex;
   align-items: center;
   justify-content: space-between;
   box-sizing: border-box;
   width: 100%;
   height: widthCalc($header-height);
+  min-height: 125px;
   padding: 0 widthCalc($header-padding-x);
   background: #fff;
 
+  @media (max-width: $menu-breakpoint) {
+    padding: 0 30px;
+  }
   @media (max-width: $table-width) {
-    position: relative;
     height: 70px;
     padding: 0 20px;
   }
+
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
 }
 
-/* ---------- Logo ---------- */
 .site-branding {
   display: flex;
   align-items: center;
+  flex-shrink: 0;
 
   .custom-logo-link {
     display: block;
@@ -55,15 +107,16 @@ $font-btn  : 'Manrope Medium', 'Manrope', Arial, sans-serif;
   }
   .custom-logo {
     width: widthCalc($logo-width);
+    min-width: 150px;
     height: auto;
-
-    @media (max-width: $table-width) {
-      width: 150px;
-    }
+  }
+  .site-title {
+    font-family: $font-bold;
+    font-size: 20px;
+    color: $brown;
   }
 }
 
-/* ---------- Menu ---------- */
 .main-navigation {
   font-family: $font-menu;
   font-weight: 400;
@@ -74,189 +127,353 @@ $font-btn  : 'Manrope Medium', 'Manrope', Arial, sans-serif;
     padding: 0;
   }
 
-  #primary-menu {
-    display: flex;
-    align-items: center;
-
-    > li + li {
-      margin-left: widthCalc($menu-gap);
-    }
-    > li.menu-btn {
-      margin-left: widthCalc($btn-gap-first);
-    }
-    > li.menu-btn + li.menu-btn {
-      margin-left: widthCalc($btn-gap);
-    }
-  }
-
-  li {
-    position: relative;
-  }
-
   a {
-    display: flex;
-    align-items: center;
     color: $menu-color;
-    font-size: widthCalc($menu-font-size);
     line-height: 1.4;
-    white-space: nowrap;
     transition: color .2s ease, background-color .2s ease;
 
     &:hover,
-    &:focus {
+    &:focus-visible {
       color: $brown;
     }
   }
 
-  // Item actif (ex. « Nos services »)
   .current-menu-item > a,
   .current-menu-ancestor > a,
   .current-menu-parent > a {
     color: $brown;
   }
+}
 
-  // Chevron sur les items avec sous-menu
-  .menu-item-has-children > a::after {
+// Bouton chevron (injecté par navigation.js)
+.submenu-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  color: inherit;
+  background: none;
+  border: 0;
+  cursor: pointer;
+
+  &::before {
     content: '';
-    display: inline-block;
-    width: widthCalc(7);
-    height: widthCalc(7);
-    margin-left: widthCalc(10);
-    margin-top: widthCalc(-4);
+    display: block;
+    width: 7px;
+    height: 7px;
+    margin-top: -4px;
     border-right: 2px solid currentColor;
     border-bottom: 2px solid currentColor;
     transform: rotate(45deg);
+    transition: transform .2s ease, margin .2s ease;
   }
+}
+.is-open > .submenu-toggle::before {
+  margin-top: 4px;
+  transform: rotate(225deg);
+}
 
-  // ---------- Boutons (classes CSS ajoutées dans Apparence > Menus)
-  .menu-btn > a {
-    justify-content: center;
-    height: widthCalc($btn-height);
-    padding: 0 widthCalc($btn-padding-x);
-    font-family: $font-btn;
-    font-weight: 500;
-    color: $brown;
-    background: $beige;
-    border-radius: 999px;
+// Boutons pilule (Contactez-nous + header-actions)
+.main-navigation .menu-btn > a,
+.main-navigation .header-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: widthCalc($btn-height);
+  min-height: 42px;
+  padding: 0 widthCalc($btn-padding-x);
+  font-family: $font-bold;
+  font-weight: 500;
+  font-size: fluid($menu-font-size, 14px);
+  white-space: nowrap;
+  color: $brown;
+  background: $beige;
+  border-radius: 999px;
+  transition: color .2s ease, background-color .2s ease;
 
-    &:hover,
-    &:focus {
-      color: #fff;
-      background: $brown;
-    }
-  }
-
-  .menu-btn--dark > a {
+  &:hover,
+  &:focus-visible {
     color: #fff;
     background: $brown;
+  }
+}
+.main-navigation .header-btn--dark {
+  color: #fff;
+  background: $brown;
 
-    &:hover,
-    &:focus {
-      color: $brown;
-      background: $beige;
-    }
+  &:hover,
+  &:focus-visible {
+    color: $brown;
+    background: $beige;
+  }
+}
+
+.menu-toggle {
+  display: none;
+}
+
+/* =========================================================
+   DESKTOP
+   ========================================================= */
+@media (min-width: $menu-desktop) {
+
+  .main-navigation {
+    display: flex;
+    align-items: stretch;
+    align-self: stretch;
   }
 
-  // ---------- Sous-menus
-  .sub-menu {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    z-index: 999;
-    min-width: widthCalc(240);
-    padding: widthCalc(15) 0;
-    background: #fff;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, .08);
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(10px);
-    transition: all .2s ease;
+  #primary-menu {
+    display: flex;
+    align-items: stretch;
+    height: 100%;
 
-    a {
-      padding: widthCalc(8) widthCalc(20);
-      font-size: widthCalc(16);
-    }
-  }
-
-  li:hover > .sub-menu,
-  li.focus > .sub-menu {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-  }
-
-  .menu-toggle {
-    display: none;
-  }
-
-  /* ----- Mobile / tablette ----- */
-  @media (max-width: $table-width) {
-    .menu-toggle {
-      display: block;
-      padding: 8px 14px;
-      font-family: $font-menu;
-      font-size: 16px;
-      color: $brown;
-      background: none;
-      border: 1px solid $brown;
-      border-radius: 999px;
-      cursor: pointer;
-    }
-
-    #primary-menu {
-      display: none;
-    }
-
-    &.toggled #primary-menu {
+    // Items de 1er niveau : pleine hauteur du header → le sous-menu colle au bas du header
+    > li {
+      position: relative;
       display: flex;
-      flex-direction: column;
-      align-items: stretch;
-      position: absolute;
-      top: 70px;
-      left: 0;
-      right: 0;
-      z-index: 999;
-      padding: 20px;
-      background: #fff;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, .08);
+      align-items: center;
 
-      > li + li,
-      > li.menu-btn,
-      > li.menu-btn + li.menu-btn {
-        margin-left: 0;
-        margin-top: 12px;
+      + li {
+        margin-left: widthCalc($menu-gap);
+      }
+      &.menu-btn {
+        margin-left: widthCalc($btn-gap-first);
+      }
+
+      > a {
+        font-size: fluid($menu-font-size, 14px);
+        white-space: nowrap;
+      }
+
+      > .submenu-toggle {
+        width: widthCalc(22);
+        min-width: 16px;
+        height: widthCalc(22);
+        margin-left: widthCalc(4);
       }
     }
 
+    // ---------- Dropdown simple (ex. « Notre clinique »)
+    .sub-menu {
+      position: absolute;
+      top: 100%;
+      left: widthCalc(-20);
+      z-index: 999;
+      min-width: widthCalc(260);
+      padding: widthCalc(15) 0;
+      background: #fff;
+      border-top: 1px solid $border-light;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, .08);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(8px);
+      transition: opacity .2s ease, transform .2s ease, visibility .2s;
+
+      a {
+        display: block;
+        padding: widthCalc(8) widthCalc(20);
+        font-size: fluid(16, 13px);
+      }
+    }
+
+    > li:hover > .sub-menu,
+    > li.is-open > .sub-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    // ---------- Méga-menu (ex. « Nos services »)
+    > li.has-mega {
+      position: static; // le panneau se positionne par rapport au header
+
+      > .sub-menu {
+        left: 0;
+        right: 0;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: widthCalc(40) widthCalc(60);
+        min-width: 0;
+        padding: widthCalc(50) widthCalc($header-padding-x) widthCalc(60);
+
+        > li > a {
+          padding: 0 0 widthCalc(12);
+          margin-bottom: widthCalc(10);
+          font-family: $font-bold;
+          font-weight: 500;
+          font-size: fluid(18, 14px);
+          color: $brown;
+          border-bottom: 1px solid $border-light;
+        }
+
+        // pas de chevron dans le méga-menu desktop : le 3e niveau est toujours visible
+        .submenu-toggle {
+          display: none;
+        }
+
+        .sub-menu {
+          position: static;
+          min-width: 0;
+          padding: 0;
+          border: 0;
+          box-shadow: none;
+          opacity: 1;
+          visibility: inherit;
+          transform: none;
+
+          a {
+            padding: widthCalc(6) 0;
+            font-size: fluid(16, 13px);
+          }
+        }
+      }
+    }
+  }
+
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: widthCalc($btn-gap);
+    margin-left: widthCalc($btn-gap);
+  }
+}
+
+/* =========================================================
+   MOBILE / TABLETTE
+   ========================================================= */
+@media (max-width: $menu-breakpoint) {
+
+  .menu-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: 46px;
+    padding: 0;
+    background: $beige;
+    border: 0;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+
+  .menu-toggle__bars {
+    position: relative;
+    display: block;
+    width: 20px;
+    height: 14px;
+
+    span {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: $brown;
+      border-radius: 2px;
+      transition: transform .25s ease, opacity .2s ease, top .25s ease;
+
+      &:nth-child(1) { top: 0; }
+      &:nth-child(2) { top: 6px; }
+      &:nth-child(3) { top: 12px; }
+    }
+  }
+
+  .nav-open .menu-toggle__bars span {
+    &:nth-child(1) { top: 6px; transform: rotate(45deg); }
+    &:nth-child(2) { opacity: 0; }
+    &:nth-child(3) { top: 6px; transform: rotate(-45deg); }
+  }
+
+  .main-navigation {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    max-height: calc(100vh - 70px);
+    overflow-y: auto;
+    padding: 10px 20px 30px;
+    background: #fff;
+    border-top: 1px solid $border-light;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, .08);
+  }
+
+  .nav-open .main-navigation {
+    display: block;
+  }
+
+  #primary-menu {
+    li {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
     a {
-      font-size: 18px;
+      flex: 1;
+      display: block;
+      padding: 12px 0;
+      font-size: 17px;
     }
 
-    .menu-item-has-children > a::after {
-      width: 7px;
-      height: 7px;
-      margin-left: 10px;
-      margin-top: -4px;
+    > li {
+      border-bottom: 1px solid $border-light;
     }
 
-    .menu-btn > a {
-      height: 50px;
-      padding: 0 24px;
+    .submenu-toggle {
+      width: 44px;
+      height: 44px;
+      color: $brown;
     }
 
     .sub-menu {
-      position: static;
-      opacity: 1;
-      visibility: visible;
-      transform: none;
-      box-shadow: none;
-      padding: 8px 0 0 15px;
+      display: none;
+      width: 100%;
+      padding: 0 0 10px 15px;
 
       a {
-        padding: 5px 0;
+        padding: 9px 0;
+        font-size: 16px;
+      }
+    }
+
+    li.is-open > .sub-menu {
+      display: block;
+    }
+
+    // 2e niveau du méga-menu en gras
+    .has-mega > .sub-menu > li > a {
+      font-family: $font-bold;
+      font-weight: 500;
+      color: $brown;
+    }
+
+    // Contactez-nous : bouton pleine largeur
+    > li.menu-btn {
+      margin-top: 20px;
+      border-bottom: 0;
+
+      > a {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 50px;
+        padding: 0 24px;
         font-size: 16px;
       }
     }
   }
-}
 
+  .header-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+
+    .header-btn {
+      height: 50px;
+      font-size: 16px;
+    }
+  }
+}

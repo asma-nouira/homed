@@ -1,4 +1,25 @@
-$black : #000;
+$brown        : #7A4535;
+$beige        : #DED7CD;
+$black   : #0F0E0E;
+
+
+.brown{
+  color: $brown;
+}
+.black{
+  color:$black;
+}
+.beige{
+  color:$beige;
+}
+.bold{
+  font-family: 'Manrope Bold';
+  font-weight: 700;
+}
+.medium{
+  font-family: 'Manrope Medium';
+  font-weight: 500;
+}
 .center{
   text-align: center;
 }
