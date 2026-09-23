@@ -89,4 +89,23 @@ ul {
   width: 100% !important;
   height: auto;
 }
+
+.inter-cta {
+  background-color: #DED7CD;
+  color: #7A4535;
+  font-family: "Inter";
+  font-weight: 500;
+  font-size: 1.1458333333vw;
+  padding: 0 2.8645833333vw;
+  height: 4.1145833333vw;
+  min-height: 70px;
+  text-align: center;
+  white-space: nowrap;
+  display: inline-block;
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+.inter-cta:hover, .inter-cta:focus-visible {
+  color: #DED7CD !important;
+  background: #7A4535;
+}
 /*# sourceMappingURL=../css/mobile.css.map */

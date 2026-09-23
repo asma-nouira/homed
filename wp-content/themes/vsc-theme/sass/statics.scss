@@ -81,3 +81,22 @@ ul{
     }
   }
 }
+.inter-cta{
+  background-color: #DED7CD;
+  color:$brown;
+  font-family: 'Inter';
+  font-weight: 500;
+  font-size: calc(22vw / 19.2);
+  padding: 0  calc(55vw / 19.2);
+  height: calc(79vw / 19.2);
+  min-height: 70px;
+  text-align: center;
+  white-space: nowrap;
+  display: inline-block;
+    transition: color .2s ease, background-color .2s ease;
+    &:hover,
+  &:focus-visible {
+    color: #DED7CD!important;
+    background: $brown;
+  }
+}

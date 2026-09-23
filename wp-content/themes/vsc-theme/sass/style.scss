@@ -1,5 +1,6 @@
 @import './statics.scss';
 @import './parts/fonts.scss';
+@import './parts/padding.scss';
 /**************/
 .wpcf7-not-valid-tip{
 	display:none !important;
@@ -36,7 +37,28 @@ border: 1px solid #6fdf51;
 color: #1ea524;
 }
 /***************/
-
+html{
+	scroll-behavior: smooth;
+}
+body::-webkit-scrollbar {
+	width: 5px !important
+}
+body::-webkit-scrollbar-track {
+	background: $brown; /* color of the tracking area */
+}
+body::-webkit-scrollbar-thumb {
+	background-color: $beige; /* color of the scroll thumb */
+	border-radius: 20px; /* roundness of the scroll thumb */
+	border: 5px solid $brown; /* creates padding around scroll thumb */
+}
+body{
+	font-family: 'Manrope Regular';
+	font-weight: 400;
+	font-size: calc(18vw / 19.2);
+	line-height: 1.33;
+	margin:0;
+	color:$black;
+}
 
 
 

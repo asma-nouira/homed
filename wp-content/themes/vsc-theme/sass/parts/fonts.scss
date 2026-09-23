@@ -32,6 +32,26 @@ $mobile-width: 425px;
     }
   }
 }
-%fs21{
-  @include fontSize(21);
+%fs95{
+  @include fontSize(95);
+}
+%fs24{
+  @include fontSize(24);
+}
+/************ fonts *************/
+.fs95{
+  @extend %fs95;
+  line-height:1.05 ;
+  h1,h2,p,h3{
+    @extend %fs95;
+    line-height:1.05 ;
+  }
+}
+.fs24{
+  @extend %fs24;
+  line-height:1.25 ;
+  h1,h2,p,h3{
+    @extend %fs24;
+    line-height:1.25 ;
+  }
 }

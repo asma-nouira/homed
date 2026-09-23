@@ -91,6 +91,62 @@ ul {
   height: auto;
 }
 
+.inter-cta {
+  background-color: #DED7CD;
+  color: #7A4535;
+  font-family: "Inter";
+  font-weight: 500;
+  font-size: 1.1458333333vw;
+  padding: 0 2.8645833333vw;
+  height: 4.1145833333vw;
+  min-height: 70px;
+  text-align: center;
+  white-space: nowrap;
+  display: inline-block;
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+.inter-cta:hover, .inter-cta:focus-visible {
+  color: #DED7CD !important;
+  background: #7A4535;
+}
+
+.fs95 h1, .fs95 h2, .fs95 p, .fs95 h3, .fs95 {
+  font-size: calc(95vw / 13.66);
+}
+@media (min-width: 1366px) {
+  .fs95 h1, .fs95 h2, .fs95 p, .fs95 h3, .fs95 {
+    font-size: calc(95vw / 19.2);
+  }
+}
+.fs24 h1, .fs24 h2, .fs24 p, .fs24 h3, .fs24 {
+  font-size: calc(24vw / 13.66);
+}
+@media (min-width: 1366px) {
+  .fs24 h1, .fs24 h2, .fs24 p, .fs24 h3, .fs24 {
+    font-size: calc(24vw / 19.2);
+  }
+}
+@media (max-width: 767px) {
+  .fs24 h1, .fs24 h2, .fs24 p, .fs24 h3, .fs24 {
+    font-size: 18px !important;
+  }
+}
+
+/************ fonts *************/
+.fs95 {
+  line-height: 1.05;
+}
+.fs95 h1, .fs95 h2, .fs95 p, .fs95 h3 {
+  line-height: 1.05;
+}
+
+.fs24 {
+  line-height: 1.25;
+}
+.fs24 h1, .fs24 h2, .fs24 p, .fs24 h3 {
+  line-height: 1.25;
+}
+
 /* =========================================================
    HEADER — Homedental (maquette Homepage_V05 FR+)
    Valeurs en px @1920 → vw via widthCalc() (px / 19.2)
