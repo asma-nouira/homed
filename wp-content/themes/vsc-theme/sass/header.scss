@@ -323,7 +323,7 @@ html.nav-locked {
       min-width: widthCalc(260);
       padding: widthCalc(15) 0;
       background: #fff;
-      border-top: 1px solid $border-light;
+      border-top: 5px solid $border-light;
       box-shadow: 0 20px 40px rgba(0, 0, 0, .08);
       opacity: 0;
       visibility: hidden;
