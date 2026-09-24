@@ -306,3 +306,145 @@ padding: calc(310vw / 19.2) calc(1160vw / 19.2) calc(325vw / 19.2) calc(230vw / 
   }
 }
 
+/* ---------- Carte ---------- */
+.service-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  height: 100%;
+  min-height: widthCalc(625);
+  padding: calc(63vw / 19.2) calc(54vw / 19.2) calc(52vw / 19.2);
+  overflow: hidden;
+  color: #fff;
+  text-decoration: none;
+  background: $brown;
+  border-radius: widthCalc(30);
+  isolation: isolate;
+  transition: transform .45s cubic-bezier(.22, .61, .36, 1), box-shadow .45s cubic-bezier(.22, .61, .36, 1);
+ 
+  @media (max-width: 1199px) {
+    min-height: 460px;
+    padding: 36px;
+    border-radius: 20px;
+  }
+ 
+  &:hover,
+  &:focus-visible {
+    color: #fff;
+    transform: translateY(-6px);
+    box-shadow: 0 24px 50px rgba(89, 44, 34, .25);
+  }
+ 
+  &:focus-visible {
+    outline: 3px solid $beige;
+    outline-offset: 4px;
+  }
+}
+ 
+.service-card__title {
+  position: relative;
+  z-index: 2;
+  margin: 0 0 widthCalc(16);
+  font-family: 'Manrope Bold', 'Manrope', Arial, sans-serif;
+  font-weight: 700;
+  font-size: sc-fluid(28px, 22px);
+  line-height: 1.16;
+  color: #fff;
+  padding-bottom: 14px;
+ 
+  @media (max-width: 1199px) {
+    font-size: 24px;
+  }
+}
+ 
+.service-card__text {
+  position: relative;
+  z-index: 2;
+  max-width: widthCalc(312);
+  min-width: 190px;
+  margin: 0;
+  color:$beige;
+ 
+  @media (max-width: 1199px) {
+    max-width: 240px;
+    font-size: 15px;
+  }
+}
+ 
+/* ---------- Bouton flèche ↗ ---------- */
+.service-card__arrow {
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: widthCalc(75);
+  height: widthCalc(75);
+  min-width: 48px;
+  min-height: 48px;
+  margin-top: widthCalc(35);
+  color: $brown;
+  background: #DCC7B3;
+  border-radius: 50%;
+  transition: background-color .35s ease, transform .45s cubic-bezier(.22, .61, .36, 1);
+ 
+  svg {
+    width: 36%;
+    height: 36%;
+    transition: transform .45s cubic-bezier(.22, .61, .36, 1);
+  }
+ 
+  @media (max-width: 1199px) {
+    margin-top: 24px;
+  }
+}
+ 
+// Survol : la flèche pivote vers la droite et le rond passe en blanc
+.service-card:hover .service-card__arrow,
+.service-card:focus-visible .service-card__arrow {
+  background: #fff;
+  transform: scale(1.08);
+ 
+  svg {
+    transform: rotate(45deg);
+  }
+}
+ 
+/* ---------- Photo ronde (Nettoyage, Orthodontie) ---------- */
+.service-card__media--circle {
+  position: absolute;
+  right: widthCalc(63);
+  bottom: widthCalc(52);
+  z-index: 1;
+  width: widthCalc(290);
+  height: widthCalc(290);
+  min-width: 170px;
+  min-height: 170px;
+  overflow: hidden;
+  border-radius: 50%;
+  transition: transform .6s cubic-bezier(.22, .61, .36, 1);
+ 
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .8s cubic-bezier(.22, .61, .36, 1);
+  }
+ 
+  @media (max-width: 1199px) {
+    right: 30px;
+    bottom: 30px;
+    width: 190px;
+    height: 190px;
+  }
+}
+ 
+.service-card:hover .service-card__media--circle {
+  transform: scale(1.06);
+ 
+  img {
+    transform: scale(1.1);
+  }
+}
