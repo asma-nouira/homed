@@ -24,6 +24,12 @@
   text-align: center;
   display: block;
   color: #7A4535;
+  border-radius: 31px;
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+.beige-btn:hover, .beige-btn:focus-visible {
+  color: #DED7CD !important;
+  background: #7A4535;
 }
 
 .light {

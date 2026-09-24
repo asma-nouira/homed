@@ -25,6 +25,13 @@ $black   : #0F0E0E;
   text-align: center;
   display: block;
   color:$brown;
+  border-radius: 31px;
+    transition: color .2s ease, background-color .2s ease;
+    &:hover,
+  &:focus-visible {
+    color: #DED7CD!important;
+    background: $brown;
+  }
 }
 .light{
   font-family: 'Manrope Light';
