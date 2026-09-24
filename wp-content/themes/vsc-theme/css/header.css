@@ -138,12 +138,20 @@ em {
   border-radius: 30px;
 }
 
-.fs95 h1, .fs95 h2, .fs95 p, .fs95 h3, .fs95 {
+.fs85 h1, .fs85 h2, .fs85 p, .fs85 h3, .fs95 h1, .fs95 h2, .fs95 p, .fs95 h3, .fs95 {
   font-size: calc(95vw / 13.66);
 }
 @media (min-width: 1366px) {
-  .fs95 h1, .fs95 h2, .fs95 p, .fs95 h3, .fs95 {
+  .fs85 h1, .fs85 h2, .fs85 p, .fs85 h3, .fs95 h1, .fs95 h2, .fs95 p, .fs95 h3, .fs95 {
     font-size: calc(95vw / 19.2);
+  }
+}
+.fs85 {
+  font-size: calc(85vw / 13.66);
+}
+@media (min-width: 1366px) {
+  .fs85 {
+    font-size: calc(85vw / 19.2);
   }
 }
 .fs24 h1, .fs24 h2, .fs24 p, .fs24 h3, .fs24 {
@@ -166,6 +174,15 @@ em {
 }
 .fs95 h1, .fs95 h2, .fs95 p, .fs95 h3 {
   line-height: 1.05;
+}
+
+.fs85 {
+  line-height: 1;
+  letter-spacing: -0.17;
+}
+.fs85 h1, .fs85 h2, .fs85 p, .fs85 h3 {
+  line-height: 1;
+  letter-spacing: -0.17;
 }
 
 .fs24 {
