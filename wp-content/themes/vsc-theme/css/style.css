@@ -608,12 +608,12 @@ body {
   flex-direction: column;
   align-items: flex-start;
   height: 100%;
-  min-height: calc(625vw / 19.2);
+  min-height: calc(510vw / 19.2);
   padding: 3.28125vw 2.8125vw 2.7083333333vw;
   overflow: hidden;
   color: #fff;
   text-decoration: none;
-  background: #7A4535;
+  background: #592C22;
   border-radius: calc(30vw / 19.2);
   isolation: isolate;
   transition: transform 0.45s cubic-bezier(0.22, 0.61, 0.36, 1), box-shadow 0.45s cubic-bezier(0.22, 0.61, 0.36, 1);
@@ -678,7 +678,7 @@ body {
   height: calc(75vw / 19.2);
   min-width: 48px;
   min-height: 48px;
-  margin-top: calc(35vw / 19.2);
+  margin-top: 15px;
   color: #7A4535;
   background: #DCC7B3;
   border-radius: 50%;
@@ -688,6 +688,7 @@ body {
   width: 36%;
   height: 36%;
   transition: transform 0.45s cubic-bezier(0.22, 0.61, 0.36, 1);
+  transform: rotate(-45deg);
 }
 @media (max-width: 1199px) {
   .service-card__arrow {
