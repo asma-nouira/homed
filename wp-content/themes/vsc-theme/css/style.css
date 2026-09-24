@@ -254,8 +254,16 @@ em {
   padding-bottom: 5.7291666667vw;
 }
 
+.pb-105 {
+  padding-bottom: 5.46875vw;
+}
+
 .pt-100 {
   padding-top: 5.2083333333vw;
+}
+
+.pt-90 {
+  padding-top: 4.6875vw;
 }
 
 .pl-280 {
@@ -274,6 +282,11 @@ em {
 .plr-455 {
   padding-left: 23.6979166667vw;
   padding-right: 23.6979166667vw;
+}
+
+.plr-176 {
+  padding-left: 9.1666666667vw;
+  padding-right: 9.1666666667vw;
 }
 
 /**************/
