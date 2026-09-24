@@ -147,3 +147,6 @@ em{
     border-radius: 30px;
   }
 }
+@function cta-fluid($px, $min) {
+  @return unquote("max(#{$min}, #{widthCalc($px)})");
+}
