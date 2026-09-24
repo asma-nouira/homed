@@ -138,6 +138,11 @@ h1{
   letter-spacing: -0.45px;
   color:$beige;
 }
+h2{
+  font-size: calc(45vw / 19.2);
+  line-height: 1.11;
+  color:$brown;
+}
 em{
   font-style: normal;
   white-space: nowrap;

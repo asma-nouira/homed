@@ -151,6 +151,12 @@ h1 {
   color: #DED7CD;
 }
 
+h2 {
+  font-size: 2.34375vw;
+  line-height: 1.11;
+  color: #7A4535;
+}
+
 em {
   font-style: normal;
   white-space: nowrap;
