@@ -469,7 +469,6 @@ body {
 /* ---------- Carte blanche ---------- */
 .cta-services__card {
   flex-shrink: 0;
-  width: 100%;
   min-width: 300px;
   padding: 1.875vw 3.3854166667vw;
   text-align: center;
@@ -483,7 +482,6 @@ body {
 }
 @media (max-width: 767px) {
   .cta-services__card {
-    width: 100%;
     max-width: 420px;
     min-width: 0;
     padding: 32px 24px;

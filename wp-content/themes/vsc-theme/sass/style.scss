@@ -159,7 +159,6 @@ padding: calc(310vw / 19.2) calc(1160vw / 19.2) calc(325vw / 19.2) calc(230vw / 
 /* ---------- Carte blanche ---------- */
 .cta-services__card {
   flex-shrink: 0;
-  width: 100%;
   min-width: 300px;
   padding: calc(36vw / 19.2) calc(65vw / 19.2);
   text-align: center;
@@ -174,7 +173,7 @@ padding: calc(310vw / 19.2) calc(1160vw / 19.2) calc(325vw / 19.2) calc(230vw / 
   }
  
   @media (max-width: $table-width) {
-    width: 100%;
+
     max-width: 420px;
     min-width: 0;
     padding: 32px 24px;
