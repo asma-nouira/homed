@@ -10,9 +10,14 @@
   color: #DED7CD;
 }
 
-.bold {
+.bold, b, strong {
   font-family: "Manrope Bold";
   font-weight: 700;
+}
+
+.light {
+  font-family: "Manrope Light";
+  font-weight: 300;
 }
 
 .medium {

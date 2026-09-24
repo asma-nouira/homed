@@ -12,9 +12,13 @@ $black   : #0F0E0E;
 .beige{
   color:$beige;
 }
-.bold{
+.bold, b, strong{
   font-family: 'Manrope Bold';
   font-weight: 700;
+}
+.light{
+  font-family: 'Manrope Light';
+  font-weight: 300;
 }
 .medium{
   font-family: 'Manrope Medium';

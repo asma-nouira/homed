@@ -11,9 +11,14 @@
   color: #DED7CD;
 }
 
-.bold {
+.bold, b, strong {
   font-family: "Manrope Bold";
   font-weight: 700;
+}
+
+.light {
+  font-family: "Manrope Light";
+  font-weight: 300;
 }
 
 .medium {
@@ -168,6 +173,20 @@ em {
   }
 }
 
+.fs35 h1, .fs35 h2, .fs35 p, .fs35 h3, .fs35 {
+  font-size: calc(35vw / 13.66);
+}
+@media (min-width: 1366px) {
+  .fs35 h1, .fs35 h2, .fs35 p, .fs35 h3, .fs35 {
+    font-size: calc(35vw / 19.2);
+  }
+}
+@media (max-width: 767px) {
+  .fs35 h1, .fs35 h2, .fs35 p, .fs35 h3, .fs35 {
+    font-size: 22px !important;
+  }
+}
+
 /************ fonts *************/
 .fs95 {
   line-height: 1.05;
@@ -190,6 +209,13 @@ em {
 }
 .fs24 h1, .fs24 h2, .fs24 p, .fs24 h3 {
   line-height: 1.25;
+}
+
+.fs35 {
+  line-height: 1.28;
+}
+.fs35 h1, .fs35 h2, .fs35 p, .fs35 h3 {
+  line-height: 1.28;
 }
 
 /* =========================================================
