@@ -133,7 +133,6 @@ add_action('wp_footer',function(){
 	 wp_enqueue_style('vsc-theme-slick',get_template_directory_uri().'/slick-slider/slick-theme.css',array(),null);
 	wp_enqueue_script( 'vsc-theme-navigation', get_template_directory_uri() . '/js/navigation.js', array(), null, true );
 	wp_enqueue_script( 'vsc-theme-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), null, true );
-	wp_enqueue_script( 'vsc-reveal', get_template_directory_uri(). '/js/reveal.js', array(), null, true );
 	///////////// slick slider JS ///////////
 	 wp_enqueue_script( 'vsc-slick-js', get_template_directory_uri() . '/slick-slider/slick.min.js', array('jquery'), null, true );
      wp_enqueue_script( 'vsc-slick-run', get_template_directory_uri() . '/slick-slider/run.js', array('jquery'), null, true );
@@ -142,7 +141,14 @@ add_action('wp_footer',function(){
 		wp_enqueue_script( 'comment-reply' );
 	}
 });
+// Animations au défilement
+add_action( 'wp_enqueue_scripts', function () {
+	wp_enqueue_script( 'vsc-reveal', get_template_directory_uri() . '/js/reveal.js', array(), vsc_theme_ver( '/js/reveal.js' ), true );
+} );
 
+add_action( 'wp_head', function () {
+	echo "<script>document.documentElement.classList.add('vsc-anim');setTimeout(function(){if(!window.vscReveal){document.documentElement.classList.remove('vsc-anim');}},3000);</script>\n";
+}, 0 );
 // remove wp version param from any enqueued scripts
 function vc_remove_wp_ver_css_js( $src ) {
     if ( strpos( $src, 'ver=' ) )
