@@ -16,6 +16,16 @@ $black   : #0F0E0E;
   font-family: 'Manrope Bold';
   font-weight: 700;
 }
+.beige-btn{
+  background-color: $beige;
+  font-size: calc(20vw / 19.2);
+  line-height: 1.35;
+  padding: calc(18vw / 19.2);
+  max-width:calc(292vw / 19.2);
+  text-align: center;
+  display: block;
+  color:$brown;
+}
 .light{
   font-family: 'Manrope Light';
   font-weight: 300;

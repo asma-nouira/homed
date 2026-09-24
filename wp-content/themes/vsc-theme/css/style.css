@@ -15,6 +15,17 @@
   font-weight: 700;
 }
 
+.beige-btn {
+  background-color: #DED7CD;
+  font-size: 1.0416666667vw;
+  line-height: 1.35;
+  padding: 0.9375vw;
+  max-width: 15.2083333333vw;
+  text-align: center;
+  display: block;
+  color: #7A4535;
+}
+
 .light {
   font-family: "Manrope Light";
   font-weight: 300;
