@@ -594,38 +594,6 @@ padding: calc(310vw / 19.2) calc(1160vw / 19.2) calc(325vw / 19.2) calc(230vw / 
 .services-slider__track {
 
  
-  // Espace entre les cartes + cartes voisines cachées (l'ombre du survol reste visible)
-  .slick-list {
-    margin: 0 widthCalc(-17);
-    overflow: visible;
-    clip-path: inset(-40px calc(#{widthCalc(17)} - 2px));
- 
-    @media (max-width: $table-width) {
-      margin: 0 -8px;
-      clip-path: none;
-    }
-  }
-  .slick-track {
-    display: flex;
-  }
- 
- 
-  // Image d'arrière-plan VC : arrondie avec la carte + zoom au survol
-  .vce-content-background-container {
-    border-radius: inherit;
-    overflow: hidden;
- 
-    // voile sombre en haut pour la lisibilité du titre
-    &::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      z-index: 1;
-      background: linear-gradient(180deg, rgba(0, 0, 0, .35) 0%, rgba(0, 0, 0, .08) 38%, rgba(0, 0, 0, 0) 60%);
-      pointer-events: none;
-    }
-  }
- 
   .vce-asset-background-simple-item {
     transition: transform .9s cubic-bezier(.22, .61, .36, 1);
   }
