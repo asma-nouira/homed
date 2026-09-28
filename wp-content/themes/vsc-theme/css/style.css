@@ -968,6 +968,9 @@ body {
   margin-left: 0.8854166667vw;
   margin-right: 0.8854166667vw;
 }
+.services-slider__track .slick-slide > .vce-col-inner {
+  border-radius: 1.5625vw;
+}
 .services-slider__track .slick-slide .vce-raw-html {
   padding-top: 3.6458333333vw;
   padding-left: 2.7604166667vw;
