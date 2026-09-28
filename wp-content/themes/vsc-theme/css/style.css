@@ -889,9 +889,9 @@ body {
 }
 .equipe__list li {
   position: relative;
-  margin: 0;
-  padding-left: 1em;
-  list-style: none;
+  display: block !important;
+  padding-left: 1em !important;
+  list-style: none !important;
 }
 .equipe__list li::marker {
   content: none;
@@ -899,6 +899,7 @@ body {
 .equipe__list li::before {
   content: "";
   position: absolute;
+  display: block !important;
   left: 0.15em;
   top: 0.72em;
   width: 0.32em;

@@ -559,9 +559,9 @@ padding: calc(310vw / 19.2) calc(1160vw / 19.2) calc(325vw / 19.2) calc(230vw / 
  
   li {
     position: relative;
-    margin: 0;
-    padding-left: 1em;
-    list-style: none;
+    display: block !important;
+    padding-left: 1em !important;
+    list-style: none !important;
  
     &::marker {
       content: none;
@@ -571,6 +571,7 @@ padding: calc(310vw / 19.2) calc(1160vw / 19.2) calc(325vw / 19.2) calc(230vw / 
     &::before {
       content: '';
       position: absolute;
+      display: block !important;
       left: .15em;
       top: .72em;
       width: .32em;
