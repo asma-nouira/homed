@@ -609,34 +609,6 @@ padding: calc(310vw / 19.2) calc(1160vw / 19.2) calc(325vw / 19.2) calc(230vw / 
     display: flex;
   }
  
-  // ---------- Colonne = slide
-  .vce-col {
-    flex: none !important;
-    max-width: none !important;
-    height: auto;
-    padding: 0 widthCalc(17) !important;
-    box-sizing: border-box;
- 
-    @media (max-width: $table-width) {
-      padding: 0 8px !important;
-    }
-  }
- 
-  // ---------- La carte (intérieur de la colonne)
-  .vce-col-inner {
-    position: relative;
-    height: widthCalc(625);
-    min-height: 380px;
-    overflow: hidden;
-    border-radius: widthCalc(30);
-    isolation: isolate;
-    transition: transform .45s cubic-bezier(.22, .61, .36, 1), box-shadow .45s cubic-bezier(.22, .61, .36, 1);
- 
-    @media (max-width: $table-width) {
-      height: 440px;
-      border-radius: 20px;
-    }
-  }
  
   // Image d'arrière-plan VC : arrondie avec la carte + zoom au survol
   .vce-content-background-container {
@@ -656,20 +628,6 @@ padding: calc(310vw / 19.2) calc(1160vw / 19.2) calc(325vw / 19.2) calc(230vw / 
  
   .vce-asset-background-simple-item {
     transition: transform .9s cubic-bezier(.22, .61, .36, 1);
-  }
- 
-  // Contenu : titre + flèche en haut à gauche
-  .vce-col-content {
-    position: static !important;   // le lien peut couvrir toute la carte
-    padding: widthCalc(75) widthCalc(53) !important;
- 
-    @media (max-width: $table-width) {
-      padding: 36px 30px !important;
-    }
-  }
-  .vce-raw-html,
-  .vce-raw-html-wrapper {
-    position: static !important;
   }
  
   .vce-raw-html-wrapper > a {
