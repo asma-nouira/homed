@@ -190,6 +190,19 @@ ul {
     clip-path: none !important;
     transition: none !important;
   }
+  .vsc-anim .rw-word { opacity: 1 !important; }
+  .vsc-anim .parallax { transform: none !important; }
 }
 
+/* ---------- Texte qui s'allume mot par mot (reveal-words) ---------- */
+.vsc-anim .rw-word {
+  opacity: calc(0.18 + 0.82 * var(--rw, 0));
+  transition: opacity 0.2s linear;
+}
+
+/* ---------- Parallaxe douce (ne pas combiner avec reveal sur le même élément) ---------- */
+.vsc-anim .parallax {
+  transform: translate3d(0, var(--parallax-y, 0px), 0);
+  will-change: transform;
+}
 /*# sourceMappingURL=../css/animations.css.map */

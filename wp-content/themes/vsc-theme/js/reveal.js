@@ -9,6 +9,8 @@
  *   reveal-line   séparateur qui se dessine de gauche à droite
  *   reveal-group  les éléments animés à l'intérieur apparaissent un par un
  *   count-up      le chiffre compte de 0 à sa valeur (ex. « 5K », « 13 », « 30+ »)
+ *   reveal-words  le texte « s'allume » mot par mot pendant le défilement (citations)
+ *   parallax      l'élément se déplace plus lentement que la page (data-speed="0.15")
  *   delay-1 … delay-6  retard manuel (0,15 s par cran)
  */
 ( function () {
@@ -156,4 +158,88 @@
 			observer.observe( el );
 		}
 	} );
+
+	/* ---------- Texte qui s'allume mot par mot (reveal-words) ---------- */
+	// Chaque mot passe de pâle à sa couleur normale selon la position dans l'écran.
+	var wordBlocks = [];
+
+	function splitWords( el ) {
+		var walker = document.createTreeWalker( el, NodeFilter.SHOW_TEXT, null, false );
+		var nodes  = [];
+		var node;
+		while ( ( node = walker.nextNode() ) ) {
+			if ( node.nodeValue.trim() ) {
+				nodes.push( node );
+			}
+		}
+		var words = [];
+		nodes.forEach( function ( textNode ) {
+			var frag  = document.createDocumentFragment();
+			textNode.nodeValue.split( /(\s+)/ ).forEach( function ( part ) {
+				if ( ! part ) {
+					return;
+				}
+				if ( /^\s+$/.test( part ) ) {
+					frag.appendChild( document.createTextNode( part ) );
+				} else {
+					var span = document.createElement( 'span' );
+					span.className = 'rw-word';
+					span.textContent = part;
+					frag.appendChild( span );
+					words.push( span );
+				}
+			} );
+			textNode.parentNode.replaceChild( frag, textNode );
+		} );
+		el.setAttribute( 'aria-label', el.textContent.replace( /\s+/g, ' ' ).trim() );
+		return words;
+	}
+
+	Array.prototype.forEach.call( document.querySelectorAll( '.reveal-words' ), function ( el ) {
+		wordBlocks.push( { el: el, words: splitWords( el ) } );
+	} );
+
+	/* ---------- Parallaxe douce (parallax) ---------- */
+	var parallaxEls = Array.prototype.slice.call( document.querySelectorAll( '.parallax' ) );
+
+	function onScroll() {
+		var vh = window.innerHeight;
+
+		wordBlocks.forEach( function ( block ) {
+			var r = block.el.getBoundingClientRect();
+			// 0 quand le haut du bloc est à 90 % de l'écran, 1 quand le bas du bloc atteint 45 %
+			var start    = vh * .9;
+			var end      = vh * .45;
+			var progress = ( start - r.top ) / ( ( start - end ) + r.height );
+			progress = Math.max( 0, Math.min( 1, progress ) );
+			var lit = progress * block.words.length;
+			block.words.forEach( function ( w, i ) {
+				var o = Math.max( 0, Math.min( 1, lit - i ) );
+				w.style.setProperty( '--rw', o.toFixed( 3 ) );
+			} );
+		} );
+
+		parallaxEls.forEach( function ( el ) {
+			var speed = parseFloat( el.getAttribute( 'data-speed' ) ) || .15;
+			var r     = el.getBoundingClientRect();
+			var delta = ( r.top + r.height / 2 ) - vh / 2;
+			el.style.setProperty( '--parallax-y', ( -delta * speed ).toFixed( 1 ) + 'px' );
+		} );
+	}
+
+	if ( wordBlocks.length || parallaxEls.length ) {
+		var ticking = false;
+		var request = function () {
+			if ( ! ticking ) {
+				ticking = true;
+				window.requestAnimationFrame( function () {
+					ticking = false;
+					onScroll();
+				} );
+			}
+		};
+		window.addEventListener( 'scroll', request, { passive: true } );
+		window.addEventListener( 'resize', request );
+		onScroll();
+	}
 } )();
