@@ -1,5 +1,9 @@
 jQuery(function ($) {
 
+    function numeroPagination(slider, i) {
+        var num = (i + 1 < 10 ? '0' : '') + (i + 1);
+        return '<button type="button">' + num + '</button>';
+    }
     /* =========================================================
        1. SLIDER D'ACCUEIL (hero)
        ========================================================= */
@@ -54,6 +58,8 @@ jQuery(function ($) {
        2. CARROUSEL SERVICES (rangée Visual Composer « services-slider__track »)
        Chaque colonne VC = une carte
        ========================================================= */
+
+       
       $(".services-slider__track > .vce-row-content").slick({
         centerMode: false,
         centerPadding: '0',
@@ -63,12 +69,13 @@ jQuery(function ($) {
         infinite: false,
         dots: true,
         arrows: false,
+          customPaging: numeroPagination,
         responsive: [
             {
                 breakpoint: 1366,
                 settings: {
                     arrows: true,
-                    centerMode: true,
+                    centerMode: false,
                     centerPadding: '0',
                     slidesToShow: 3
                 }
@@ -77,7 +84,7 @@ jQuery(function ($) {
                 breakpoint: 766,
                 settings: {
                     arrows: true,
-                    centerMode: true,
+                    centerMode: false,
                     centerPadding: '0',
                     slidesToShow: 2
                 }
@@ -86,7 +93,7 @@ jQuery(function ($) {
                 breakpoint: 400,
                 settings: {
                     arrows: true,
-                    centerMode: true,
+                    centerMode: false,
                     centerPadding: '0',
                     slidesToShow: 1
                 }
