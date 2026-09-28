@@ -552,35 +552,7 @@ padding: calc(310vw / 19.2) calc(1160vw / 19.2) calc(325vw / 19.2) calc(230vw / 
     transform: none;
   }
 }
-.equipe__list {
-  margin: 0;
-  padding: 0;
-  list-style: none;
- 
-  li {
-    position: relative;
-    display: block !important;
-    padding-left: 1em !important;
-    list-style: none !important;
- 
-    &::marker {
-      content: none;
-    }
- 
-    // Petite puce brune
-    &::before {
-      content: '';
-      position: absolute;
-      display: block !important;
-      left: .15em;
-      top: .72em;
-      width: .32em;
-      height: .32em;
-      border-radius: 50%;
-      color:$black;
-    }
-  }
-}
+
 // Monogramme en filigrane derrière la citation
 .equipe__logo {
   width: widthCalc(206);

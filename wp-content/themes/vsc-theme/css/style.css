@@ -91,7 +91,7 @@ h1, h2, h3 {
 ul {
   margin-block-start: 0;
   margin-block-end: 0;
-  padding-inline-start: 0;
+  padding-inline-start: 20px;
 }
 
 .test-bloc {
@@ -882,32 +882,6 @@ body {
     transform: none;
   }
 }
-.equipe__list {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-.equipe__list li {
-  position: relative;
-  display: block !important;
-  padding-left: 1em !important;
-  list-style: none !important;
-}
-.equipe__list li::marker {
-  content: none;
-}
-.equipe__list li::before {
-  content: "";
-  position: absolute;
-  display: block !important;
-  left: 0.15em;
-  top: 0.72em;
-  width: 0.32em;
-  height: 0.32em;
-  border-radius: 50%;
-  color: #0F0E0E;
-}
-
 .equipe__logo {
   width: calc(206vw / 19.2);
   pointer-events: none;
