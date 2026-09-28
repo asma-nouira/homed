@@ -449,3 +449,107 @@ padding: calc(310vw / 19.2) calc(1160vw / 19.2) calc(325vw / 19.2) calc(230vw / 
     transform: scale(1.1);
   }
 }
+
+/* ---------- Photo détourée PNG (Implants) ---------- */
+.service-card--cutout .service-card__text {
+  max-width: widthCalc(500);
+  min-width: 140px;
+ 
+  @media (max-width: 1199px) {
+    max-width: 150px;
+  }
+}
+ 
+.service-card__media--cutout {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  width: 72%;
+  height: 90%;
+  transition: transform .6s cubic-bezier(.22, .61, .36, 1);
+ 
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: right bottom;
+  }
+}
+ 
+.service-card--cutout:hover .service-card__media--cutout {
+  transform: translateY(-10px) scale(1.03);
+  transform-origin: right bottom;
+}
+ 
+/* ---------- Apparition au défilement ---------- */
+// « reveal » est sur le <li> (fondu + montée en cascade) ; la carte elle-même garde son effet de survol.
+// Quand la carte apparaît, la photo « éclot » et la flèche rebondit juste après.
+.vsc-anim {
+  .reveal .service-card__media--circle {
+    transform: scale(.6);
+    opacity: 0;
+  }
+  .reveal .service-card__media--cutout {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+  .reveal .service-card__arrow {
+    transform: scale(0);
+  }
+ 
+  .reveal.is-visible {
+    .service-card__media--circle,
+    .service-card__media--cutout {
+      transform: none;
+      opacity: 1;
+      animation: sc-media-in 1s cubic-bezier(.22, .61, .36, 1) both;
+      animation-delay: calc(var(--reveal-delay, 0s) + .35s);
+    }
+    .service-card__arrow {
+      transform: none;
+      animation: sc-arrow-in .6s cubic-bezier(.34, 1.56, .64, 1) both;
+      animation-delay: calc(var(--reveal-delay, 0s) + .6s);
+    }
+    .service-card__media--cutout {
+      animation-name: sc-cutout-in;
+    }
+  }
+ 
+  // Survol après l'apparition : les effets de survol reprennent la main
+  .reveal.is-visible .service-card:hover {
+    .service-card__media--circle,
+    .service-card__media--cutout,
+    .service-card__arrow {
+      animation: none;
+    }
+    .service-card__media--circle { transform: scale(1.06); }
+    .service-card__media--cutout { transform: translateY(-10px) scale(1.03); }
+    .service-card__arrow { transform: scale(1.08); }
+  }
+}
+ 
+@keyframes sc-media-in {
+  from { opacity: 0; transform: scale(.6); }
+  to   { opacity: 1; transform: none; }
+}
+@keyframes sc-cutout-in {
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: none; }
+}
+@keyframes sc-arrow-in {
+  from { transform: scale(0); }
+  to   { transform: none; }
+}
+ 
+@media (prefers-reduced-motion: reduce) {
+  .service-card,
+  .service-card * {
+    transition: none !important;
+    animation: none !important;
+  }
+  .service-card:hover {
+    transform: none;
+  }
+}
