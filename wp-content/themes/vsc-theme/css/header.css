@@ -218,6 +218,14 @@ em {
   }
 }
 
+.fs40 h1, .fs40 h2, .fs40 p, .fs40 h3, .fs40 {
+  font-size: calc(40vw / 13.66);
+}
+@media (min-width: 1366px) {
+  .fs40 h1, .fs40 h2, .fs40 p, .fs40 h3, .fs40 {
+    font-size: calc(40vw / 19.2);
+  }
+}
 /************ fonts *************/
 .fs95 {
   line-height: 1.05;
@@ -254,6 +262,13 @@ em {
 }
 .fs35 h1, .fs35 h2, .fs35 p, .fs35 h3 {
   line-height: 1.28;
+}
+
+.fs40 {
+  line-height: 1.37;
+}
+.fs40 h1, .fs40 h2, .fs40 p, .fs40 h3 {
+  line-height: 1.37;
 }
 
 /* =========================================================
