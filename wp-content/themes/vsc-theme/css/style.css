@@ -972,7 +972,7 @@ body {
   padding-top: 3.6458333333vw;
   padding-left: 2.7604166667vw;
   padding-right: 8.3333333333vw;
-  max-height: 28.90625vw;
+  height: 28.90625vw;
 }
 .services-slider__track .vce-asset-background-simple-item {
   transition: transform 0.9s cubic-bezier(0.22, 0.61, 0.36, 1);
