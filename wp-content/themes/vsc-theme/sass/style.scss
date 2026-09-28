@@ -592,23 +592,7 @@ padding: calc(310vw / 19.2) calc(1160vw / 19.2) calc(325vw / 19.2) calc(230vw / 
   }
 }
 .services-slider__track {
- 
 
- 
-  // Avant l'init de Slick : les cartes restent sur une ligne, sans déborder (évite le « flash »).
-  // (pas de display:none ici : Slick se réinitialise à chaque changement d'écran et doit voir toutes les colonnes)
-  > .vce-row-content:not(.slick-initialized) {
-    display: flex !important;
-    flex-wrap: nowrap !important;
-    overflow: hidden;
- 
-    > .vce-col {
-      flex: 0 0 33.333% !important;
- 
-      @media (max-width: 1199px) { flex-basis: 50% !important; }
-      @media (max-width: $table-width) { flex-basis: 100% !important; }
-    }
-  }
  
   // Espace entre les cartes + cartes voisines cachées (l'ombre du survol reste visible)
   .slick-list {
