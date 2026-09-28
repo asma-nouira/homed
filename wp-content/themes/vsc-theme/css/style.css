@@ -369,6 +369,11 @@ em {
   padding-right: 9.1666666667vw;
 }
 
+.plr-300 {
+  padding-left: 15.625vw;
+  padding-right: 15.625vw;
+}
+
 /**************/
 .wpcf7-not-valid-tip {
   display: none !important;
