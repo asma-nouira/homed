@@ -745,7 +745,7 @@ body {
 
 /* ---------- Photo détourée PNG (Implants) ---------- */
 .service-card--cutout .service-card__text {
-  max-width: calc(500vw / 19.2);
+  max-width: calc(200vw / 19.2);
   min-width: 140px;
 }
 @media (max-width: 1199px) {

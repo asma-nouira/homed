@@ -452,7 +452,7 @@ padding: calc(310vw / 19.2) calc(1160vw / 19.2) calc(325vw / 19.2) calc(230vw / 
 
 /* ---------- Photo détourée PNG (Implants) ---------- */
 .service-card--cutout .service-card__text {
-  max-width: widthCalc(500);
+  max-width: widthCalc(200);
   min-width: 140px;
  
   @media (max-width: 1199px) {
