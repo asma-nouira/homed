@@ -55,12 +55,12 @@ jQuery(function ($) {
        Chaque colonne VC = une carte
        ========================================================= */
       $(".services-slider__track > .vce-row-content").slick({
-        centerMode: true,
+        centerMode: false,
         centerPadding: '0',
         slidesToShow: 3,
         autoplay: false,
         autoplaySpeed: 20000,
-        infinite: true,
+        infinite: false,
         dots: true,
         arrows: false,
         responsive: [
