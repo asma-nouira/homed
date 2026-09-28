@@ -692,8 +692,8 @@ padding: calc(310vw / 19.2) calc(1160vw / 19.2) calc(325vw / 19.2) calc(230vw / 
     position: relative;
     display: flex !important;
     width: auto;
-    margin: 0;
-    padding: 0 0 0 widthCalc(50);
+    margin: 0 auto;
+    padding: widthCalc(50) 0 0 widthCalc(50);
     list-style: none !important;
  
     &::after {
@@ -703,7 +703,7 @@ padding: calc(310vw / 19.2) calc(1160vw / 19.2) calc(325vw / 19.2) calc(230vw / 
       right: 0;
       bottom: 0;
       height: 1px;
-      background: rgba(255, 255, 255, .25);
+      background: #DED7CD;
     }
  
     li {
@@ -732,7 +732,7 @@ padding: calc(310vw / 19.2) calc(1160vw / 19.2) calc(325vw / 19.2) calc(230vw / 
       font-family: 'Inter', Arial, sans-serif;
       font-size: calc(24vw / 19.2);
       line-height: 1;
-      color: #fff;
+      color: #DED7CD;
       text-align: left;
       background: none;
       border: 0;

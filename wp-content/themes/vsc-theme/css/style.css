@@ -1053,8 +1053,8 @@ body {
   position: relative;
   display: flex !important;
   width: auto;
-  margin: 0;
-  padding: 0 0 0 calc(50vw / 19.2);
+  margin: 0 auto;
+  padding: calc(50vw / 19.2) 0 0 calc(50vw / 19.2);
   list-style: none !important;
 }
 .services-slider__track .slick-dots::after {
@@ -1064,7 +1064,7 @@ body {
   right: 0;
   bottom: 0;
   height: 1px;
-  background: rgba(255, 255, 255, 0.25);
+  background: #DED7CD;
 }
 .services-slider__track .slick-dots li {
   width: calc(137vw / 19.2);
@@ -1093,7 +1093,7 @@ body {
   font-family: "Inter", Arial, sans-serif;
   font-size: 1.25vw;
   line-height: 1;
-  color: #fff;
+  color: #DED7CD;
   text-align: left;
   background: none;
   border: 0;
