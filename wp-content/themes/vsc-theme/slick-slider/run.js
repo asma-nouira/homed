@@ -81,8 +81,8 @@ jQuery(function ($) {
             {
                 breakpoint: 768,    // mobile : 1 carte
                 settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1
+                    slidesToShow: 2,
+                    slidesToScroll: 2
                 }
             }
         ]
