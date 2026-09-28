@@ -1049,17 +1049,7 @@ body {
 }
 
 /* ---------- Pagination 01 / 02 (conteneur ajouté par run.js après la rangée) ---------- */
-.services-slider__dots {
-  display: flex;
-  justify-content: center;
-  margin-top: calc(90vw / 19.2);
-}
-@media (max-width: 767px) {
-  .services-slider__dots {
-    margin-top: 36px;
-  }
-}
-.services-slider__dots .slick-dots {
+.services-slider__track .slick-dots {
   position: relative;
   display: flex !important;
   width: auto;
@@ -1067,7 +1057,7 @@ body {
   padding: 0 0 0 calc(50vw / 19.2);
   list-style: none !important;
 }
-.services-slider__dots .slick-dots::after {
+.services-slider__track .slick-dots::after {
   content: "";
   position: absolute;
   left: 0;
@@ -1076,7 +1066,7 @@ body {
   height: 1px;
   background: rgba(255, 255, 255, 0.25);
 }
-.services-slider__dots .slick-dots li {
+.services-slider__track .slick-dots li {
   width: calc(137vw / 19.2);
   min-width: 56px;
   height: auto;
@@ -1084,18 +1074,18 @@ body {
   padding: 0;
   list-style: none !important;
 }
-.services-slider__dots .slick-dots li::marker {
+.services-slider__track .slick-dots li::marker {
   content: none;
 }
-.services-slider__dots .slick-dots li::before, .services-slider__dots .slick-dots li::after {
+.services-slider__track .slick-dots li::before, .services-slider__track .slick-dots li::after {
   content: none !important;
   display: none !important;
 }
-.services-slider__dots .slick-dots li:last-child {
+.services-slider__track .slick-dots li:last-child {
   width: calc(72vw / 19.2);
   min-width: 40px;
 }
-.services-slider__dots .slick-dots button {
+.services-slider__track .slick-dots button {
   display: block;
   width: auto;
   height: auto;
@@ -1111,18 +1101,18 @@ body {
   cursor: pointer;
   transition: opacity 0.2s ease;
 }
-.services-slider__dots .slick-dots button::before {
+.services-slider__track .slick-dots button::before {
   display: none;
 }
-.services-slider__dots .slick-dots button:hover, .services-slider__dots .slick-dots button:focus-visible {
+.services-slider__track .slick-dots button:hover, .services-slider__track .slick-dots button:focus-visible {
   opacity: 1;
 }
 @media (max-width: 767px) {
-  .services-slider__dots .slick-dots button {
+  .services-slider__track .slick-dots button {
     padding-bottom: 12px;
   }
 }
-.services-slider__dots .slick-dots li.slick-active button {
+.services-slider__track .slick-dots li.slick-active button {
   opacity: 1;
 }
 
