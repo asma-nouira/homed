@@ -576,15 +576,12 @@ padding: calc(310vw / 19.2) calc(1160vw / 19.2) calc(325vw / 19.2) calc(230vw / 
       width: .32em;
       height: .32em;
       border-radius: 50%;
+      color:$black;
     }
   }
 }
 // Monogramme en filigrane derrière la citation
 .equipe__logo {
-  position: absolute;
-  top: widthCalc(-246);
-  left: widthCalc(-25);
-  z-index: 0;
   width: widthCalc(206);
   pointer-events: none;
  
@@ -592,12 +589,9 @@ padding: calc(310vw / 19.2) calc(1160vw / 19.2) calc(325vw / 19.2) calc(230vw / 
     display: block;
     width: 100%;
     height: auto;
-    opacity: .35;
   }
  
   @media (max-width: $table-width) {
-    top: -10px;
-    left: 0;
     width: 110px;
   }
 }
