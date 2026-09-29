@@ -1,6 +1,14 @@
 jQuery(function ($) {
 
     /* =========================================================
+       Ne rien faire dans l'éditeur Visual Composer
+       (sinon Slick modifie le HTML et VC l'enregistre tel quel)
+       ========================================================= */
+    if (/vcv-(editable|action|source-id)/.test(window.location.search) || window.vcvIsEditor) {
+        return;
+    }
+
+    /* =========================================================
        Numéros de pagination : 01, 02, 03…
        ========================================================= */
     function numeroPagination(slider, i) {
@@ -9,9 +17,42 @@ jQuery(function ($) {
     }
 
     /* =========================================================
+       Nettoie un slider enregistré « déjà transformé » par l'éditeur :
+       remet les colonnes d'origine, enlève pistes, copies et numéros figés
+       ========================================================= */
+    function nettoyer($el) {
+        if (!$el.length) {
+            return $el;
+        }
+        // Un vrai Slick actif : on l'arrête proprement
+        if ($el[0].slick) {
+            $el.slick('unslick');
+            return $el;
+        }
+        // Restes enregistrés dans le HTML
+        if ($el.find('.slick-track').length) {
+            $el.find('.slick-cloned').remove();
+            var $cols = $el.find('.slick-track').children();
+            $el.find('.slick-dots, .slick-arrow').remove();
+            $el.children('.slick-list').remove();
+            $el.prepend($cols);
+
+            $cols.removeClass('slick-slide slick-current slick-active slick-center slick-cloned')
+                 .removeAttr('style tabindex aria-hidden role aria-describedby data-slick-index')
+                 .each(function () {
+                     if (/^slick-slide/.test(this.id)) {
+                         this.removeAttribute('id');
+                     }
+                 });
+        }
+        $el.removeClass('slick-initialized slick-slider slick-dotted');
+        return $el;
+    }
+
+    /* =========================================================
        1. SLIDER D'ACCUEIL (hero)
        ========================================================= */
-    $(".hero-slider > .vce-row-content").not('.slick-initialized').slick({
+    nettoyer($(".hero-slider > .vce-row-content")).slick({
         centerMode: true,
         centerPadding: '0',
         slidesToShow: 1,
@@ -20,77 +61,28 @@ jQuery(function ($) {
         infinite: true,
         dots: true,
         arrows: false,
-        customPaging: numeroPagination,
-        responsive: [
-            {
-                breakpoint: 1366,
-                settings: {
-                    arrows: true,
-                    centerMode: true,
-                    centerPadding: '0',
-                    slidesToShow: 1
-                }
-            },
-            {
-                breakpoint: 766,
-                settings: {
-                    arrows: true,
-                    centerMode: true,
-                    centerPadding: '0',
-                    slidesToShow: 1
-                }
-            },
-            {
-                breakpoint: 400,
-                settings: {
-                    arrows: true,
-                    centerMode: true,
-                    centerPadding: '0',
-                    slidesToShow: 1
-                }
-            }
-        ]
+        customPaging: numeroPagination
     })
     .on('setPosition', function (event, slick) {
         slick.$slides.css('height', slick.$slideTrack.height() + 'px');
     });
 
     /* =========================================================
-       2. CARROUSEL SERVICES
-       6 colonnes, 3 visibles, avance par 3 → pagination 01 / 02
+       2. CARROUSEL SERVICES : 3 cartes, avance par 3 → 01 / 02
        ========================================================= */
-    var $services = $(".services-slider__track > .vce-row-content");
-
-    // Si un autre code a déjà démarré Slick ici, on l'arrête d'abord
-    if ($services.hasClass('slick-initialized')) {
-        $services.slick('unslick');
-    }
-
-    $services.slick({
+    nettoyer($(".services-slider__track > .vce-row-content")).slick({
         centerMode: false,
         slidesToShow: 3,
         slidesToScroll: 3,
         infinite: false,
-        autoplay: false,
         speed: 700,
-        cssEase: 'cubic-bezier(.22, .61, .36, 1)',
         dots: true,
         arrows: false,
         customPaging: numeroPagination,
         responsive: [
             {
-                breakpoint: 1200,   // tablette : 2 cartes
-                settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 2
-                }
-            },
-            {
-                breakpoint: 768,    // mobile : 1 carte
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1
-                }
+                breakpoint: 768,
+                settings: { slidesToShow: 1, slidesToScroll: 1 }
             }
         ]
     });
