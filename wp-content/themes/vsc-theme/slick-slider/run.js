@@ -51,6 +51,11 @@ jQuery(document).on('ready', function() {
     });
 
 });
+
+   function numeroPagination(slider, i) {
+        var num = (i + 1 < 10 ? '0' : '') + (i + 1);
+        return '<button type="button">' + num + '</button>';
+    }
     /* =========================================================
        2. CARROUSEL SERVICES
        6 colonnes, 3 visibles, avance par 3 → pagination 01 / 02
