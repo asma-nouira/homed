@@ -1503,6 +1503,6 @@ body {
   }
 }
 .list-faq .vce-faq-toggle-title-text[aria-expanded=true] .vce-faq-toggle-icon {
-  transform: translateY(-50%) rotate(90deg);
+  transform: translateY(-50%) rotate(-90deg);
 }
 /*# sourceMappingURL=../css/style.css.map */

@@ -892,6 +892,6 @@ padding: calc(310vw / 19.2) calc(1160vw / 19.2) calc(325vw / 19.2) calc(230vw / 
 
 /* Rotation de la flèche quand la question est ouverte (↗ devient ↘) */
 .vce-faq-toggle-title-text[aria-expanded="true"] .vce-faq-toggle-icon {
-  transform: translateY(-50%) rotate(90deg);
+  transform: translateY(-50%) rotate(-90deg);
 }
 }
