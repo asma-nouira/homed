@@ -645,6 +645,270 @@ em {
   border-left-color: #b3261e !important;
 }
 
+/* =========================================================
+   FOOTER — Homedental
+   Valeurs en px @1920 → vw via widthCalc() (px / 19.2)
+   ========================================================= */
+.site-footer {
+  font-family: "Manrope Regular", "Manrope", Arial, sans-serif;
+  color: #4a4542;
+  background: #ffffff;
+}
+.site-footer *, .site-footer *::before, .site-footer *::after {
+  box-sizing: border-box;
+}
+.site-footer a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.site-footer a:hover, .site-footer a:focus-visible {
+  color: #592c22;
+}
+
+.site-footer__inner {
+  display: grid;
+  grid-template-columns: calc(395vw / 19.2) calc(341vw / 19.2) calc(310vw / 19.2) auto;
+  justify-content: center;
+  align-items: start;
+  column-gap: 20px;
+  margin: 0 auto;
+  padding: calc(68vw / 19.2) 20px;
+}
+@media (max-width: 1199px) {
+  .site-footer__inner {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px 30px;
+    max-width: none;
+    padding: 50px 40px;
+  }
+}
+@media (max-width: 767px) {
+  .site-footer__inner {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding: 50px 24px 30px;
+    text-align: center;
+  }
+}
+
+/* ---------- Logo ---------- */
+.site-footer__brand .custom-logo-link {
+  display: inline-block;
+  line-height: 0;
+}
+.site-footer__brand .custom-logo {
+  width: calc(298vw / 19.2);
+  min-width: 180px;
+  height: auto;
+}
+
+.site-footer__name {
+  font-family: "Manrope Bold", "Manrope", Arial, sans-serif;
+  font-size: 20px;
+  color: #592c22;
+}
+
+/* ---------- Adresse / courriel / heures ---------- */
+.site-footer__title {
+  margin: 0 0 calc(4vw / 19.2);
+  font-family: "Manrope Bold", "Manrope", Arial, sans-serif;
+  font-weight: 700;
+  font-size: max(15px, calc(18vw / 19.2));
+  line-height: 1.4;
+  color: #2b2b2b;
+}
+
+.site-footer__text {
+  margin: 0 0 calc(18vw / 19.2);
+  font-style: normal;
+  font-size: max(14px, calc(17vw / 19.2));
+  line-height: 1.55;
+  color: #4a4542;
+}
+.site-footer__text:last-child {
+  margin-bottom: 0;
+}
+
+.site-footer__mail {
+  margin: 0 0 calc(22vw / 19.2);
+  font-family: "Manrope Bold", "Manrope", Arial, sans-serif;
+  font-weight: 700;
+  font-size: max(14px, calc(17vw / 19.2));
+}
+.site-footer__mail a {
+  white-space: nowrap;
+  color: #2b2b2b;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+/* ---------- Menu + Facebook ---------- */
+.site-footer__menu {
+  display: grid;
+  grid-template-rows: repeat(3, auto);
+  grid-auto-flow: column;
+  gap: calc(6vw / 19.2) calc(38vw / 19.2);
+  margin: 0;
+  padding: 0;
+  list-style: none !important;
+}
+.site-footer__menu li {
+  margin: 0;
+  list-style: none !important;
+}
+.site-footer__menu li::marker {
+  content: none;
+}
+.site-footer__menu li::before {
+  content: none !important;
+}
+.site-footer__menu a {
+  font-size: max(14px, calc(17vw / 19.2));
+  line-height: 1.5;
+  white-space: nowrap;
+  color: #4a4542;
+}
+.site-footer__menu .current-menu-item > a {
+  color: #592c22;
+}
+@media (max-width: 767px) {
+  .site-footer__menu {
+    justify-content: center;
+    gap: 8px 30px;
+    text-align: left;
+  }
+}
+
+.site-footer__social {
+  display: inline-flex;
+  align-items: center;
+  gap: calc(16vw / 19.2);
+  margin-top: calc(38vw / 19.2);
+  font-size: max(14px, calc(17vw / 19.2));
+  white-space: nowrap;
+  color: #4a4542;
+}
+@media (max-width: 767px) {
+  .site-footer__social {
+    gap: 12px;
+    margin-top: 24px;
+  }
+}
+
+.site-footer__social-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(48vw / 19.2);
+  height: calc(48vw / 19.2);
+  min-width: 38px;
+  min-height: 38px;
+  color: #726248;
+  border: 1.5px solid #726248;
+  border-radius: 50%;
+  transition: color 0.25s ease, background-color 0.25s ease, border-color 0.25s ease;
+}
+.site-footer__social-icon svg {
+  width: 55%;
+  height: 55%;
+}
+
+.site-footer__social:hover .site-footer__social-icon,
+.site-footer__social:focus-visible .site-footer__social-icon {
+  color: #fff;
+  background: #592c22;
+  border-color: #592c22;
+}
+
+/* ---------- Boutons ---------- */
+.site-footer__actions {
+  display: flex;
+  flex-direction: column;
+  gap: calc(16vw / 19.2);
+}
+@media (max-width: 1199px) {
+  .site-footer__actions {
+    align-items: flex-start;
+  }
+}
+@media (max-width: 767px) {
+  .site-footer__actions {
+    align-items: stretch;
+    gap: 12px;
+  }
+}
+
+.footer-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(261vw / 19.2);
+  min-width: 210px;
+  height: calc(58vw / 19.2);
+  min-height: 46px;
+  padding: 0 20px;
+  font-family: "Manrope Medium", "Manrope", Arial, sans-serif;
+  font-size: max(15px, calc(18vw / 19.2));
+  white-space: nowrap;
+  border-radius: 999px;
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+@media (max-width: 767px) {
+  .footer-btn {
+    width: 100%;
+    height: 50px;
+    font-size: 16px;
+  }
+}
+
+.site-footer .footer-btn--light {
+  color: #592c22;
+  background: #ded7cd;
+}
+.site-footer .footer-btn--light:hover, .site-footer .footer-btn--light:focus-visible {
+  color: #fff;
+  background: #592c22;
+}
+
+.site-footer .footer-btn--dark {
+  color: #fff;
+  background: #592c22;
+}
+.site-footer .footer-btn--dark:hover, .site-footer .footer-btn--dark:focus-visible {
+  color: #592c22;
+  background: #ded7cd;
+}
+
+/* ---------- Mentions ---------- */
+.site-footer__legal {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px 24px;
+  padding: calc(18vw / 19.2) 20px;
+  font-size: 13px;
+  color: #8a8480;
+  border-top: 1px solid #ece7e1;
+}
+.site-footer__legal a {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+@media (max-width: 767px) {
+  .site-footer__text,
+  .site-footer__mail {
+    margin-bottom: 16px;
+  }
+  .site-footer__title {
+    margin-bottom: 4px;
+  }
+  .site-footer__legal {
+    padding: 16px 20px;
+  }
+}
 /**************/
 .wpcf7-not-valid-tip {
   display: none !important;

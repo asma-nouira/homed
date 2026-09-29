@@ -1,0 +1,299 @@
+/* =========================================================
+   FOOTER — Homedental
+   Valeurs en px @1920 → vw via widthCalc() (px / 19.2)
+   ========================================================= */
+
+// ---- Couleurs
+$ft-bg       : #ffffff;
+$ft-text     : #2b2b2b;
+$ft-muted    : #4a4542;
+$ft-brown    : #592c22;
+$ft-beige    : #ded7cd;
+$ft-icon     : #726248;
+$ft-border   : #ece7e1;
+
+// ---- Dimensions (px @1920)
+$ft-pad-y      : 68;
+$ft-pad-x      : 88;
+$ft-logo       : 298;
+$ft-size       : 17;
+$ft-title-size : 18;
+$ft-btn-w      : 261;
+$ft-btn-h      : 58;
+$ft-icon-size  : 48;
+
+@function ft-fluid($px, $min) {
+  @return unquote("max(#{$min}, #{widthCalc($px)})");
+}
+
+.site-footer {
+  font-family: 'Manrope Regular', 'Manrope', Arial, sans-serif;
+  color: $ft-muted;
+  background: $ft-bg;
+
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+    transition: color .2s ease;
+
+    &:hover,
+    &:focus-visible {
+      color: $ft-brown;
+    }
+  }
+}
+
+.site-footer__inner {
+  display: grid;
+  // logo | infos | menu | boutons — positions de la maquette (total 1368 px @1920)
+  grid-template-columns: widthCalc(415 - 20) widthCalc(361 - 20) widthCalc(330 - 20) auto;
+  justify-content: center;
+  align-items: start;
+  column-gap: 20px;   // espace minimum entre les colonnes sur les petits écrans
+  margin: 0 auto;
+  padding: widthCalc($ft-pad-y) 20px;
+
+  // Tablette : 2 colonnes
+  @media (max-width: 1199px) {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px 30px;
+    max-width: none;
+    padding: 50px 40px;
+  }
+
+  // Mobile : 1 colonne centrée
+  @media (max-width: $table-width) {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding: 50px 24px 30px;
+    text-align: center;
+  }
+}
+
+/* ---------- Logo ---------- */
+.site-footer__brand {
+  .custom-logo-link {
+    display: inline-block;
+    line-height: 0;
+  }
+  .custom-logo {
+    width: widthCalc($ft-logo);
+    min-width: 180px;
+    height: auto;
+  }
+}
+
+.site-footer__name {
+  font-family: 'Manrope Bold', 'Manrope', Arial, sans-serif;
+  font-size: 20px;
+  color: $ft-brown;
+}
+
+/* ---------- Adresse / courriel / heures ---------- */
+.site-footer__title {
+  margin: 0 0 widthCalc(4);
+  font-family: 'Manrope Bold', 'Manrope', Arial, sans-serif;
+  font-weight: 700;
+  font-size: ft-fluid($ft-title-size, 15px);
+  line-height: 1.4;
+  color: $ft-text;
+}
+
+.site-footer__text {
+  margin: 0 0 widthCalc(18);
+  font-style: normal;
+  font-size: ft-fluid($ft-size, 14px);
+  line-height: 1.55;
+  color: $ft-muted;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.site-footer__mail {
+  margin: 0 0 widthCalc(22);
+  font-family: 'Manrope Bold', 'Manrope', Arial, sans-serif;
+  font-weight: 700;
+  font-size: ft-fluid($ft-size, 14px);
+
+  a {
+    white-space: nowrap;
+    color: $ft-text;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+  }
+}
+
+/* ---------- Menu + Facebook ---------- */
+.site-footer__menu {
+  // 2 colonnes : Accueil / Notre clinique / Nos services | Nouveaux patients / Contactez-nous
+  display: grid;
+  grid-template-rows: repeat(3, auto);
+  grid-auto-flow: column;
+  gap: widthCalc(6) widthCalc(38);
+  margin: 0;
+  padding: 0;
+  list-style: none !important;
+
+  li {
+    margin: 0;
+    list-style: none !important;
+
+    &::marker { content: none; }
+    &::before { content: none !important; }
+  }
+
+  a {
+    font-size: ft-fluid($ft-size, 14px);
+    line-height: 1.5;
+    white-space: nowrap;
+    color: $ft-muted;
+  }
+
+  .current-menu-item > a {
+    color: $ft-brown;
+  }
+
+  @media (max-width: $table-width) {
+    justify-content: center;
+    gap: 8px 30px;
+    text-align: left;
+  }
+}
+
+.site-footer__social {
+  display: inline-flex;
+  align-items: center;
+  gap: widthCalc(16);
+  margin-top: widthCalc(38);
+  font-size: ft-fluid($ft-size, 14px);
+  white-space: nowrap;
+  color: $ft-muted;
+
+  @media (max-width: $table-width) {
+    gap: 12px;
+    margin-top: 24px;
+  }
+}
+
+.site-footer__social-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: widthCalc($ft-icon-size);
+  height: widthCalc($ft-icon-size);
+  min-width: 38px;
+  min-height: 38px;
+  color: $ft-icon;
+  border: 1.5px solid $ft-icon;
+  border-radius: 50%;
+  transition: color .25s ease, background-color .25s ease, border-color .25s ease;
+
+  svg {
+    width: 55%;
+    height: 55%;
+  }
+}
+
+.site-footer__social:hover .site-footer__social-icon,
+.site-footer__social:focus-visible .site-footer__social-icon {
+  color: #fff;
+  background: $ft-brown;
+  border-color: $ft-brown;
+}
+
+/* ---------- Boutons ---------- */
+.site-footer__actions {
+  display: flex;
+  flex-direction: column;
+  gap: widthCalc(16);
+
+  @media (max-width: 1199px) {
+    align-items: flex-start;
+  }
+  @media (max-width: $table-width) {
+    align-items: stretch;
+    gap: 12px;
+  }
+}
+
+.footer-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: widthCalc($ft-btn-w);
+  min-width: 210px;
+  height: widthCalc($ft-btn-h);
+  min-height: 46px;
+  padding: 0 20px;
+  font-family: 'Manrope Medium', 'Manrope', Arial, sans-serif;
+  font-size: ft-fluid(18, 15px);
+  white-space: nowrap;
+  border-radius: 999px;
+  transition: color .2s ease, background-color .2s ease;
+
+  @media (max-width: $table-width) {
+    width: 100%;
+    height: 50px;
+    font-size: 16px;
+  }
+}
+
+.site-footer .footer-btn--light {
+  color: $ft-brown;
+  background: $ft-beige;
+
+  &:hover,
+  &:focus-visible {
+    color: #fff;
+    background: $ft-brown;
+  }
+}
+
+.site-footer .footer-btn--dark {
+  color: #fff;
+  background: $ft-brown;
+
+  &:hover,
+  &:focus-visible {
+    color: $ft-brown;
+    background: $ft-beige;
+  }
+}
+
+/* ---------- Mentions ---------- */
+.site-footer__legal {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px 24px;
+  padding: widthCalc(18) 20px;
+  font-size: 13px;
+  color: #8a8480;
+  border-top: 1px solid $ft-border;
+
+  a {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+}
+
+// Espacements mobiles (les valeurs en vw deviennent trop petites)
+@media (max-width: $table-width) {
+  .site-footer__text,
+  .site-footer__mail {
+    margin-bottom: 16px;
+  }
+  .site-footer__title {
+    margin-bottom: 4px;
+  }
+  .site-footer__legal {
+    padding: 16px 20px;
+  }
+}
