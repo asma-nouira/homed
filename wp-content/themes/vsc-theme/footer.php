@@ -76,7 +76,10 @@ $vsc_externe  = ( false === strpos( $vsc_rdv, home_url() ) );
 					<a class="site-footer__social" href="<?php echo esc_url( $vsc_facebook ); ?>" target="_blank" rel="noopener">
 						<span><?php esc_html_e( 'Suivez-nous sur Facebook', 'vsc-theme' ); ?></span>
 						<span class="site-footer__social-icon" aria-hidden="true">
-							<svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-7.5h2.5l.4-3h-2.9V8.6c0-.9.3-1.5 1.5-1.5h1.5V4.4c-.3 0-1.2-.1-2.2-.1-2.2 0-3.7 1.3-3.7 3.8v2.4H8v3h2.6V21h2.9z"/></svg>
+							<svg xmlns="http://www.w3.org/2000/svg" width="15.907" height="30.615" viewBox="0 0 15.907 30.615">
+  <path id="Tracé_430" data-name="Tracé 430" d="M767.886,40.49H762.2V26.521h-4.651V21.1h4.629c.011-.229.025-.408.028-.587.027-1.511-.018-3.027.09-4.532a6.28,6.28,0,0,1,6.352-6.093c1.44-.042,2.884.071,4.326.121a3.4,3.4,0,0,1,.482.09v4.869c-.581,0-1.117-.012-1.652,0-.745.021-1.5.012-2.233.105a1.659,1.659,0,0,0-1.59,1.594c-.08,1.45-.022,2.906-.022,4.412h5.315c-.236,1.834-.465,3.611-.7,5.44h-4.685Z" transform="translate(-757.546 -9.875)" fill="#726248"/>
+</svg>
+
 						</span>
 					</a>
 				<?php endif; ?>

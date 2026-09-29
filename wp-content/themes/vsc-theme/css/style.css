@@ -716,7 +716,7 @@ em {
   font-weight: 700;
   font-size: max(15px, calc(18vw / 19.2));
   line-height: 1.4;
-  color: #2b2b2b;
+  color: #231F1D;
 }
 
 .site-footer__text {
@@ -738,7 +738,7 @@ em {
 }
 .site-footer__mail a {
   white-space: nowrap;
-  color: #2b2b2b;
+  color: #231F1D;
   text-decoration: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 3px;
@@ -865,7 +865,7 @@ em {
 
 .site-footer .footer-btn--light {
   color: #592c22;
-  background: #ded7cd;
+  background: #DED7CD;
 }
 .site-footer .footer-btn--light:hover, .site-footer .footer-btn--light:focus-visible {
   color: #fff;
@@ -878,7 +878,7 @@ em {
 }
 .site-footer .footer-btn--dark:hover, .site-footer .footer-btn--dark:focus-visible {
   color: #592c22;
-  background: #ded7cd;
+  background: #DED7CD;
 }
 
 /* ---------- Mentions ---------- */
