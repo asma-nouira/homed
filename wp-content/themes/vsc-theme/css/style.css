@@ -1495,6 +1495,7 @@ body {
   background-position: center;
   background-size: 1.71875vw 1.71875vw;
   transition: transform 0.3s ease;
+  color: #592C22 !important;
   left: 94%;
 }
 @media (max-width: 767px) {
