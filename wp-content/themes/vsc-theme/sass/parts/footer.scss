@@ -13,14 +13,14 @@ $ft-icon     : #726248;
 $ft-border   : #ece7e1;
 
 // ---- Dimensions (px @1920)
-$ft-pad-y      : 68;
-$ft-pad-x      : 88;
-$ft-logo       : 298;
-$ft-size       : 17;
+$ft-pad-y      : 278;
+$ft-pad-x      : 278;
+$ft-logo       : 294;
+$ft-size       : 18;
 $ft-title-size : 18;
-$ft-btn-w      : 261;
-$ft-btn-h      : 58;
-$ft-icon-size  : 48;
+$ft-btn-w      : 260;
+$ft-btn-h      : 62;
+$ft-icon-size  : 46;
 
 @function ft-fluid($px, $min) {
   @return unquote("max(#{$min}, #{widthCalc($px)})");
@@ -53,9 +53,9 @@ $ft-icon-size  : 48;
   grid-template-columns: widthCalc(415 - 20) widthCalc(361 - 20) widthCalc(330 - 20) auto;
   justify-content: center;
   align-items: start;
-  column-gap: 20px;   // espace minimum entre les colonnes sur les petits écrans
+  column-gap: 25px;   // espace minimum entre les colonnes sur les petits écrans
   margin: 0 auto;
-  padding: widthCalc($ft-pad-y) 20px;
+  padding: widthCalc($ft-pad-y) 25px;
 
   // Tablette : 2 colonnes
   @media (max-width: 1199px) {
@@ -89,7 +89,7 @@ $ft-icon-size  : 48;
 
 .site-footer__name {
   font-family: 'Manrope Bold', 'Manrope', Arial, sans-serif;
-  font-size: 20px;
+  font-size: 18px;
   color: $ft-brown;
 }
 
@@ -99,7 +99,7 @@ $ft-icon-size  : 48;
   font-family: 'Manrope Bold', 'Manrope', Arial, sans-serif;
   font-weight: 700;
   font-size: ft-fluid($ft-title-size, 15px);
-  line-height: 1.4;
+  line-height: 1.33;
   color: $ft-text;
 }
 
@@ -107,7 +107,7 @@ $ft-icon-size  : 48;
   margin: 0 0 widthCalc(18);
   font-style: normal;
   font-size: ft-fluid($ft-size, 14px);
-  line-height: 1.55;
+  line-height: 1.33;
   color: $ft-muted;
 
   &:last-child {
@@ -151,7 +151,7 @@ $ft-icon-size  : 48;
 
   a {
     font-size: ft-fluid($ft-size, 14px);
-    line-height: 1.5;
+    line-height: 1.66;
     white-space: nowrap;
     color: $ft-muted;
   }
@@ -236,7 +236,7 @@ $ft-icon-size  : 48;
   min-height: 46px;
   padding: 0 20px;
   font-family: 'Manrope Medium', 'Manrope', Arial, sans-serif;
-  font-size: ft-fluid(18, 15px);
+  font-size: ft-fluid(20, 15px);
   white-space: nowrap;
   border-radius: 999px;
   transition: color .2s ease, background-color .2s ease;
