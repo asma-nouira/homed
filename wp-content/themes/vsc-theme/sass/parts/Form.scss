@@ -1,6 +1,9 @@
 @function rdv-fluid($px, $min) {
   @return unquote("max(#{$min}, #{widthCalc($px)})");
 }
+  .coord-link[href^="mailto"] {
+    background-size: 100% 1px;
+  }
 /* ---------- Formulaire Contact Form 7 ---------- */
 .rdv-form {
   display: flex;
@@ -92,7 +95,7 @@
  
     // « Type de demande » (1re option vide) en gris comme les autres textes d'exemple
     &:has(option[value=""]:checked) {
-      color: #8a8480;
+      color: #0F0E0E;
     }
   }
  

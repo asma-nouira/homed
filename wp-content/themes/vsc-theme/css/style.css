@@ -410,6 +410,10 @@ em {
   padding-right: 15.625vw;
 }
 
+.coord-link[href^=mailto] {
+  background-size: 100% 1px;
+}
+
 /* ---------- Formulaire Contact Form 7 ---------- */
 .rdv-form {
   display: flex;
@@ -511,7 +515,7 @@ em {
   cursor: pointer;
 }
 .rdv-form__field--select select:has(option[value=""]:checked) {
-  color: #8a8480;
+  color: #0F0E0E;
 }
 .rdv-form__field--select::after {
   content: "";
