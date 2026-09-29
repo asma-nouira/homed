@@ -673,7 +673,7 @@ em {
   align-items: start;
   column-gap: 25px;
   margin: 0 auto;
-  padding: calc(278vw / 19.2) 25px;
+  padding: calc(66vw / 19.2) 25px;
 }
 @media (max-width: 1199px) {
   .site-footer__inner {
