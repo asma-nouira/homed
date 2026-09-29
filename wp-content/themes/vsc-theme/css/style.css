@@ -476,7 +476,7 @@ em {
 .rdv-form input[type=email]::placeholder,
 .rdv-form select::placeholder,
 .rdv-form textarea::placeholder {
-  color: #8a8480;
+  color: #0F0E0E;
   opacity: 1;
 }
 .rdv-form input[type=text]:hover,
