@@ -846,7 +846,7 @@ padding: calc(310vw / 19.2) calc(1160vw / 19.2) calc(325vw / 19.2) calc(230vw / 
   position: absolute;
   right: 0;
   top: 50%;
-  transform: translateY(-50%);
+   transform: translateY(-50%) rotate(90deg); 
   width: calc(73vw / 19.2);
   height: calc(73vw / 19.2);
   border-radius: 50%!important;
