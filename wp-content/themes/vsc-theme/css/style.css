@@ -823,7 +823,7 @@ em {
 }
 .site-footer__social:hover .site-footer__social-icon path,
 .site-footer__social:focus-visible .site-footer__social-icon path {
-  color: #fff;
+  fill: #fff;
 }
 
 /* ---------- Boutons ---------- */
