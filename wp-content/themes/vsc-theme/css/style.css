@@ -1493,10 +1493,10 @@ body {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='29.501' height='30.02' viewBox='0 0 29.501 30.02'%3E%3Cg transform='translate(-6.332 20.86) rotate(-45)' fill='none' stroke='%23592c22' stroke-linecap='round' stroke-width='2'%3E%3Cpath d='M0,0,10.466,10.776,0,21.175' transform='translate(16.214)'/%3E%3Cpath d='M0,0H26.387' transform='translate(0 10.955)'/%3E%3C/g%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: center;
-  background-size: 1.5625vw 1.5625vw;
+  background-size: 1.25vw auto;
   transition: transform 0.3s ease;
   color: #592C22 !important;
-  left: 92%;
+  right: 0;
 }
 @media (max-width: 767px) {
   .list-faq .vce-faq-toggle-icon {
