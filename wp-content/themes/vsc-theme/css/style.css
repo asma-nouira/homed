@@ -1495,6 +1495,7 @@ body {
   background-position: center;
   background-size: 1.25vw auto;
   transition: transform 0.3s ease;
+  left: auto !important;
 }
 @media (max-width: 767px) {
   .list-faq .vce-faq-toggle-icon {
