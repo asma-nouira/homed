@@ -804,3 +804,94 @@ padding: calc(310vw / 19.2) calc(1160vw / 19.2) calc(325vw / 19.2) calc(230vw / 
     transform: none;
   }
 }
+
+.list-faq{
+    /* Conteneur : on enlève le fond et la bordure de la "carte" */
+.vce-faq-toggle-wrapper {
+  background: transparent !important;
+  border: none !important;
+  border-bottom: 1px solid #231F1D !important; /* la ligne de séparation */
+  border-radius: 0 !important;
+  padding: calc(35vw / 19.2) 0 !important;
+  margin: 0 !important;
+  @media(max-width:767px){
+    padding: 25px 0 !important;
+  }
+}
+
+.vce-faq-toggle-inner {
+  padding: 0 !important;
+}
+
+/* Titre de la question */
+.vce-faq-toggle-title-text {
+  font-size: calc(30vw / 19.2);
+  font-family: 'Manrope Bold';
+  font-weight: 700;
+  color: $brown;
+  padding-right: 40px; /* pour laisser la place au rond à droite */
+  position: relative;
+   @media(max-width:767px){
+    font-size: 18px;
+   }
+}
+
+/* Texte de la réponse */
+.vce-faq-toggle-text-block p {
+  margin-top: 10px;
+}
+
+/* Le rond avec la flèche */
+.vce-faq-toggle-icon {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: calc(45vw / 19.2);
+  height: calc(45vw / 19.2);
+  border-radius: 50%;
+  background-color: #DCC7B3; /* ta couleur terracotta, à ajuster */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+   @media(max-width:767px){
+    width:25px;
+    height: 25px;
+   }
+}
+.vce-faq-toggle-title{
+    padding-left: 0;
+}
+
+.vce-faq-toggle-icon::before {
+  content: none !important;
+}
+.vce-faq-toggle-icon:after{
+    display: none;
+}
+.vce-faq-toggle-text-block{
+    padding-left: 0;
+    padding-top: 10px;
+    padding-right: calc(90vw / 19.2);
+     @media(max-width:767px){
+        padding-right: 25px;
+     }
+}
+/* On injecte ta flèche SVG en background */
+.vce-faq-toggle-icon {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='31.724' height='31.724' viewBox='0 0 31.724 31.724'%3E%3Cg transform='translate(17.511 3) rotate(45)'%3E%3Cpath d='M7.929,0V21.143M7.929,0,0,7.929M7.929,0l7.929,7.929' fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3'/%3E%3C/g%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: calc(33vw / 19.2) calc(33vw / 19.2);
+  transition: transform 0.3s ease;
+  left:94%;
+   @media(max-width:767px){
+    background-size: 20px 20px;
+   }
+}
+
+/* Rotation de la flèche quand la question est ouverte (↗ devient ↘) */
+.vce-faq-toggle-title-text[aria-expanded="true"] .vce-faq-toggle-icon {
+  transform: translateY(-50%) rotate(90deg);
+}
+}
