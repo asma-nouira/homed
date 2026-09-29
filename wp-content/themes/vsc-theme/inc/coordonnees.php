@@ -10,6 +10,7 @@
  *       [vsc_telephone lien="non"] → texte seulement
  *       [vsc_courriel]             → lien mailto
  *       [vsc_courriel lien="non"]  → texte seulement
+ *   - dans le footer (adresse, heures, Facebook, boutons)
  *
  * À inclure dans functions.php :  require get_template_directory() . '/inc/coordonnees.php';
  *
@@ -36,6 +37,38 @@ function vsc_coord_courriel() {
 	return sanitize_email( get_theme_mod( 'vsc_courriel', 'reception@homedental.ca' ) );
 }
 
+function vsc_coord_adresse() {
+	return get_theme_mod( 'vsc_adresse', "17112 Chemin Sainte-Marie,\nKirkland, Qc, H9J 2K9" );
+}
+
+function vsc_coord_heures() {
+	return get_theme_mod( 'vsc_heures', "Lun - Ven : 08.00 - 17.00\nMercredi : 07.00 - 16.00" );
+}
+
+function vsc_coord_facebook() {
+	return esc_url( get_theme_mod( 'vsc_facebook', '' ) );
+}
+
+// Lien du bouton « Prendre rendez-vous » (header + footer) : réglage du Customizer, sinon page Contactez-nous
+function vsc_rdv_url() {
+	$url = get_theme_mod( 'vsc_header_rdv_url', '' );
+	if ( ! $url ) {
+		$contact = get_page_by_path( 'contactez-nous' );
+		$url     = $contact ? get_permalink( $contact ) : home_url( '/' );
+	}
+	return $url;
+}
+
+function vsc_rdv_label() {
+	return get_theme_mod( 'vsc_header_rdv_label', 'Prendre rendez-vous' );
+}
+
+// Texte multiligne → lignes séparées par <br>, sécurisé
+function vsc_lignes( $text ) {
+	$lines = array_filter( array_map( 'trim', preg_split( '/\r\n|\r|\n/', (string) $text ) ) );
+	return implode( '<br>', array_map( 'esc_html', $lines ) );
+}
+
 /* ---------- Réglages dans le Customizer ---------- */
 add_action( 'customize_register', function ( $wp_customize ) {
 	$wp_customize->add_section( 'vsc_coordonnees', array(
@@ -47,6 +80,9 @@ add_action( 'customize_register', function ( $wp_customize ) {
 		'vsc_header_phone'     => array( 'Téléphone (affiché)', '(514) 697-9045', 'sanitize_text_field', 'text' ),
 		'vsc_header_phone_tel' => array( 'Téléphone (lien tel:) — laisser vide pour le calculer automatiquement', '', 'sanitize_text_field', 'text' ),
 		'vsc_courriel'         => array( 'Courriel', 'reception@homedental.ca', 'sanitize_email', 'email' ),
+		'vsc_adresse'          => array( 'Adresse (une ligne par ligne affichée)', "17112 Chemin Sainte-Marie,\nKirkland, Qc, H9J 2K9", 'sanitize_textarea_field', 'textarea' ),
+		'vsc_heures'           => array( 'Heures d\'ouverture (une ligne par ligne affichée)', "Lun - Ven : 08.00 - 17.00\nMercredi : 07.00 - 16.00", 'sanitize_textarea_field', 'textarea' ),
+		'vsc_facebook'         => array( 'Lien de la page Facebook', '', 'esc_url_raw', 'url' ),
 	);
 
 	foreach ( $fields as $id => $f ) {
@@ -66,6 +102,13 @@ add_action( 'customize_register', function ( $wp_customize ) {
 		) );
 	}
 }, 20 );
+
+/* ---------- Emplacement de menu pour le footer ---------- */
+add_action( 'after_setup_theme', function () {
+	register_nav_menus( array(
+		'menu-footer' => esc_html__( 'Footer', 'vsc-theme' ),
+	) );
+} );
 
 /* ---------- Shortcodes ---------- */
 add_shortcode( 'vsc_telephone', function ( $atts ) {
