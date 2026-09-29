@@ -59,7 +59,14 @@ jQuery(function ($) {
        2. CARROUSEL SERVICES
        6 colonnes, 3 visibles, avance par 3 → pagination 01 / 02
        ========================================================= */
-    $(".services-slider__track > .vce-row-content").not('.slick-initialized').slick({
+    var $services = $(".services-slider__track > .vce-row-content");
+
+    // Si un autre code a déjà démarré Slick ici, on l'arrête d'abord
+    if ($services.hasClass('slick-initialized')) {
+        $services.slick('unslick');
+    }
+
+    $services.slick({
         centerMode: false,
         slidesToShow: 3,
         slidesToScroll: 3,
