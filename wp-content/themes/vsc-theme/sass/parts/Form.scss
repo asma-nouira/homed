@@ -1,8 +1,11 @@
 @function rdv-fluid($px, $min) {
   @return unquote("max(#{$min}, #{widthCalc($px)})");
 }
-  .coord-link[href^="mailto"] {
-    background-size: 100% 1px;
+   .rdv-contact__coords a[href^="mailto:"] {
+    text-decoration: underline !important;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+    background: none;
   }
 /* ---------- Formulaire Contact Form 7 ---------- */
 .rdv-form {
