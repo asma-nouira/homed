@@ -20,7 +20,6 @@ jQuery(function ($) {
         infinite: true,
         dots: true,
         arrows: false,
-        customPaging: numeroPagination,
         responsive: [
             {
                 breakpoint: 1366,
