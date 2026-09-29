@@ -82,7 +82,7 @@ add_action( 'customize_register', function ( $wp_customize ) {
 		'vsc_courriel'         => array( 'Courriel', 'reception@homedental.ca', 'sanitize_email', 'email' ),
 		'vsc_adresse'          => array( 'Adresse (une ligne par ligne affichée)', "17112 Chemin Sainte-Marie,\nKirkland, Qc, H9J 2K9", 'sanitize_textarea_field', 'textarea' ),
 		'vsc_heures'           => array( 'Heures d\'ouverture (une ligne par ligne affichée)', "Lun - Ven : 08.00 - 17.00\nMercredi : 07.00 - 16.00", 'sanitize_textarea_field', 'textarea' ),
-		'vsc_facebook'         => array( 'Lien de la page Facebook', '', 'https://www.facebook.com/HomeDental.ca', 'url' ),
+		'vsc_facebook'         => array( 'Lien de la page Facebook', '', 'esc_url_raw', 'url' ),
 	);
 
 	foreach ( $fields as $id => $f ) {
