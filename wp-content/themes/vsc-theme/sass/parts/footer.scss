@@ -171,8 +171,8 @@ $ft-icon-size  : 46;
   display: inline-flex;
   align-items: center;
   gap: widthCalc(16);
-  margin-top: widthCalc(38);
-  font-size: ft-fluid($ft-size, 14px);
+  margin-top: widthCalc(75);
+  font-size: ft-fluid(18, 14px);
   white-space: nowrap;
   color: $ft-muted;
 

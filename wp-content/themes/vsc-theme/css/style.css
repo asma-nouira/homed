@@ -785,7 +785,7 @@ em {
   display: inline-flex;
   align-items: center;
   gap: calc(16vw / 19.2);
-  margin-top: calc(38vw / 19.2);
+  margin-top: calc(75vw / 19.2);
   font-size: max(14px, calc(18vw / 19.2));
   white-space: nowrap;
   color: #4a4542;
