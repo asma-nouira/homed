@@ -803,10 +803,10 @@ em {
   justify-content: center;
   width: calc(48vw / 19.2);
   height: calc(48vw / 19.2);
-  min-width: 38px;
-  min-height: 38px;
+  min-width: 45px;
+  min-height: 45px;
   color: #726248;
-  border: 1.5px solid #726248;
+  border: 2px solid #726248;
   border-radius: 50%;
   transition: color 0.25s ease, background-color 0.25s ease, border-color 0.25s ease;
 }
