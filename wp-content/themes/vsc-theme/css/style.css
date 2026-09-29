@@ -1458,8 +1458,8 @@ body {
   transform: translateY(-50%);
   width: 2.34375vw;
   height: 2.34375vw;
-  border-radius: 50%;
-  background-color: #DCC7B3; /* ta couleur terracotta, à ajuster */
+  border-radius: 50% !important;
+  background-color: #DCC7B3 !important; /* ta couleur terracotta, à ajuster */
   display: flex;
   align-items: center;
   justify-content: center;
