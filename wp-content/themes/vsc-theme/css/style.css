@@ -821,6 +821,10 @@ em {
   background: #592c22;
   border-color: #592c22;
 }
+.site-footer__social:hover .site-footer__social-icon path,
+.site-footer__social:focus-visible .site-footer__social-icon path {
+  color: #fff;
+}
 
 /* ---------- Boutons ---------- */
 .site-footer__actions {
