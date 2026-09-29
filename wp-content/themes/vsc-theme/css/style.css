@@ -410,6 +410,230 @@ em {
   padding-right: 15.625vw;
 }
 
+/* ---------- Formulaire Contact Form 7 ---------- */
+.rdv-form {
+  display: flex;
+  flex-direction: column;
+  gap: calc(18vw / 19.2);
+  font-family: "Manrope Regular", "Manrope", Arial, sans-serif;
+}
+@media (max-width: 767px) {
+  .rdv-form {
+    gap: 12px;
+  }
+}
+.rdv-form *, .rdv-form *::before, .rdv-form *::after {
+  box-sizing: border-box;
+}
+
+.rdv-form__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: calc(18vw / 19.2);
+}
+@media (max-width: 767px) {
+  .rdv-form__row {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
+
+.rdv-form__field {
+  position: relative;
+  display: block;
+  margin: 0;
+}
+.rdv-form__field .wpcf7-form-control-wrap {
+  display: block;
+}
+
+.rdv-form input[type=text],
+.rdv-form input[type=tel],
+.rdv-form input[type=email],
+.rdv-form select,
+.rdv-form textarea {
+  display: block;
+  width: 100%;
+  height: calc(55vw / 19.2);
+  min-height: 46px;
+  margin: 0;
+  padding: 0 calc(30vw / 19.2);
+  font-family: inherit;
+  font-size: max(15px, calc(18vw / 19.2));
+  line-height: 1.4;
+  color: #0F0E0E;
+  background: white;
+  border: none;
+  border-radius: 25px;
+  outline: none;
+  box-shadow: none;
+  appearance: none;
+  -webkit-appearance: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.rdv-form input[type=text]::placeholder,
+.rdv-form input[type=tel]::placeholder,
+.rdv-form input[type=email]::placeholder,
+.rdv-form select::placeholder,
+.rdv-form textarea::placeholder {
+  color: #8a8480;
+  opacity: 1;
+}
+.rdv-form input[type=text]:hover,
+.rdv-form input[type=tel]:hover,
+.rdv-form input[type=email]:hover,
+.rdv-form select:hover,
+.rdv-form textarea:hover {
+  border-color: rgba(89, 44, 34, 0.25);
+}
+.rdv-form input[type=text]:focus,
+.rdv-form input[type=tel]:focus,
+.rdv-form input[type=email]:focus,
+.rdv-form select:focus,
+.rdv-form textarea:focus {
+  border-color: #7A4535;
+  box-shadow: 0 0 0 3px rgba(122, 69, 53, 0.15);
+}
+@media (max-width: 767px) {
+  .rdv-form input[type=text],
+  .rdv-form input[type=tel],
+  .rdv-form input[type=email],
+  .rdv-form select,
+  .rdv-form textarea {
+    padding: 0 20px;
+    font-size: 16px;
+  }
+}
+
+.rdv-form__field--select select {
+  padding-right: calc(70vw / 19.2);
+  color: #0F0E0E;
+  cursor: pointer;
+}
+.rdv-form__field--select select:has(option[value=""]:checked) {
+  color: #8a8480;
+}
+.rdv-form__field--select::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: calc(30vw / 19.2);
+  width: 9px;
+  height: 9px;
+  margin-top: -7px;
+  border-right: 1.5px solid #0F0E0E;
+  border-bottom: 1.5px solid #0F0E0E;
+  transform: rotate(45deg);
+  pointer-events: none;
+}
+@media (max-width: 767px) {
+  .rdv-form__field--select::after {
+    right: 24px;
+  }
+}
+
+.rdv-form textarea {
+  height: calc(110vw / 19.2);
+  min-height: 110px;
+  padding-top: calc(18vw / 19.2);
+  padding-bottom: calc(18vw / 19.2);
+  border-radius: calc(22vw / 19.2);
+  resize: vertical;
+}
+@media (max-width: 767px) {
+  .rdv-form textarea {
+    padding: 14px 20px;
+    border-radius: 20px;
+  }
+}
+
+.rdv-form__submit {
+  position: relative;
+  margin-top: calc(6vw / 19.2);
+}
+.rdv-form__submit input[type=submit],
+.rdv-form__submit .wpcf7-submit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: calc(316vw / 19.2);
+  height: calc(62vw / 19.2);
+  min-height: 48px;
+  padding: 0 calc(40vw / 19.2);
+  font-family: "Manrope Regular", "Manrope", Arial, sans-serif;
+  font-size: max(15px, calc(18vw / 19.2));
+  color: #fff;
+  background: #7A4535;
+  border: 0;
+  border-radius: 31px;
+  cursor: pointer;
+  appearance: none;
+  transition: background-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+.rdv-form__submit input[type=submit]:hover, .rdv-form__submit input[type=submit]:focus-visible,
+.rdv-form__submit .wpcf7-submit:hover,
+.rdv-form__submit .wpcf7-submit:focus-visible {
+  background: #7a4535;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(89, 44, 34, 0.2);
+}
+.rdv-form__submit input[type=submit]:disabled,
+.rdv-form__submit .wpcf7-submit:disabled {
+  opacity: 0.6;
+  cursor: wait;
+  transform: none;
+}
+@media (max-width: 767px) {
+  .rdv-form__submit input[type=submit],
+  .rdv-form__submit .wpcf7-submit {
+    width: 100%;
+  }
+}
+.rdv-form__submit .wpcf7-spinner {
+  position: absolute;
+  top: 50%;
+  margin: -12px 0 0 12px;
+}
+
+/* ---------- Messages Contact Form 7 ---------- */
+.rdv-form .wpcf7-not-valid {
+  border-color: #b3261e !important;
+}
+
+.rdv-form .wpcf7-not-valid-tip {
+  display: block;
+  margin: 6px 0 0 calc(28vw / 19.2);
+  font-size: 13px;
+  color: #b3261e;
+}
+@media (max-width: 767px) {
+  .rdv-form .wpcf7-not-valid-tip {
+    margin-left: 20px;
+  }
+}
+
+.wpcf7 form:has(.rdv-form) .wpcf7-response-output:empty {
+  display: none;
+}
+
+.wpcf7 form:has(.rdv-form) .wpcf7-response-output {
+  margin: calc(18vw / 19.2) 0 0;
+  padding: 12px 20px;
+  font-family: "Manrope Regular", "Manrope", Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.45;
+  color: #2b2b2b;
+  background: #fff;
+  border: 0 !important;
+  border-left: 4px solid #7A4535 !important;
+  border-radius: 8px;
+}
+
+.wpcf7 form.invalid:has(.rdv-form) .wpcf7-response-output,
+.wpcf7 form.failed:has(.rdv-form) .wpcf7-response-output {
+  border-left-color: #b3261e !important;
+}
+
 /**************/
 .wpcf7-not-valid-tip {
   display: none !important;

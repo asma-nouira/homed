@@ -1,0 +1,221 @@
+@function rdv-fluid($px, $min) {
+  @return unquote("max(#{$min}, #{widthCalc($px)})");
+}
+/* ---------- Formulaire Contact Form 7 ---------- */
+.rdv-form {
+  display: flex;
+  flex-direction: column;
+  gap: widthCalc(18);
+  font-family: 'Manrope Regular', 'Manrope', Arial, sans-serif;
+ 
+  @media (max-width: $table-width) {
+    gap: 12px;
+  }
+ 
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+}
+ 
+.rdv-form__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: widthCalc(18);
+ 
+  @media (max-width: $table-width) {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
+ 
+.rdv-form__field {
+  position: relative;
+  display: block;
+  margin: 0;
+ 
+  .wpcf7-form-control-wrap {
+    display: block;
+  }
+}
+ 
+// Champs : pilules blanches
+.rdv-form input[type="text"],
+.rdv-form input[type="tel"],
+.rdv-form input[type="email"],
+.rdv-form select,
+.rdv-form textarea {
+  display: block;
+  width: 100%;
+  height: widthCalc(55);
+  min-height: 46px;
+  margin: 0;
+  padding: 0 widthCalc(30);
+  font-family: inherit;
+  font-size: rdv-fluid(18, 15px);   // ≥ 15px : iPhone ne zoome pas au focus… à 16px
+  line-height: 1.4;
+  color: #0F0E0E;
+  background: white;
+  border: none;
+  border-radius: 25px;
+  outline: none;
+  box-shadow: none;
+  appearance: none;
+  -webkit-appearance: none;
+  transition: border-color .2s ease, box-shadow .2s ease;
+ 
+  &::placeholder {
+    color: #8a8480;
+    opacity: 1;
+  }
+ 
+  &:hover {
+    border-color: rgba(89, 44, 34, .25);
+  }
+ 
+  &:focus {
+    border-color: $brown;
+    box-shadow: 0 0 0 3px rgba(122, 69, 53, .15);
+  }
+ 
+  @media (max-width: $table-width) {
+    padding: 0 20px;
+    font-size: 16px; // évite le zoom automatique d'iOS
+  }
+}
+ 
+// Menu déroulant : chevron maison
+.rdv-form__field--select {
+  select {
+    padding-right: widthCalc(70);
+    color: #0F0E0E;
+    cursor: pointer;
+ 
+    // « Type de demande » (1re option vide) en gris comme les autres textes d'exemple
+    &:has(option[value=""]:checked) {
+      color: #8a8480;
+    }
+  }
+ 
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: widthCalc(30);
+    width: 9px;
+    height: 9px;
+    margin-top: -7px;
+    border-right: 1.5px solid #0F0E0E;
+    border-bottom: 1.5px solid #0F0E0E;
+    transform: rotate(45deg);
+    pointer-events: none;
+ 
+    @media (max-width: $table-width) {
+      right: 24px;
+    }
+  }
+}
+ 
+// Message : bloc arrondi
+.rdv-form textarea {
+  height: widthCalc(110);
+  min-height: 110px;
+  padding-top: widthCalc(18);
+  padding-bottom: widthCalc(18);
+  border-radius: widthCalc(22);
+  resize: vertical;
+ 
+  @media (max-width: $table-width) {
+    padding: 14px 20px;
+    border-radius: 20px;
+  }
+}
+ 
+// Bouton
+.rdv-form__submit {
+  position: relative;
+  margin-top: widthCalc(6);
+ 
+  input[type="submit"],
+  .wpcf7-submit {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: widthCalc(316);
+    height: widthCalc(62);
+    min-height: 48px;
+    padding: 0 widthCalc(40);
+    font-family: 'Manrope Regular', 'Manrope', Arial, sans-serif;
+    font-size: rdv-fluid(18, 15px);
+    color: #fff;
+    background: $brown;
+    border: 0;
+    border-radius: 31px;
+    cursor: pointer;
+    appearance: none;
+    transition: background-color .25s ease, transform .25s ease, box-shadow .25s ease;
+ 
+    &:hover,
+    &:focus-visible {
+      background: #7a4535;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px rgba(89, 44, 34, .2);
+    }
+ 
+    &:disabled {
+      opacity: .6;
+      cursor: wait;
+      transform: none;
+    }
+ 
+    @media (max-width: $table-width) {
+      width: 100%;
+    }
+  }
+ 
+  // roue de chargement de CF7
+  .wpcf7-spinner {
+    position: absolute;
+    top: 50%;
+    margin: -12px 0 0 12px;
+  }
+}
+ 
+/* ---------- Messages Contact Form 7 ---------- */
+.rdv-form .wpcf7-not-valid {
+  border-color: #b3261e !important;
+}
+ 
+.rdv-form .wpcf7-not-valid-tip {
+  display: block;
+  margin: 6px 0 0 widthCalc(28);
+ 
+  @media (max-width: $table-width) {
+    margin-left: 20px;
+  }
+ 
+  font-size: 13px;
+  color: #b3261e;
+}
+ 
+// Pas de boîte vide avant l'envoi
+.wpcf7 form:has(.rdv-form) .wpcf7-response-output:empty {
+  display: none;
+}
+ 
+.wpcf7 form:has(.rdv-form) .wpcf7-response-output {
+  margin: widthCalc(18) 0 0;
+  padding: 12px 20px;
+  font-family: 'Manrope Regular', 'Manrope', Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.45;
+  color: #2b2b2b;
+  background: #fff;
+  border: 0 !important;
+  border-left: 4px solid $brown !important;
+  border-radius: 8px;
+}
+ 
+.wpcf7 form.invalid:has(.rdv-form) .wpcf7-response-output,
+.wpcf7 form.failed:has(.rdv-form) .wpcf7-response-output {
+  border-left-color: #b3261e !important;
+}
