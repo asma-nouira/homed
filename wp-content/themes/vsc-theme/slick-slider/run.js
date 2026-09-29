@@ -1,10 +1,8 @@
 jQuery(function ($) {
 
   
-    /* =========================================================
-       1. SLIDER D'ACCUEIL (hero)
-       ========================================================= */
-   $(".hero-slider > .vce-row-content").slick({
+jQuery(document).on('ready', function() {
+    jQuery(".hero-slider > .vce-row-content").slick({
         centerMode: true,
         centerPadding: '0',
         slidesToShow: 1,
@@ -12,7 +10,8 @@ jQuery(function ($) {
         autoplaySpeed: 20000,
         infinite: true,
         dots: true,
-        arrows: false,
+        arrows:false,
+        
         responsive: [
             {
                 breakpoint: 1366,
@@ -42,24 +41,16 @@ jQuery(function ($) {
                 }
             }
         ],
-        customPaging: function (slider, i) {
-            var num = (i + 1 < 10 ? '0' : '') + (i + 1);
-            return '<button type="button">' + num + '</button>';
-        }
-    })
-    .on('setPosition', function (event, slick) {
-        slick.$slides.css('height', slick.$slideTrack.height() + 'px');
-    });
-
-
-      /* =========================================================
-       Numéros de pagination : 01, 02, 03…
-       ========================================================= */
-    function numeroPagination(slider, i) {
+            customPaging: function (slider, i) {
         var num = (i + 1 < 10 ? '0' : '') + (i + 1);
         return '<button type="button">' + num + '</button>';
     }
+    })
+.on('setPosition', function (event, slick) {
+        slick.$slides.css('height', slick.$slideTrack.height() + 'px');
+    });
 
+});
     /* =========================================================
        2. CARROUSEL SERVICES
        6 colonnes, 3 visibles, avance par 3 → pagination 01 / 02
