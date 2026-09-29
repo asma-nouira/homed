@@ -1,13 +1,6 @@
 jQuery(function ($) {
 
-    /* =========================================================
-       Numéros de pagination : 01, 02, 03…
-       ========================================================= */
-    function numeroPagination(slider, i) {
-        var num = (i + 1 < 10 ? '0' : '') + (i + 1);
-        return '<button type="button">' + num + '</button>';
-    }
-
+  
     /* =========================================================
        1. SLIDER D'ACCUEIL (hero)
        ========================================================= */
@@ -57,6 +50,15 @@ jQuery(function ($) {
     .on('setPosition', function (event, slick) {
         slick.$slides.css('height', slick.$slideTrack.height() + 'px');
     });
+
+
+      /* =========================================================
+       Numéros de pagination : 01, 02, 03…
+       ========================================================= */
+    function numeroPagination(slider, i) {
+        var num = (i + 1 < 10 ? '0' : '') + (i + 1);
+        return '<button type="button">' + num + '</button>';
+    }
 
     /* =========================================================
        2. CARROUSEL SERVICES
