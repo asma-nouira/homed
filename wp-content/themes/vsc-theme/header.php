@@ -5,8 +5,8 @@
  * @package vsc-theme
  */
 
-$vsc_phone     = get_theme_mod( 'vsc_header_phone', '(514) 697-9045' );
-$vsc_phone_tel = preg_replace( '/[^0-9+]/', '', get_theme_mod( 'vsc_header_phone_tel', '+15146979045' ) );
+$vsc_phone     = function_exists( 'vsc_coord_telephone' ) ? vsc_coord_telephone() : '(514) 697-9045';
+$vsc_phone_tel = function_exists( 'vsc_coord_telephone_tel' ) ? vsc_coord_telephone_tel() : '+15146979045';
 $vsc_rdv_label = get_theme_mod( 'vsc_header_rdv_label', 'Prendre rendez-vous' );
 $vsc_rdv_url   = get_theme_mod( 'vsc_header_rdv_url', '' );
 
