@@ -1417,7 +1417,7 @@ body {
 }
 @media (max-width: 1199px) {
   .service-card--cutout .service-card__text {
-    max-width: 150px;
+    max-width: 200px;
   }
 }
 
