@@ -344,7 +344,7 @@ em {
   .hero-slider .slick-dots {
     bottom: 28px;
   }
-  .no-pr.pr-85 {
+  .no-pr.pr-85, .no-pr.pr-100 {
     padding-right: 0 !important;
   }
   /* =======================================================
