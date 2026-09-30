@@ -578,7 +578,7 @@ em {
      8. CARTES SERVICES (Nettoyage / Implants / Orthodontie)
      ======================================================= */
   .service-card {
-    min-height: 300px;
+    min-height: 350px;
     padding: 32px 28px;
   }
   .service-card__text {
