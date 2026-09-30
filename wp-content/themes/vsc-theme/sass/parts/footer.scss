@@ -272,23 +272,92 @@ $ft-icon-size  : 46;
   }
 }
 
-/* ---------- Mentions ---------- */
+/* ---------- Ligne du bas : copyright + crédit ---------- */
 .site-footer__legal {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 6px 24px;
-  padding: widthCalc(18) 20px;
-  font-size: 13px;
-  color: #8a8480;
-  border-top: 1px solid $ft-border;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 30px;
+  max-width: calc(1368vw / 19.2);   // aligné avec le contenu du footer
+  margin: 0 auto;
+  padding: calc(22vw / 19.2) 0;
+  border-top: 1px solid #ece7e1;
 
-  a {
-    text-decoration: underline;
-    text-underline-offset: 2px;
+  @media (max-width: 1199px) {
+    max-width: none;
+    padding: 18px 40px;
+  }
+
+  @media (max-width: 767px) {
+    flex-direction: column;
+    padding: 18px 20px 22px;
+    text-align: center;
   }
 }
 
+// Copyright · Politique de confidentialité
+.site-footer__copy {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.4;
+  color: #8a8480;
+
+  // petit point séparateur entre les deux
+  > * + *::before {
+    content: '·';
+    display: inline-block;
+    margin: 0 10px;
+    color: #c4bdb5;
+    text-decoration: none;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+    transition: color .2s ease;
+
+    &:hover,
+    &:focus-visible {
+      color: #592c22;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+  }
+}
+
+// Réalisé par [logo Virus]
+.site-footer__credit {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  line-height: 1;
+  color: #a39c95;
+  text-decoration: none !important;
+
+  img {
+    display: block;
+    width: auto;
+    height: 18px;           // taille du logo
+    filter: grayscale(1);
+    opacity: .55;
+    transition: filter .3s ease, opacity .3s ease;
+  }
+
+  &:hover,
+  &:focus-visible {
+    color: #592c22;
+
+    img {
+      filter: none;
+      opacity: 1;
+    }
+  }
+}
 // Espacements mobiles (les valeurs en vw deviennent trop petites)
 @media (max-width: $table-width) {
   .site-footer__text,
