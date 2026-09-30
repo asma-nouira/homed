@@ -476,7 +476,7 @@ em {
   display: block;
   width: 100%;
   height: calc(55vw / 19.2);
-  min-height: 46px;
+  min-height: 55px;
   margin: 0;
   padding: 0 calc(30vw / 19.2);
   font-family: inherit;
