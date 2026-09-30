@@ -171,6 +171,11 @@ em {
   font-style: normal;
   white-space: nowrap;
 }
+@media (max-width: 767px) {
+  em {
+    white-space: inherit;
+  }
+}
 
 .br-30 img {
   border-radius: 30px;

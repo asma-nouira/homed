@@ -152,6 +152,9 @@ h2{
 em{
   font-style: normal;
   white-space: nowrap;
+  @media(max-width:767px){
+    white-space: inherit;
+  }
 }
 .br-30{
   img{
