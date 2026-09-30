@@ -361,7 +361,7 @@ html.nav-locked {
 }
 .site-branding .custom-logo {
   width: calc(255vw / 19.2);
-  min-width: 150px;
+  min-width: 180px;
   height: auto;
 }
 .site-branding .site-title {
