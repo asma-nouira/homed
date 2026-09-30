@@ -186,6 +186,126 @@ em {
    Sur un téléphone de 390px, 18px @1920 devient… 3,6px.
    Ici, on remet des tailles en px lisibles.
    ========================================================= */
+/* =========================================================
+   TABLETTE (768px → 1199px)
+   À 768px, 18px @1920 devient 7px : on met des minimums lisibles
+   et on donne plus de place aux blocs trop serrés.
+   ========================================================= */
+@media (min-width: 768px) and (max-width: 1199px) {
+  /* ---------- 1. Texte de base ---------- */
+  body {
+    font-size: 15px;
+    line-height: 1.5;
+  }
+  .vce-text-block p,
+  .vce-text-block li {
+    font-size: 15px;
+    line-height: 1.5;
+  }
+  .fs24, .fs24 h1, .fs24 h2, .fs24 h3, .fs24 p {
+    font-size: 18px !important;
+  }
+  .fs22, .fs22 h1, .fs22 h2, .fs22 h3, .fs22 p {
+    font-size: 17px !important;
+  }
+  /* ---------- 2. Hero ---------- */
+  .hero-slider .slider-col .vce-text-block {
+    padding: 150px 60px 140px !important;
+    text-align: center;
+  }
+  .hero-slider .inter-cta {
+    min-width: 220px;
+    min-height: 52px;
+    height: auto;
+    padding: 0 32px;
+    font-size: 16px;
+  }
+  .hero-slider .slick-dots {
+    bottom: 40px;
+  }
+  .hero-slider .slick-dots button {
+    font-size: 16px;
+    padding-bottom: 12px;
+  }
+  /* ---------- 3. Chiffres 5K / 13 / 30 ---------- */
+  .count-up {
+    white-space: nowrap;
+    min-width: 2.2ch;
+  }
+  /* ---------- 4. Bloc « Prenez rendez-vous en ligne » + « Nos services » ---------- */
+  .cta-services__card {
+    min-width: 0;
+    width: 100%;
+    padding: 30px 24px;
+    border-radius: 16px;
+  }
+  .cta-services__card-title {
+    font-size: 20px;
+  }
+  .cta-services__btn {
+    min-width: 0;
+    max-width: 100%;
+    height: 50px;
+    font-size: 16px;
+  }
+  /* ---------- 5. Cartes services (Nettoyage / Implants / Orthodontie) ---------- */
+  .service-card {
+    min-height: 420px;
+    padding: 30px 24px;
+  }
+  .service-card__title {
+    font-size: 22px;
+  }
+  .service-card__text {
+    min-width: 0;
+    max-width: 100%;
+    font-size: 15px;
+  }
+  .service-card--cutout .service-card__text {
+    min-width: 0;
+    max-width: 60%;
+  }
+  .service-card__media--circle {
+    right: 20px;
+    bottom: 20px;
+    width: 140px;
+    height: 140px;
+    min-width: 0;
+    min-height: 0;
+  }
+  /* ---------- 6. Carrousel services ---------- */
+  .services-slider__track .slick-slide .vce-raw-html {
+    height: 440px;
+    padding: 40px 32px 0;
+  }
+  /* ---------- 7. Équipe + citation ---------- */
+  .equipe__quote {
+    font-size: 26px;
+  }
+  /* ---------- 8. Rendez-vous (texte de gauche) ---------- */
+  .rdv-contact__coords {
+    font-size: 16px;
+  }
+  /* ---------- 9. FAQ ---------- */
+  .list-faq .vce-faq-toggle-title-text {
+    font-size: 19px;
+    padding-right: 60px;
+  }
+  .list-faq .vce-faq-toggle-icon {
+    width: 44px;
+    height: 44px;
+    background-size: 15px auto;
+  }
+  /* ---------- 10. Survol désactivé au doigt ---------- */
+}
+@media (min-width: 768px) and (max-width: 1199px) and (hover: none) {
+  .service-card:hover,
+  .services-slider__track .vce-col-inner:hover,
+  .cta-services__card:hover {
+    transform: none;
+    box-shadow: none;
+  }
+}
 @media (max-width: 767px) {
   /* =======================================================
      1. TEXTE DE BASE
