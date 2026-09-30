@@ -94,8 +94,9 @@ function vsc_theme_scripts() {
 	// ---------- CSS
 	wp_enqueue_style( 'vsc-theme-fonts',  $uri . '/css/fonts/fonts.css', array(), vsc_theme_ver( '/css/fonts/fonts.css' ) );
 	wp_enqueue_style( 'vsc-header-style', $uri . '/css/header.css',      array( 'vsc-theme-fonts' ), vsc_theme_ver( '/css/header.css' ) );
-	wp_enqueue_style( 'vsc-mobile-style', $uri . '/css/mobile.css',      array(), vsc_theme_ver( '/css/mobile.css' ) );
 	wp_enqueue_style( 'vsc-theme-style',  $uri . '/css/style.css',       array(), vsc_theme_ver( '/css/style.css' ) );
+	wp_enqueue_style( 'vsc-mobile-style', $uri . '/css/mobile.css',      array(), vsc_theme_ver( '/css/mobile.css' ) );
+	
 	wp_enqueue_style( 'vsc-animations',   $uri . '/css/animations.css',  array(), vsc_theme_ver( '/css/animations.css' ) );
 
 	//////////////// Slick Slider CSS ///////////////
