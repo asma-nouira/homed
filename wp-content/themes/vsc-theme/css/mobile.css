@@ -250,7 +250,7 @@ em {
   }
   /* ---------- 5. Cartes services (Nettoyage / Implants / Orthodontie) ---------- */
   .service-card {
-    min-height: 420px;
+    min-height: 320px;
     padding: 30px 24px;
   }
   .service-card__title {
@@ -263,7 +263,7 @@ em {
   }
   .service-card--cutout .service-card__text {
     min-width: 0;
-    max-width: 60%;
+    max-width: 100%;
   }
   .service-card__media--circle {
     right: 20px;

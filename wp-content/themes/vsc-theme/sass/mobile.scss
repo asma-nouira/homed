@@ -96,7 +96,7 @@ $m-gutter  : 20px;   // marge gauche/droite du contenu sur mobile
   /* ---------- 5. Cartes services (Nettoyage / Implants / Orthodontie) ---------- */
   // le texte était coupé à droite et la photo ronde débordait
   .service-card {
-    min-height: 420px;
+    min-height: 320px;
     padding: 30px 24px;
   }
  
@@ -112,7 +112,7 @@ $m-gutter  : 20px;   // marge gauche/droite du contenu sur mobile
  
   .service-card--cutout .service-card__text {
     min-width: 0;
-    max-width: 60%;
+    max-width: 100%;
   }
  
   .service-card__media--circle {
