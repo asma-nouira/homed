@@ -152,7 +152,7 @@ h1 {
 }
 @media (max-width: 767px) {
   h1 {
-    font-size: 24px;
+    font-size: 30px;
   }
 }
 
@@ -163,7 +163,7 @@ h2 {
 }
 @media (max-width: 767px) {
   h2 {
-    font-size: 22px;
+    font-size: 24px;
   }
 }
 
@@ -311,6 +311,9 @@ em {
   }
   .pt-150 {
     padding-top: 60px !important;
+  }
+  .pb-30-mob {
+    padding-bottom: 30px;
   }
   /* =======================================================
      4. HERO SLIDER
