@@ -344,6 +344,9 @@ em {
   .hero-slider .slick-dots {
     bottom: 28px;
   }
+  .no-pr.pr-85 {
+    padding-right: 0 !important;
+  }
   /* =======================================================
      5. BOUTONS « inter-cta » (pilule beige)
      ======================================================= */
@@ -360,7 +363,6 @@ em {
      6. BLOC « Prenez rendez-vous en ligne » (carte blanche)
      ======================================================= */
   .cta-services__card {
-    width: 100%;
     max-width: none;
   }
   .cta-services__btn {
