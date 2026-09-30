@@ -297,6 +297,7 @@ em {
     background-size: 15px auto;
   }
   /* ---------- 10. Survol désactivé au doigt ---------- */
+  /* ---------- Classes d'espacement (padding.scss) ---------- */
 }
 @media (min-width: 768px) and (max-width: 1199px) and (hover: none) {
   .service-card:hover,
@@ -304,6 +305,52 @@ em {
   .cta-services__card:hover {
     transform: none;
     box-shadow: none;
+  }
+}
+@media (min-width: 768px) and (max-width: 1199px) {
+  .pl-278, .pl-280 {
+    padding-left: 40px !important;
+  }
+  .pr-76, .pr-85, .pr-100 {
+    padding-right: 30px !important;
+  }
+  .pr-278, .pr-300 {
+    padding-right: 40px !important;
+  }
+  .plr-176 {
+    padding-left: 40px !important;
+    padding-right: 40px !important;
+  }
+  .plr-300, .plr-416, .plr-455 {
+    padding-left: 60px !important;
+    padding-right: 60px !important;
+  }
+  .pb-15 {
+    padding-bottom: 10px !important;
+  }
+  .pb-20 {
+    padding-bottom: 12px !important;
+  }
+  .pb-25 {
+    padding-bottom: 14px !important;
+  }
+  .pb-50 {
+    padding-bottom: max(24px, 2.6041666667vw) !important;
+  }
+  .pb-60 {
+    padding-bottom: max(28px, 3.125vw) !important;
+  }
+  .pb-80 {
+    padding-bottom: max(36px, 4.1666666667vw) !important;
+  }
+  .pt-90 {
+    padding-top: max(40px, 4.6875vw) !important;
+  }
+  .pb-100 {
+    padding-bottom: max(44px, 5.2083333333vw) !important;
+  }
+  .pt-100 {
+    padding-top: max(44px, 5.2083333333vw) !important;
   }
 }
 @media (max-width: 767px) {

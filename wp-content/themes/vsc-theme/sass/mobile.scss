@@ -161,6 +161,40 @@ $m-gutter  : 20px;   // marge gauche/droite du contenu sur mobile
       box-shadow: none;
     }
   }
+    /* ---------- Classes d'espacement (padding.scss) ---------- */
+
+  // Gauche / droite : marge tablette standard (40px)
+  .pl-278, .pl-280 {
+    padding-left: 40px !important;
+  }
+  .pr-76, .pr-85, .pr-100 {
+    padding-right: 30px !important;
+  }
+  .pr-278, .pr-300 {
+    padding-right: 40px !important;
+  }
+  .plr-176 {
+    padding-left: 40px !important;
+    padding-right: 40px !important;
+  }
+  // texte centré étroit (intro Bienvenue, etc.) : on garde un peu d'air autour
+  .plr-300, .plr-416, .plr-455 {
+    padding-left: 60px !important;
+    padding-right: 60px !important;
+  }
+
+  // Petits espaces verticaux : un minimum pour ne pas coller les éléments
+  .pb-15 { padding-bottom: 10px !important; }
+  .pb-20 { padding-bottom: 12px !important; }
+  .pb-25 { padding-bottom: 14px !important; }
+
+  // Grands espaces verticaux : on garde le calcul en vw, mais avec un minimum
+  .pb-50  { padding-bottom: max(24px, calc(50vw / 19.2)) !important; }
+  .pb-60  { padding-bottom: max(28px, calc(60vw / 19.2)) !important; }
+  .pb-80  { padding-bottom: max(36px, calc(80vw / 19.2)) !important; }
+  .pt-90  { padding-top:    max(40px, calc(90vw / 19.2)) !important; }
+  .pb-100 { padding-bottom: max(44px, calc(100vw / 19.2)) !important; }
+  .pt-100 { padding-top:    max(44px, calc(100vw / 19.2)) !important; }
 }
 
 @media (max-width: $m-bp) {
