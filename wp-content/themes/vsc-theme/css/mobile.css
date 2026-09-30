@@ -235,7 +235,7 @@ em {
   /* ---------- 4. Bloc « Prenez rendez-vous en ligne » + « Nos services » ---------- */
   .cta-services__card {
     min-width: 0;
-    width: 100%;
+    width: calc(100% - 48px);
     padding: 30px 24px;
     border-radius: 16px;
   }

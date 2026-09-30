@@ -77,7 +77,7 @@ $m-gutter  : 20px;   // marge gauche/droite du contenu sur mobile
   // la carte et son bouton débordaient sur le texte à côté
   .cta-services__card {
     min-width: 0;
-    width: 100%;
+    width: calc(100% - 48px);
     padding: 30px 24px;
     border-radius: 16px;
   }
