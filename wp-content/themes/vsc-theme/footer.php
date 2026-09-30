@@ -99,14 +99,23 @@ $vsc_externe  = ( false === strpos( $vsc_rdv, home_url() ) );
 
 		<!-- Mentions (Loi 25 : lien vers la politique de confidentialité toujours accessible) -->
 		<div class="site-footer__legal">
-			<span>&copy; <?php echo esc_html( gmdate( 'Y' ) ); ?> <?php bloginfo( 'name' ); ?></span>
-			<?php
-			$vsc_privacy = get_privacy_policy_url();
-			if ( $vsc_privacy ) :
-				?>
-				<a href="<?php echo esc_url( $vsc_privacy ); ?>"><?php esc_html_e( 'Politique de confidentialité', 'vsc-theme' ); ?></a>
-			<?php endif; ?>
-		</div>
+	<div class="site-footer__legal-left">
+		<span>&copy; <?php echo esc_html( gmdate( 'Y' ) ); ?> <?php bloginfo( 'name' ); ?></span>
+		<?php
+		$vsc_privacy = get_privacy_policy_url();
+		if ( $vsc_privacy ) :
+			?>
+			<a href="<?php echo esc_url( $vsc_privacy ); ?>"><?php esc_html_e( 'Politique de confidentialité', 'vsc-theme' ); ?></a>
+		<?php endif; ?>
+	</div>
+
+	<!-- Crédit de l'agence -->
+	<a class="site-footer__credit" href="https://virussantecommunication.ca/" target="_blank" rel="noopener">
+		<span><?php esc_html_e( 'Réalisé par', 'vsc-theme' ); ?></span>
+		<img src="<?php echo esc_url( get_template_directory_uri() . '/wp-content/uploads/2026/09/virus-sante-communication.png' ); ?>"
+		     alt="Virus Santé Communication" width="120" height="24" loading="lazy">
+	</a>
+</div>
 	</footer><!-- #colophon -->
 </div><!-- #page -->
 
