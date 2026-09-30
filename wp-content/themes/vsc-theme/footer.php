@@ -112,7 +112,7 @@ $vsc_externe  = ( false === strpos( $vsc_rdv, home_url() ) );
 	<!-- Crédit de l'agence -->
 	<a class="site-footer__credit" href="https://virussantecommunication.ca/" target="_blank" rel="noopener">
 		<span><?php esc_html_e( 'Réalisé par', 'vsc-theme' ); ?></span>
-		<img src="<?php echo esc_url( get_template_directory_uri() . '/wp-content/uploads/2026/09/virus-sante-communication.png' ); ?>"
+		<img src="<?php echo esc_url('/wp-content/uploads/2026/09/virus-sante-communication.png' ); ?>"
 		     alt="Virus Santé Communication" width="120" height="24" loading="lazy">
 	</a>
 </div>
