@@ -107,7 +107,7 @@ $vsc_externe  = ( false === strpos( $vsc_rdv, home_url() ) );
 			?>
 			<a href="<?php echo esc_url( $vsc_privacy ); ?>"><?php esc_html_e( 'Politique de confidentialité', 'vsc-theme' ); ?></a>
 		<?php endif; ?>
-<span class="site-footer__sep" aria-hidden="true">|</span>
+
 
 	<!-- Crédit de l'agence -->
 	<a class="site-footer__legal-item site-footer__credit" href="https://virussantecommunication.ca/" target="_blank" rel="noopener">
