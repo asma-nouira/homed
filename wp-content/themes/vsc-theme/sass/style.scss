@@ -955,7 +955,81 @@ padding: calc(310vw / 19.2) calc(1160vw / 19.2) calc(325vw / 19.2) calc(230vw / 
                 display: block;
                 width: 97% !important;
                 margin: 0 auto;
+                border-radius: 30px;
             }
         }
     }
+    /* ---------- Pagination de la galerie : 01  02  03 sur une ligne fine ---------- */
+.galerie-slider .slick-dots {
+  position: relative;
+  display: flex !important;
+  justify-content: flex-start;
+  width: max-content;
+  margin: calc(55vw / 19.2) auto 0;   // centrée sous les photos
+  padding: 0 0 0 calc(79vw / 19.2);   // la ligne commence un peu avant « 01 »
+  list-style: none !important;
+
+  // la ligne fine
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 1px;
+    background: rgba(255, 255, 255, .45);
+  }
+
+  li {
+    width: calc(137vw / 19.2);        // espace entre les numéros
+    margin: 0;
+    padding: 0;
+    list-style: none !important;
+
+    &::marker { content: none; }
+    &::before { content: none !important; }
+
+    &:last-child {
+      width: calc(158vw / 19.2);      // la ligne continue après le dernier numéro
+    }
+  }
+
+  button {
+    display: block;
+    width: auto;
+    height: auto;
+    padding: 0 0 calc(33vw / 19.2);   // espace entre le chiffre et la ligne
+    font-family: 'Inter', Arial, sans-serif;
+    font-size: max(24px, calc(26vw / 19.2));
+    line-height: 1;
+    color: #fff;
+    text-align: left;
+    background: none;
+    border: 0;
+    opacity: .6;
+    cursor: pointer;
+
+    &::before { display: none !important; } // enlève le « • » de Slick
+
+    &:hover { opacity: 1; }
+  }
+
+  li.slick-active button {
+    opacity: 1;
+  }
+
+  // Mobile
+  @media (max-width: 767px) {
+    margin-top: 28px;
+    padding-left: 24px;
+
+    li { width: 56px; }
+    li:last-child { width: 64px; }
+
+    button {
+      padding-bottom: 12px;
+      font-size: 15px;
+    }
+  }
+}
 }

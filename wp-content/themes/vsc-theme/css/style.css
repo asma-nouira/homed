@@ -1952,6 +1952,9 @@ body {
   font-weight: 700;
 }
 
+.galerie-slider {
+  /* ---------- Pagination de la galerie : 01  02  03 sur une ligne fine ---------- */
+}
 .galerie-slider .vce-row-content .vce-single-image-inner {
   max-width: none !important;
   position: unset !important;
@@ -1960,5 +1963,79 @@ body {
   display: block;
   width: 97% !important;
   margin: 0 auto;
+  border-radius: 30px;
+}
+.galerie-slider .galerie-slider .slick-dots {
+  position: relative;
+  display: flex !important;
+  justify-content: flex-start;
+  width: max-content;
+  margin: 2.8645833333vw auto 0;
+  padding: 0 0 0 4.1145833333vw;
+  list-style: none !important;
+}
+.galerie-slider .galerie-slider .slick-dots::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.45);
+}
+.galerie-slider .galerie-slider .slick-dots li {
+  width: 7.1354166667vw;
+  margin: 0;
+  padding: 0;
+  list-style: none !important;
+}
+.galerie-slider .galerie-slider .slick-dots li::marker {
+  content: none;
+}
+.galerie-slider .galerie-slider .slick-dots li::before {
+  content: none !important;
+}
+.galerie-slider .galerie-slider .slick-dots li:last-child {
+  width: 8.2291666667vw;
+}
+.galerie-slider .galerie-slider .slick-dots button {
+  display: block;
+  width: auto;
+  height: auto;
+  padding: 0 0 1.71875vw;
+  font-family: "Inter", Arial, sans-serif;
+  font-size: max(24px, 1.3541666667vw);
+  line-height: 1;
+  color: #fff;
+  text-align: left;
+  background: none;
+  border: 0;
+  opacity: 0.6;
+  cursor: pointer;
+}
+.galerie-slider .galerie-slider .slick-dots button::before {
+  display: none !important;
+}
+.galerie-slider .galerie-slider .slick-dots button:hover {
+  opacity: 1;
+}
+.galerie-slider .galerie-slider .slick-dots li.slick-active button {
+  opacity: 1;
+}
+@media (max-width: 767px) {
+  .galerie-slider .galerie-slider .slick-dots {
+    margin-top: 28px;
+    padding-left: 24px;
+  }
+  .galerie-slider .galerie-slider .slick-dots li {
+    width: 56px;
+  }
+  .galerie-slider .galerie-slider .slick-dots li:last-child {
+    width: 64px;
+  }
+  .galerie-slider .galerie-slider .slick-dots button {
+    padding-bottom: 12px;
+    font-size: 15px;
+  }
 }
 /*# sourceMappingURL=../css/style.css.map */
