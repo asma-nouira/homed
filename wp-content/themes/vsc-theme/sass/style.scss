@@ -10,7 +10,37 @@
 body input[type=text].wpcf7-not-valid, body input[type=email].wpcf7-not-valid, body input[type=tel].wpcf7-not-valid, body textarea.wpcf7-not-valid {
 border: 1px solid #ec3c06;
 }
-
+.btn-brun {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: widthCalc(274);
+  height: widthCalc(62);
+  min-height: 46px;
+  padding: 0 widthCalc(40);
+  font-family: 'Inter', Arial, sans-serif;
+  text-decoration: none !important;
+  border-radius: 999px;
+  transition: background-color .25s ease, color .25s ease, transform .25s ease;
+ 
+  &:hover,
+  &:focus-visible {
+    transform: translateY(-2px);
+  }
+ 
+  @media (max-width: 767px) {
+    min-width: 200px;
+    padding: 0 28px;
+  }
+}
+ 
+.btn-brun {
+  color: #fff !important;
+  background: $brown;
+ 
+  &:hover,
+  &:focus-visible { background: #7a4535; }
+}
 
 body div.wpcf7-validation-errors {
 background: #ffe2e2;

@@ -33,37 +33,6 @@
   background: #7A4535;
 }
 
-.btn-brun {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: widthCalc(274);
-  height: widthCalc(62);
-  min-height: 46px;
-  padding: 0 widthCalc(40);
-  font-family: "Inter", Arial, sans-serif;
-  text-decoration: none !important;
-  border-radius: 999px;
-  transition: background-color 0.25s ease, color 0.25s ease, transform 0.25s ease;
-}
-.btn-brun:hover, .btn-brun:focus-visible {
-  transform: translateY(-2px);
-}
-@media (max-width: 767px) {
-  .btn-brun {
-    min-width: 200px;
-    padding: 0 28px;
-  }
-}
-
-.btn-brun {
-  color: #fff !important;
-  background: #7A4535;
-}
-.btn-brun:hover, .btn-brun:focus-visible {
-  background: #7a4535;
-}
-
 .light {
   font-family: "Manrope Light";
   font-weight: 300;
