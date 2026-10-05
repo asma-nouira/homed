@@ -946,3 +946,16 @@ padding: calc(310vw / 19.2) calc(1160vw / 19.2) calc(325vw / 19.2) calc(230vw / 
     font-weight: 700;
   }
 }
+.galerie-slider{
+     .vce-row-content {
+        .vce-single-image-inner {
+            max-width: none !important;
+            position: unset !important;
+            img {
+                display: block;
+                width: 97% !important;
+                margin: 0 auto;
+            }
+        }
+    }
+}

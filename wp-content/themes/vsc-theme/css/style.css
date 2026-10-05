@@ -1951,4 +1951,14 @@ body {
   color: #592C22;
   font-weight: 700;
 }
+
+.galerie-slider .vce-row-content .vce-single-image-inner {
+  max-width: none !important;
+  position: unset !important;
+}
+.galerie-slider .vce-row-content .vce-single-image-inner img {
+  display: block;
+  width: 97% !important;
+  margin: 0 auto;
+}
 /*# sourceMappingURL=../css/style.css.map */
