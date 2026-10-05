@@ -56,6 +56,9 @@ $mobile-width: 425px;
 %fs40{
   @include fontSize(40);
 }
+%fs45{
+  @include fontSize(45);
+}
 /************ fonts *************/
 .fs95{
   @extend %fs95;
@@ -99,6 +102,15 @@ $mobile-width: 425px;
   h1,h2,p,h3{
     @extend %fs35;
     line-height:1.28 ;
+  }
+}
+
+.fs45{
+  @extend %fs45;
+  line-height:1.22 ;
+  h1,h2,p,h3{
+    @extend %fs45;
+    line-height:1.22 ;
   }
 }
 .fs55{

@@ -249,6 +249,20 @@ em {
     font-size: calc(40vw / 19.2);
   }
 }
+.fs45 h1, .fs45 h2, .fs45 p, .fs45 h3, .fs45 {
+  font-size: calc(45vw / 13.66);
+}
+@media (min-width: 1366px) {
+  .fs45 h1, .fs45 h2, .fs45 p, .fs45 h3, .fs45 {
+    font-size: calc(45vw / 19.2);
+  }
+}
+@media (max-width: 767px) {
+  .fs45 h1, .fs45 h2, .fs45 p, .fs45 h3, .fs45 {
+    font-size: 25px !important;
+  }
+}
+
 /************ fonts *************/
 .fs95 {
   line-height: 1.05;
@@ -285,6 +299,13 @@ em {
 }
 .fs35 h1, .fs35 h2, .fs35 p, .fs35 h3 {
   line-height: 1.28;
+}
+
+.fs45 {
+  line-height: 1.22;
+}
+.fs45 h1, .fs45 h2, .fs45 p, .fs45 h3 {
+  line-height: 1.22;
 }
 
 .fs55 {
