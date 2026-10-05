@@ -33,8 +33,27 @@
 	// Pas d'animation : mouvement réduit, vieux navigateur, ou éditeur Visual Composer
 	// (l'éditeur est détecté par l'adresse de la page : Visual Composer peut mettre ses classes
 	//  sur <body> aussi sur le site public, ce qui désactivait toutes les animations)
-	var inEditor = /vcv-(editable|action|source-id)/.test( window.location.search ) || window.vcvIsEditor;
-	if ( reduce || ! ( 'IntersectionObserver' in window ) || inEditor ) {
+	// L'éditeur Visual Composer affiche la page dans une iframe : on ne touche à rien,
+	// sinon VC enregistre les classes « is-visible » et les retards dans le HTML de la page.
+	var inEditor = /vcv-(editable|action|source-id)/.test( window.location.search ) ||
+		window.vcvIsEditor ||
+		window.self !== window.top;
+
+	if ( inEditor ) {
+		html.classList.remove( 'vsc-anim' ); // tout reste visible pour pouvoir éditer
+		return;
+	}
+
+	/* ---------- Nettoyage : état enregistré par erreur dans le HTML ---------- */
+	// (is-visible et --reveal-delay ajoutés quand le script a tourné dans l'éditeur)
+	Array.prototype.forEach.call( document.querySelectorAll( SEL + ', .count-up' ), function ( el ) {
+		el.classList.remove( 'is-visible' );
+		if ( el.closest( '.reveal-group' ) ) {
+			el.style.removeProperty( '--reveal-delay' );
+		}
+	} );
+
+	if ( reduce || ! ( 'IntersectionObserver' in window ) ) {
 		showAll();
 		return;
 	}
