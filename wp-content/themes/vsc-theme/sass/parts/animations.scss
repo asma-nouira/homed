@@ -88,6 +88,18 @@ $reveal-radius   : 20;                          // px @1920 : arrondi de la phot
   }
 }
 
+// ---------- Texte qui s'allume mot par mot (reveal-words)
+.vsc-anim .rw-word {
+  opacity: calc(.18 + .82 * var(--rw, 0));
+  transition: opacity .2s linear;
+}
+
+// ---------- Parallaxe douce (ne pas combiner avec reveal sur le même élément)
+.vsc-anim .parallax {
+  transform: translate3d(0, var(--parallax-y, 0px), 0);
+  will-change: transform;
+}
+
 // Chiffres : largeur fixe pendant le comptage (pas de « saut » du texte à côté)
 .count-up {
   font-variant-numeric: tabular-nums;
@@ -105,5 +117,7 @@ $reveal-radius   : 20;                          // px @1920 : arrondi de la phot
       clip-path: none !important;
       transition: none !important;
     }
+    .rw-word { opacity: 1 !important; }
+    .parallax { transform: none !important; }
   }
 }

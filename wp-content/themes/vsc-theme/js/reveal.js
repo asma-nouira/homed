@@ -31,7 +31,10 @@
 	}
 
 	// Pas d'animation : mouvement réduit, vieux navigateur, ou éditeur Visual Composer
-	if ( reduce || ! ( 'IntersectionObserver' in window ) || document.body.classList.contains( 'vcv-editor-theme-hfs' ) || window.location.search.indexOf( 'vcv-editable' ) > -1 ) {
+	// (l'éditeur est détecté par l'adresse de la page : Visual Composer peut mettre ses classes
+	//  sur <body> aussi sur le site public, ce qui désactivait toutes les animations)
+	var inEditor = /vcv-(editable|action|source-id)/.test( window.location.search ) || window.vcvIsEditor;
+	if ( reduce || ! ( 'IntersectionObserver' in window ) || inEditor ) {
 		showAll();
 		return;
 	}
@@ -39,7 +42,8 @@
 	/* ---------- Retards en cascade dans les groupes ---------- */
 	Array.prototype.forEach.call( document.querySelectorAll( '.reveal-group' ), function ( group ) {
 		Array.prototype.forEach.call( group.querySelectorAll( SEL ), function ( el, i ) {
-			if ( ! el.style.getPropertyValue( '--reveal-delay' ) ) {
+			// on respecte un retard déjà choisi (delay-1 … delay-6 ou style en ligne)
+			if ( ! el.style.getPropertyValue( '--reveal-delay' ) && ! /(^|\s)delay-\d/.test( el.className ) ) {
 				el.style.setProperty( '--reveal-delay', ( i * STEP ) + 'ms' );
 			}
 		} );
