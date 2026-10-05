@@ -1888,4 +1888,8 @@ body {
   font-size: 0.7291666667vw;
   color: #231F1D;
 }
+.fil-ariane .breadcrumb_last {
+  color: #592C22;
+  font-weight: 700;
+}
 /*# sourceMappingURL=../css/style.css.map */

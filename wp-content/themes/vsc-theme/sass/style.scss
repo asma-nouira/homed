@@ -911,4 +911,8 @@ padding: calc(310vw / 19.2) calc(1160vw / 19.2) calc(325vw / 19.2) calc(230vw / 
 .fil-ariane{
   font-size: calc(14vw / 19.2);
   color:#231F1D;
+  .breadcrumb_last{
+    color:#592C22;
+    font-weight: 700;
+  }
 }
