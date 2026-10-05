@@ -16,7 +16,7 @@
 ( function () {
 	'use strict';
 
-	window.vscReveal = true; // signale au filet de sécurité (functions.php) que le script tourne
+	window.vscReveal = true;
 
 	var html   = document.documentElement;
 	var SEL    = '.reveal, .reveal-left, .reveal-right, .reveal-image, .reveal-line';
@@ -40,7 +40,7 @@
 		window.self !== window.top;
 
 	if ( inEditor ) {
-		html.classList.remove( 'vsc-anim' ); // tout reste visible pour pouvoir éditer
+		html.classList.remove( 'vsc-anim' ); // rien n'est jamais caché dans l'éditeur
 		return;
 	}
 
@@ -57,6 +57,21 @@
 		showAll();
 		return;
 	}
+
+	/* ---------- Ce qui est déjà à l'écran reste visible ---------- */
+	// Le haut de la page n'est jamais caché puis ré-affiché : seuls les éléments
+	// plus bas dans la page attendent leur tour.
+	var vh = window.innerHeight;
+	Array.prototype.forEach.call( document.querySelectorAll( SEL ), function ( el ) {
+		var r = el.getBoundingClientRect();
+		if ( r.top < vh * 0.92 && r.bottom > 0 ) {
+			el.classList.add( 'is-visible' );
+		}
+	} );
+
+	// C'est le script (et non plus le <head>) qui active l'état « caché » :
+	// si le script ne tourne pas — éditeur, erreur JS — tout reste visible.
+	html.classList.add( 'vsc-anim' );
 
 	/* ---------- Retards en cascade dans les groupes ---------- */
 	Array.prototype.forEach.call( document.querySelectorAll( '.reveal-group' ), function ( group ) {
