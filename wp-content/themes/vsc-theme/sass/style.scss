@@ -899,3 +899,12 @@ padding: calc(310vw / 19.2) calc(1160vw / 19.2) calc(325vw / 19.2) calc(230vw / 
   transform: translateY(-50%) rotate(0);
 }
 }
+.eyebrow {
+  display: block;
+  margin: 0 0 widthCalc(10);
+  font-size: calc(24vw / 19.2);
+  letter-spacing: 4.16;
+  line-height: 1;
+  text-transform: uppercase;
+  color: $beige;
+}

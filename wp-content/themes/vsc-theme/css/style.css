@@ -1865,4 +1865,14 @@ body {
 .list-faq .vce-faq-toggle-title-text[aria-expanded=true] .vce-faq-toggle-icon {
   transform: translateY(-50%) rotate(0);
 }
+
+.eyebrow {
+  display: block;
+  margin: 0 0 calc(10vw / 19.2);
+  font-size: 1.25vw;
+  letter-spacing: 4.16;
+  line-height: 1;
+  text-transform: uppercase;
+  color: #DED7CD;
+}
 /*# sourceMappingURL=../css/style.css.map */
