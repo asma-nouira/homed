@@ -87,4 +87,33 @@ jQuery(function ($) {
         ]
     });
 
+ /* =========================================================
+       3. GALERIE PHOTOS : photo centrale + voisines coupées
+       ========================================================= */
+    nettoyer($(".galerie-slider > .vce-row-content")).slick({
+        centerMode: true,
+        centerPadding: '19.2vw',   // largeur visible des photos voisines (≈ 370px @1920)
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        infinite: true,
+        speed: 800,
+        cssEase: 'cubic-bezier(.22, .61, .36, 1)',
+        dots: true,
+        arrows: false,
+        customPaging: numeroPagination,
+        responsive: [
+            {
+                breakpoint: 1200,   // tablette
+                settings: { centerPadding: '80px' }
+            },
+            {
+                breakpoint: 768,    // mobile
+                settings: { centerPadding: '28px' }
+            }
+        ]
+    });
+
+
 });
+
+   
