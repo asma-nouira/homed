@@ -1965,7 +1965,7 @@ body {
   margin: 0 auto;
   border-radius: 30px;
 }
-.galerie-slider .galerie-slider .slick-dots {
+.galerie-slider .slick-dots {
   position: relative;
   display: flex !important;
   justify-content: flex-start;
@@ -1974,7 +1974,7 @@ body {
   padding: 0 0 0 4.1145833333vw;
   list-style: none !important;
 }
-.galerie-slider .galerie-slider .slick-dots::after {
+.galerie-slider .slick-dots::after {
   content: "";
   position: absolute;
   left: 0;
@@ -1983,22 +1983,22 @@ body {
   height: 1px;
   background: rgba(255, 255, 255, 0.45);
 }
-.galerie-slider .galerie-slider .slick-dots li {
+.galerie-slider .slick-dots li {
   width: 7.1354166667vw;
   margin: 0;
   padding: 0;
   list-style: none !important;
 }
-.galerie-slider .galerie-slider .slick-dots li::marker {
+.galerie-slider .slick-dots li::marker {
   content: none;
 }
-.galerie-slider .galerie-slider .slick-dots li::before {
+.galerie-slider .slick-dots li::before {
   content: none !important;
 }
-.galerie-slider .galerie-slider .slick-dots li:last-child {
+.galerie-slider .slick-dots li:last-child {
   width: 8.2291666667vw;
 }
-.galerie-slider .galerie-slider .slick-dots button {
+.galerie-slider .slick-dots button {
   display: block;
   width: auto;
   height: auto;
@@ -2013,27 +2013,27 @@ body {
   opacity: 0.6;
   cursor: pointer;
 }
-.galerie-slider .galerie-slider .slick-dots button::before {
+.galerie-slider .slick-dots button::before {
   display: none !important;
 }
-.galerie-slider .galerie-slider .slick-dots button:hover {
+.galerie-slider .slick-dots button:hover {
   opacity: 1;
 }
-.galerie-slider .galerie-slider .slick-dots li.slick-active button {
+.galerie-slider .slick-dots li.slick-active button {
   opacity: 1;
 }
 @media (max-width: 767px) {
-  .galerie-slider .galerie-slider .slick-dots {
+  .galerie-slider .slick-dots {
     margin-top: 28px;
     padding-left: 24px;
   }
-  .galerie-slider .galerie-slider .slick-dots li {
+  .galerie-slider .slick-dots li {
     width: 56px;
   }
-  .galerie-slider .galerie-slider .slick-dots li:last-child {
+  .galerie-slider .slick-dots li:last-child {
     width: 64px;
   }
-  .galerie-slider .galerie-slider .slick-dots button {
+  .galerie-slider .slick-dots button {
     padding-bottom: 12px;
     font-size: 15px;
   }

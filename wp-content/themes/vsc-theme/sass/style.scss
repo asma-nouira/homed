@@ -960,7 +960,7 @@ padding: calc(310vw / 19.2) calc(1160vw / 19.2) calc(325vw / 19.2) calc(230vw / 
         }
     }
     /* ---------- Pagination de la galerie : 01  02  03 sur une ligne fine ---------- */
-.galerie-slider .slick-dots {
+ .slick-dots {
   position: relative;
   display: flex !important;
   justify-content: flex-start;
