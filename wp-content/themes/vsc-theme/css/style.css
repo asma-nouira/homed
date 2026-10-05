@@ -345,6 +345,10 @@ em {
   padding-bottom: 10.9375vw;
 }
 
+.pb-220 {
+  padding-bottom: 11.4583333333vw;
+}
+
 .pb-283 {
   padding-bottom: 14.7395833333vw;
 }
@@ -375,6 +379,10 @@ em {
 
 .pt-150 {
   padding-top: 7.8125vw;
+}
+
+.pt-180 {
+  padding-top: 9.375vw;
 }
 
 .pt-90 {
@@ -427,6 +435,11 @@ em {
 .plr-300 {
   padding-left: 15.625vw;
   padding-right: 15.625vw;
+}
+
+.plr-554 {
+  padding-left: 28.8541666667vw;
+  padding-right: 28.8541666667vw;
 }
 
 .rdv-contact__coords a[href^="mailto:"] {
