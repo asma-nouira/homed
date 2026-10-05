@@ -381,6 +381,10 @@ em {
   padding-top: 5.7291666667vw;
 }
 
+.pt-120 {
+  padding-top: 6.25vw;
+}
+
 .pt-145 {
   padding-top: 7.5520833333vw;
 }
@@ -1049,7 +1053,7 @@ body input[type=text].wpcf7-not-valid, body input[type=email].wpcf7-not-valid, b
   background: #7A4535;
 }
 .btn-brun:hover, .btn-brun:focus-visible {
-  background: #7a4535;
+  background: #716248;
 }
 
 body div.wpcf7-validation-errors {
