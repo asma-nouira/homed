@@ -369,6 +369,10 @@ em {
   padding-top: 5.2083333333vw;
 }
 
+.pt-26 {
+  padding-top: 1.3541666667vw;
+}
+
 .pt-110 {
   padding-top: 5.7291666667vw;
 }
@@ -391,6 +395,10 @@ em {
 
 .pl-280 {
   padding-left: 14.5833333333vw;
+}
+
+.pl-150 {
+  padding-left: 7.8125vw;
 }
 
 .pl-278 {
@@ -1874,5 +1882,10 @@ body {
   line-height: 1;
   text-transform: uppercase;
   color: #DED7CD;
+}
+
+.fil-ariane {
+  font-size: 0.7291666667vw;
+  color: #231F1D;
 }
 /*# sourceMappingURL=../css/style.css.map */
