@@ -1025,7 +1025,7 @@ body input[type=text].wpcf7-not-valid, body input[type=email].wpcf7-not-valid, b
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: calc(274vw / 19.2);
+  min-width: calc(194vw / 19.2);
   height: calc(62vw / 19.2);
   min-height: 46px;
   padding: 0 calc(40vw / 19.2);
