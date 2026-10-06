@@ -12,6 +12,9 @@
  *       [vsc_courriel lien="non"]  → texte seulement
  *   - dans le footer (adresse, heures, Facebook, boutons)
  *
+ *   Adresse / horaire / réseaux :
+ *       [vsc_adresse]  [vsc_adresse carte="oui"]  [vsc_horaire]  [vsc_reseaux]
+ *
  *   Réservation en ligne (lien du bouton « Prendre rendez-vous ») :
  *       [vsc_rdv]                          → bouton brun « Prendre rendez-vous »
  *       [vsc_rdv texte="Réserver en ligne" class="btn-beige"]
@@ -52,6 +55,14 @@ function vsc_coord_heures() {
 	return get_theme_mod( 'vsc_heures', "Lun - Ven : 08.00 - 17.00\nMercredi : 07.00 - 16.00" );
 }
 
+function vsc_coord_horaire() {
+	return get_theme_mod( 'vsc_horaire', "Lundi | 8 h 00 – 17 h 00\nMardi | 8 h 00 – 17 h 00\nMercredi | 7 h 00 – 16 h 00\nJeudi | 8 h 00 – 17 h 00\nVendredi | 8 h 00 – 17 h 00\nSamedi | Fermé\nDimanche | Fermé" );
+}
+
+function vsc_coord_instagram() {
+	return esc_url( get_theme_mod( 'vsc_instagram', '' ) );
+}
+
 function vsc_coord_facebook() {
 	return esc_url( get_theme_mod( 'vsc_facebook', '' ) );
 }
@@ -89,7 +100,9 @@ add_action( 'customize_register', function ( $wp_customize ) {
 		'vsc_courriel'         => array( 'Courriel', 'reception@homedental.ca', 'sanitize_email', 'email' ),
 		'vsc_adresse'          => array( 'Adresse (une ligne par ligne affichée)', "17112 Chemin Sainte-Marie,\nKirkland, Qc, H9J 2K9", 'sanitize_textarea_field', 'textarea' ),
 		'vsc_heures'           => array( 'Heures d\'ouverture (une ligne par ligne affichée)', "Lun - Ven : 08.00 - 17.00\nMercredi : 07.00 - 16.00", 'sanitize_textarea_field', 'textarea' ),
+		'vsc_horaire'          => array( 'Horaire détaillé — une ligne par jour : « Lundi | 8 h 00 – 17 h 00 »', "Lundi | 8 h 00 – 17 h 00\nMardi | 8 h 00 – 17 h 00\nMercredi | 7 h 00 – 16 h 00\nJeudi | 8 h 00 – 17 h 00\nVendredi | 8 h 00 – 17 h 00\nSamedi | Fermé\nDimanche | Fermé", 'sanitize_textarea_field', 'textarea' ),
 		'vsc_facebook'         => array( 'Lien de la page Facebook', '', 'esc_url_raw', 'url' ),
+		'vsc_instagram'        => array( 'Lien du compte Instagram', '', 'esc_url_raw', 'url' ),
 		'vsc_header_rdv_url'   => array( 'Lien de réservation en ligne (bouton « Prendre rendez-vous »)', '', 'esc_url_raw', 'url' ),
 		'vsc_header_rdv_label' => array( 'Texte du bouton de réservation', 'Prendre rendez-vous', 'sanitize_text_field', 'text' ),
 	);
@@ -149,6 +162,54 @@ add_shortcode( 'vsc_courriel', function ( $atts ) {
 		esc_attr( antispambot( $email, 1 ) ),
 		esc_html( antispambot( $email ) )
 	);
+} );
+
+/* ---------- Adresse, horaire, réseaux sociaux ---------- */
+
+// [vsc_adresse] → adresse sur plusieurs lignes ; [vsc_adresse carte="oui"] → lien vers Google Maps
+add_shortcode( 'vsc_adresse', function ( $atts ) {
+	$atts    = shortcode_atts( array( 'carte' => 'non' ), $atts, 'vsc_adresse' );
+	$adresse = vsc_coord_adresse();
+	$html    = vsc_lignes( $adresse );
+
+	if ( 'oui' === $atts['carte'] ) {
+		$query = rawurlencode( preg_replace( '/\s+/', ' ', $adresse ) );
+		$html  = '<a class="coord-link" href="https://www.google.com/maps/search/?api=1&amp;query=' . $query . '" target="_blank" rel="noopener">' . $html . '</a>';
+	}
+	return '<span class="coord-adresse">' . $html . '</span>';
+} );
+
+// [vsc_horaire] → tableau des heures, jour par jour ; la journée actuelle est mise en évidence
+add_shortcode( 'vsc_horaire', function () {
+	$jours   = array( 1 => 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi', 'dimanche' );
+	$today   = $jours[ (int) current_time( 'N' ) ];
+	$lines   = array_filter( array_map( 'trim', preg_split( '/\r\n|\r|\n/', (string) vsc_coord_horaire() ) ) );
+
+	$html = '<dl class="horaire">';
+	foreach ( $lines as $line ) {
+		$parts = array_map( 'trim', explode( '|', $line, 2 ) );
+		$jour  = $parts[0];
+		$heure = isset( $parts[1] ) ? $parts[1] : '';
+		$cls   = ( 0 === strpos( remove_accents( mb_strtolower( $jour ) ), remove_accents( $today ) ) ) ? ' is-today' : '';
+		$html .= '<div class="horaire__row reveal' . $cls . '"><dt>' . esc_html( $jour ) . '</dt><dd>' . esc_html( $heure ) . '</dd></div>';
+	}
+	return $html . '</dl>';
+} );
+
+// [vsc_reseaux] → icônes Facebook / Instagram (seulement celles dont le lien est rempli)
+add_shortcode( 'vsc_reseaux', function () {
+	$reseaux = array(
+		'Facebook'  => array( vsc_coord_facebook(), '<path d="M13.5 21v-7.5h2.5l.4-3h-2.9V8.6c0-.9.3-1.5 1.5-1.5h1.5V4.4c-.3 0-1.2-.1-2.2-.1-2.2 0-3.7 1.3-3.7 3.8v2.4H8v3h2.6V21h2.9z" fill="currentColor"/>' ),
+		'Instagram' => array( vsc_coord_instagram(), '<rect x="4" y="4" width="16" height="16" rx="4.5" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="3.6" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="16.8" cy="7.2" r="1" fill="currentColor"/>' ),
+	);
+	$html = '';
+	foreach ( $reseaux as $nom => $r ) {
+		if ( ! $r[0] ) {
+			continue;
+		}
+		$html .= '<a class="reseau" href="' . esc_url( $r[0] ) . '" target="_blank" rel="noopener" aria-label="' . esc_attr( $nom ) . '"><svg viewBox="0 0 24 24" aria-hidden="true">' . $r[1] . '</svg></a>';
+	}
+	return $html ? '<span class="reseaux">' . $html . '</span>' : '';
 } );
 
 /* ---------- Réservation en ligne ---------- */
