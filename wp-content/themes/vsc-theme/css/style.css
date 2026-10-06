@@ -564,6 +564,11 @@ em {
   padding-right: 25.2604166667vw;
 }
 
+.plr-400 {
+  padding-left: 20.8333333333vw;
+  padding-right: 20.8333333333vw;
+}
+
 .rdv-contact__coords a[href^="mailto:"] {
   text-decoration: underline !important;
   text-decoration-thickness: 1px;
