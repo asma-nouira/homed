@@ -2107,4 +2107,8 @@ body {
     font-size: 15px;
   }
 }
+
+.lien-rdv {
+  text-decoration: underline;
+}
 /*# sourceMappingURL=../css/style.css.map */
