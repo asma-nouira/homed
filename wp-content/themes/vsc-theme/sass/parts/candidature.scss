@@ -1,0 +1,345 @@
+/* =========================================================
+   FORMULAIRE DE CANDIDATURE — Contact Form 7
+   Valeurs en px @1920 → vw via widthCalc() (px / 19.2)
+   ========================================================= */
+
+$cand-brown  : #592c22;
+$cand-title  : #5a2e22;
+$cand-text   : #2b2b2b;
+$cand-ph     : #6d6762;
+$cand-error  : #b3261e;
+
+$cand-width   : 850;
+$cand-field-h : 66;
+$cand-gap     : 18;
+$cand-btn-h   : 56;
+$cand-submit-w: 400;
+
+@function cand-fluid($px, $min) {
+  @return unquote("max(#{$min}, #{widthCalc($px)})");
+}
+
+.cand-form {
+  display: flex;
+  flex-direction: column;
+  gap: widthCalc($cand-gap);
+  width: widthCalc($cand-width);
+  max-width: 100%;
+  margin: 0 auto;
+  font-family: 'Manrope Regular', 'Manrope', Arial, sans-serif;
+
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  @media (max-width: 1199px) {
+    width: 100%;
+    max-width: 680px;
+  }
+  @media (max-width: $table-width) {
+    gap: 12px;
+  }
+}
+
+.cand-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: widthCalc($cand-gap);
+
+  @media (max-width: $table-width) {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
+
+.cand-field {
+  display: block;
+  margin: 0;
+
+  .wpcf7-form-control-wrap {
+    display: block;
+  }
+}
+
+/* ---------- Champs ---------- */
+.cand-form input[type="text"],
+.cand-form input[type="email"],
+.cand-form input[type="tel"],
+.cand-form input[type="url"],
+.cand-form textarea {
+  display: block;
+  width: 100%;
+  height: widthCalc($cand-field-h);
+  min-height: 48px;
+  margin: 0;
+  padding: 0 widthCalc(36);
+  font-family: inherit;
+  font-size: cand-fluid(17, 15px);
+  color: $cand-text;
+  background: #fff;
+  border: 1px solid transparent;
+  border-radius: widthCalc(18);
+  outline: none;
+  appearance: none;
+  transition: border-color .2s ease, box-shadow .2s ease;
+
+  &::placeholder {
+    color: $cand-ph;
+    opacity: 1;
+  }
+
+  &:focus {
+    border-color: $cand-brown;
+    box-shadow: 0 0 0 3px rgba(89, 44, 34, .12);
+  }
+
+  @media (max-width: $table-width) {
+    padding: 0 20px;
+    font-size: 16px; // pas de zoom automatique sur iPhone
+    border-radius: 14px;
+  }
+}
+
+.cand-form textarea {
+  height: widthCalc(200);
+  min-height: 140px;
+  padding-top: widthCalc(18);
+  padding-bottom: widthCalc(18);
+  resize: vertical;
+
+  @media (max-width: $table-width) {
+    padding: 14px 20px;
+  }
+}
+
+/* ---------- CV + lettre : 2 colonnes ---------- */
+.cand-docs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: widthCalc(50);
+  margin-top: widthCalc(30);
+
+  @media (max-width: $table-width) {
+    grid-template-columns: 1fr;
+    gap: 34px;
+    margin-top: 20px;
+  }
+}
+
+.cand-doc {
+  display: flex;
+  flex-direction: column;
+  gap: widthCalc(16);
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+
+  @media (max-width: $table-width) {
+    gap: 10px;
+  }
+}
+
+.cand-doc__title {
+  margin: 0 0 widthCalc(14) widthCalc(8);
+  padding: 0;
+  font-family: 'Manrope Regular', 'Manrope', Arial, sans-serif;
+  font-size: cand-fluid(26, 19px);
+  color: $cand-text;
+
+  @media (max-width: $table-width) {
+    margin-bottom: 10px;
+  }
+}
+
+// Les 3 boutons blancs (Joindre / Lien / Saisir)
+.cand-doc__btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: widthCalc($cand-btn-h);
+  min-height: 44px;
+  padding: 0 16px;
+  overflow: hidden;
+  font-family: 'Manrope Regular', 'Manrope', Arial, sans-serif;
+  font-size: cand-fluid(16, 14px);
+  color: $cand-text;
+  text-align: center;
+  background: #fff;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background-color .2s ease, color .2s ease, border-color .2s ease;
+
+  &:hover,
+  &:focus-within,
+  &:focus-visible {
+    border-color: rgba(89, 44, 34, .35);
+  }
+
+  &.is-active {
+    color: #fff;
+    background: $cand-brown;
+  }
+}
+
+// Le vrai champ fichier est invisible et couvre tout le bouton « Joindre »
+.cand-doc__btn--file {
+  .wpcf7-form-control-wrap {
+    position: absolute;
+    inset: 0;
+  }
+
+  input[type="file"] {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  // nom du fichier choisi : coupé avec « … » s'il est long
+  .cand-doc__label {
+    position: relative;
+    max-width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    pointer-events: none;
+  }
+
+  // message d'erreur de CF7 sous le bouton
+  .wpcf7-not-valid-tip {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+  }
+}
+
+.cand-doc__panel {
+  &[hidden] {
+    display: none;
+  }
+
+  .wpcf7-form-control-wrap {
+    display: block;
+  }
+}
+
+.cand-doc__hint {
+  margin: widthCalc(10) 0 0 widthCalc(8);
+  font-size: cand-fluid(15, 13px);
+  line-height: 1.4;
+  color: $cand-text;
+}
+
+/* ---------- Consentement (Loi 25) ---------- */
+.cand-consent {
+  margin-top: widthCalc(20);
+  font-size: cand-fluid(14, 13px);
+  line-height: 1.45;
+  color: #4a4542;
+
+  .wpcf7-list-item {
+    margin: 0;
+
+    > label {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      cursor: pointer;
+    }
+  }
+
+  input[type="checkbox"] {
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+    margin: 2px 0 0;
+    accent-color: $cand-brown;
+  }
+
+  a {
+    color: $cand-brown;
+    text-decoration: underline;
+  }
+}
+
+/* ---------- Bouton d'envoi ---------- */
+.cand-submit {
+  position: relative;
+  margin-top: widthCalc(20);
+
+  .wpcf7-submit {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: widthCalc($cand-submit-w);
+    min-width: 240px;
+    height: widthCalc(62);
+    min-height: 48px;
+    padding: 0 24px;
+    font-family: 'Manrope Regular', 'Manrope', Arial, sans-serif;
+    font-size: cand-fluid(18, 15px);
+    color: #fff;
+    background: $cand-brown;
+    border: 0;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: background-color .25s ease, transform .25s ease;
+
+    &:hover,
+    &:focus-visible {
+      background: #7a4535;
+      transform: translateY(-2px);
+    }
+
+    &:disabled {
+      opacity: .6;
+      cursor: wait;
+      transform: none;
+    }
+
+    @media (max-width: $table-width) {
+      width: 100%;
+    }
+  }
+
+  .wpcf7-spinner {
+    position: absolute;
+    top: 50%;
+    margin: -12px 0 0 12px;
+  }
+}
+
+/* ---------- Messages Contact Form 7 ---------- */
+.cand-form .wpcf7-not-valid {
+  border-color: $cand-error !important;
+}
+
+.cand-form .wpcf7-not-valid-tip {
+  display: block;
+  margin: 6px 0 0 widthCalc(30);
+  font-size: 13px;
+  color: $cand-error;
+}
+
+.wpcf7 form:has(.cand-form) .wpcf7-response-output {
+  margin: widthCalc(20) auto 0;
+  padding: 12px 20px;
+  max-width: widthCalc($cand-width);
+  font-size: 14px;
+  color: $cand-text;
+  background: #fff;
+  border: 0 !important;
+  border-left: 4px solid $cand-brown !important;
+  border-radius: 8px;
+
+  &:empty {
+    display: none;
+  }
+}

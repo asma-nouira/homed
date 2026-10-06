@@ -1147,6 +1147,327 @@ em {
     padding: 16px 20px;
   }
 }
+/* =========================================================
+   FORMULAIRE DE CANDIDATURE — Contact Form 7
+   Valeurs en px @1920 → vw via widthCalc() (px / 19.2)
+   ========================================================= */
+.cand-form {
+  display: flex;
+  flex-direction: column;
+  gap: calc(18vw / 19.2);
+  width: calc(850vw / 19.2);
+  max-width: 100%;
+  margin: 0 auto;
+  font-family: "Manrope Regular", "Manrope", Arial, sans-serif;
+}
+.cand-form *, .cand-form *::before, .cand-form *::after {
+  box-sizing: border-box;
+}
+@media (max-width: 1199px) {
+  .cand-form {
+    width: 100%;
+    max-width: 680px;
+  }
+}
+@media (max-width: 767px) {
+  .cand-form {
+    gap: 12px;
+  }
+}
+
+.cand-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: calc(18vw / 19.2);
+}
+@media (max-width: 767px) {
+  .cand-row {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
+
+.cand-field {
+  display: block;
+  margin: 0;
+}
+.cand-field .wpcf7-form-control-wrap {
+  display: block;
+}
+
+/* ---------- Champs ---------- */
+.cand-form input[type=text],
+.cand-form input[type=email],
+.cand-form input[type=tel],
+.cand-form input[type=url],
+.cand-form textarea {
+  display: block;
+  width: 100%;
+  height: calc(66vw / 19.2);
+  min-height: 48px;
+  margin: 0;
+  padding: 0 calc(36vw / 19.2);
+  font-family: inherit;
+  font-size: max(15px, calc(17vw / 19.2));
+  color: #2b2b2b;
+  background: #fff;
+  border: 1px solid transparent;
+  border-radius: calc(18vw / 19.2);
+  outline: none;
+  appearance: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.cand-form input[type=text]::placeholder,
+.cand-form input[type=email]::placeholder,
+.cand-form input[type=tel]::placeholder,
+.cand-form input[type=url]::placeholder,
+.cand-form textarea::placeholder {
+  color: #6d6762;
+  opacity: 1;
+}
+.cand-form input[type=text]:focus,
+.cand-form input[type=email]:focus,
+.cand-form input[type=tel]:focus,
+.cand-form input[type=url]:focus,
+.cand-form textarea:focus {
+  border-color: #592c22;
+  box-shadow: 0 0 0 3px rgba(89, 44, 34, 0.12);
+}
+@media (max-width: 767px) {
+  .cand-form input[type=text],
+  .cand-form input[type=email],
+  .cand-form input[type=tel],
+  .cand-form input[type=url],
+  .cand-form textarea {
+    padding: 0 20px;
+    font-size: 16px;
+    border-radius: 14px;
+  }
+}
+
+.cand-form textarea {
+  height: calc(200vw / 19.2);
+  min-height: 140px;
+  padding-top: calc(18vw / 19.2);
+  padding-bottom: calc(18vw / 19.2);
+  resize: vertical;
+}
+@media (max-width: 767px) {
+  .cand-form textarea {
+    padding: 14px 20px;
+  }
+}
+
+/* ---------- CV + lettre : 2 colonnes ---------- */
+.cand-docs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: calc(50vw / 19.2);
+  margin-top: calc(30vw / 19.2);
+}
+@media (max-width: 767px) {
+  .cand-docs {
+    grid-template-columns: 1fr;
+    gap: 34px;
+    margin-top: 20px;
+  }
+}
+
+.cand-doc {
+  display: flex;
+  flex-direction: column;
+  gap: calc(16vw / 19.2);
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+@media (max-width: 767px) {
+  .cand-doc {
+    gap: 10px;
+  }
+}
+
+.cand-doc__title {
+  margin: 0 0 calc(14vw / 19.2) calc(8vw / 19.2);
+  padding: 0;
+  font-family: "Manrope Regular", "Manrope", Arial, sans-serif;
+  font-size: max(19px, calc(26vw / 19.2));
+  color: #2b2b2b;
+}
+@media (max-width: 767px) {
+  .cand-doc__title {
+    margin-bottom: 10px;
+  }
+}
+
+.cand-doc__btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: calc(56vw / 19.2);
+  min-height: 44px;
+  padding: 0 16px;
+  overflow: hidden;
+  font-family: "Manrope Regular", "Manrope", Arial, sans-serif;
+  font-size: max(14px, calc(16vw / 19.2));
+  color: #2b2b2b;
+  text-align: center;
+  background: #fff;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+.cand-doc__btn:hover, .cand-doc__btn:focus-within, .cand-doc__btn:focus-visible {
+  border-color: rgba(89, 44, 34, 0.35);
+}
+.cand-doc__btn.is-active {
+  color: #fff;
+  background: #592c22;
+}
+
+.cand-doc__btn--file .wpcf7-form-control-wrap {
+  position: absolute;
+  inset: 0;
+}
+.cand-doc__btn--file input[type=file] {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+.cand-doc__btn--file .cand-doc__label {
+  position: relative;
+  max-width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  pointer-events: none;
+}
+.cand-doc__btn--file .wpcf7-not-valid-tip {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+}
+
+.cand-doc__panel[hidden] {
+  display: none;
+}
+.cand-doc__panel .wpcf7-form-control-wrap {
+  display: block;
+}
+
+.cand-doc__hint {
+  margin: calc(10vw / 19.2) 0 0 calc(8vw / 19.2);
+  font-size: max(13px, calc(15vw / 19.2));
+  line-height: 1.4;
+  color: #2b2b2b;
+}
+
+/* ---------- Consentement (Loi 25) ---------- */
+.cand-consent {
+  margin-top: calc(20vw / 19.2);
+  font-size: max(13px, calc(14vw / 19.2));
+  line-height: 1.45;
+  color: #4a4542;
+}
+.cand-consent .wpcf7-list-item {
+  margin: 0;
+}
+.cand-consent .wpcf7-list-item > label {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  cursor: pointer;
+}
+.cand-consent input[type=checkbox] {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  margin: 2px 0 0;
+  accent-color: #592c22;
+}
+.cand-consent a {
+  color: #592c22;
+  text-decoration: underline;
+}
+
+/* ---------- Bouton d'envoi ---------- */
+.cand-submit {
+  position: relative;
+  margin-top: calc(20vw / 19.2);
+}
+.cand-submit .wpcf7-submit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(400vw / 19.2);
+  min-width: 240px;
+  height: calc(62vw / 19.2);
+  min-height: 48px;
+  padding: 0 24px;
+  font-family: "Manrope Regular", "Manrope", Arial, sans-serif;
+  font-size: max(15px, calc(18vw / 19.2));
+  color: #fff;
+  background: #592c22;
+  border: 0;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background-color 0.25s ease, transform 0.25s ease;
+}
+.cand-submit .wpcf7-submit:hover, .cand-submit .wpcf7-submit:focus-visible {
+  background: #7a4535;
+  transform: translateY(-2px);
+}
+.cand-submit .wpcf7-submit:disabled {
+  opacity: 0.6;
+  cursor: wait;
+  transform: none;
+}
+@media (max-width: 767px) {
+  .cand-submit .wpcf7-submit {
+    width: 100%;
+  }
+}
+.cand-submit .wpcf7-spinner {
+  position: absolute;
+  top: 50%;
+  margin: -12px 0 0 12px;
+}
+
+/* ---------- Messages Contact Form 7 ---------- */
+.cand-form .wpcf7-not-valid {
+  border-color: #b3261e !important;
+}
+
+.cand-form .wpcf7-not-valid-tip {
+  display: block;
+  margin: 6px 0 0 calc(30vw / 19.2);
+  font-size: 13px;
+  color: #b3261e;
+}
+
+.wpcf7 form:has(.cand-form) .wpcf7-response-output {
+  margin: calc(20vw / 19.2) auto 0;
+  padding: 12px 20px;
+  max-width: calc(850vw / 19.2);
+  font-size: 14px;
+  color: #2b2b2b;
+  background: #fff;
+  border: 0 !important;
+  border-left: 4px solid #592c22 !important;
+  border-radius: 8px;
+}
+.wpcf7 form:has(.cand-form) .wpcf7-response-output:empty {
+  display: none;
+}
+
 /**************/
 .wpcf7-not-valid-tip {
   display: none !important;

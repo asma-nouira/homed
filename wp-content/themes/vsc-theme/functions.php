@@ -176,6 +176,11 @@ require get_template_directory() . '/inc/customizer.php';
 require get_template_directory() . '/inc/coordonnees.php';
 
 /**
+ * Formulaire de candidature (validation du CV + chargement de candidature.js).
+ */
+require get_template_directory() . '/inc/candidature.php';
+
+/**
  * Load Jetpack compatibility file.
  */
 if ( defined( 'JETPACK__VERSION' ) ) {
