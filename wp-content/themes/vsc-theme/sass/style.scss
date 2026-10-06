@@ -19,8 +19,10 @@ border: 1px solid #ec3c06;
   min-height: 46px;
   padding: 0 widthCalc(40);
   font-family: 'Inter', Arial, sans-serif;
+  font-size: calc(22vw / 19.2);
   text-decoration: none !important;
   border-radius: 999px;
+  font-weight: 500;
   transition: background-color .25s ease, color .25s ease, transform .25s ease;
  
   &:hover,
@@ -36,7 +38,7 @@ border: 1px solid #ec3c06;
  
 .btn-brun {
   color: #fff !important;
-  background: $brown;
+  background: #592C22;
  
   &:hover,
   &:focus-visible { background: #716248; }

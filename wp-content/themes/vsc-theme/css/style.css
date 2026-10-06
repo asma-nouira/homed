@@ -1123,8 +1123,10 @@ body input[type=text].wpcf7-not-valid, body input[type=email].wpcf7-not-valid, b
   min-height: 46px;
   padding: 0 calc(40vw / 19.2);
   font-family: "Inter", Arial, sans-serif;
+  font-size: 1.1458333333vw;
   text-decoration: none !important;
   border-radius: 999px;
+  font-weight: 500;
   transition: background-color 0.25s ease, color 0.25s ease, transform 0.25s ease;
 }
 .btn-brun:hover, .btn-brun:focus-visible {
@@ -1139,7 +1141,7 @@ body input[type=text].wpcf7-not-valid, body input[type=email].wpcf7-not-valid, b
 
 .btn-brun {
   color: #fff !important;
-  background: #7A4535;
+  background: #592C22;
 }
 .btn-brun:hover, .btn-brun:focus-visible {
   background: #716248;
