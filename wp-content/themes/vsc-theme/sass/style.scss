@@ -1033,3 +1033,18 @@ padding: calc(310vw / 19.2) calc(1160vw / 19.2) calc(325vw / 19.2) calc(230vw / 
   }
 }
 }
+// Image qui reste à l'écran pendant la lecture de la colonne d'à côté
+.image-collante {
+  align-self: flex-start;            // la colonne prend la hauteur de l'image, pas de la rangée
+  position: sticky;
+  top: calc(160vw / 19.2);           // espace sous le header (125px @1920 + marge)
+
+  @media (max-width: 1199px) {
+    top: 100px;
+  }
+
+  // sur mobile, les colonnes sont empilées : on désactive
+  @media (max-width: 767px) {
+    position: static;
+  }
+}
