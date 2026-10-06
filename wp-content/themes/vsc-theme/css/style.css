@@ -2592,8 +2592,8 @@ horaire {
   transition: color 0.25s ease, background-color 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
 }
 .reseau svg {
-  width: 55%;
-  height: 55%;
+  width: 85%;
+  height: 85%;
 }
 .reseau:hover, .reseau:focus-visible {
   color: #fff;
