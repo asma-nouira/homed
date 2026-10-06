@@ -1159,7 +1159,7 @@ em {
 .cand-form {
   display: flex;
   flex-direction: column;
-  gap: calc(18vw / 19.2);
+  gap: calc(20vw / 19.2);
   width: calc(850vw / 19.2);
   max-width: 100%;
   margin: 0 auto;
@@ -1183,7 +1183,7 @@ em {
 .cand-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: calc(18vw / 19.2);
+  gap: calc(20vw / 19.2);
 }
 @media (max-width: 767px) {
   .cand-row {
@@ -1208,16 +1208,16 @@ em {
 .cand-form textarea {
   display: block;
   width: 100%;
-  height: calc(66vw / 19.2);
+  height: calc(70vw / 19.2);
   min-height: 48px;
   margin: 0;
   padding: 0 calc(36vw / 19.2);
   font-family: inherit;
-  font-size: max(15px, calc(17vw / 19.2));
-  color: #2b2b2b;
+  font-size: max(15px, calc(18vw / 19.2));
+  color: #0F0E0E;
   background: #fff;
   border: 1px solid transparent;
-  border-radius: calc(18vw / 19.2);
+  border-radius: calc(25vw / 19.2);
   outline: none;
   appearance: none;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
@@ -1227,7 +1227,7 @@ em {
 .cand-form input[type=tel]::placeholder,
 .cand-form input[type=url]::placeholder,
 .cand-form textarea::placeholder {
-  color: #6d6762;
+  color: #0F0E0E;
   opacity: 1;
 }
 .cand-form input[type=text]:focus,
@@ -1298,7 +1298,7 @@ em {
   padding: 0;
   font-family: "Manrope Regular", "Manrope", Arial, sans-serif;
   font-size: max(19px, calc(26vw / 19.2));
-  color: #2b2b2b;
+  color: #0F0E0E;
 }
 @media (max-width: 767px) {
   .cand-doc__title {
@@ -1317,8 +1317,8 @@ em {
   padding: 0 16px;
   overflow: hidden;
   font-family: "Manrope Regular", "Manrope", Arial, sans-serif;
-  font-size: max(14px, calc(16vw / 19.2));
-  color: #2b2b2b;
+  font-size: max(14px, calc(20vw / 19.2));
+  color: #0F0E0E;
   text-align: center;
   background: #fff;
   border: 1px solid transparent;
@@ -1372,7 +1372,7 @@ em {
   margin: calc(10vw / 19.2) 0 0 calc(8vw / 19.2);
   font-size: max(13px, calc(15vw / 19.2));
   line-height: 1.4;
-  color: #2b2b2b;
+  color: #0F0E0E;
 }
 
 /* ---------- Consentement (Loi 25) ---------- */
@@ -1463,7 +1463,7 @@ em {
   padding: 12px 20px;
   max-width: calc(850vw / 19.2);
   font-size: 14px;
-  color: #2b2b2b;
+  color: #0F0E0E;
   background: #fff;
   border: 0 !important;
   border-left: 4px solid #592c22 !important;

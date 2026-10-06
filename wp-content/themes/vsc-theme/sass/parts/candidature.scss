@@ -5,13 +5,13 @@
 
 $cand-brown  : #592c22;
 $cand-title  : #5a2e22;
-$cand-text   : #2b2b2b;
+$cand-text   : #0F0E0E;
 $cand-ph     : #6d6762;
 $cand-error  : #b3261e;
 
 $cand-width   : 850;
-$cand-field-h : 66;
-$cand-gap     : 18;
+$cand-field-h : 70;
+$cand-gap     : 20;
 $cand-btn-h   : 56;
 $cand-submit-w: 400;
 
@@ -74,17 +74,17 @@ $cand-submit-w: 400;
   margin: 0;
   padding: 0 widthCalc(36);
   font-family: inherit;
-  font-size: cand-fluid(17, 15px);
+  font-size: cand-fluid(18, 15px);
   color: $cand-text;
   background: #fff;
   border: 1px solid transparent;
-  border-radius: widthCalc(18);
+  border-radius: widthCalc(25);
   outline: none;
   appearance: none;
   transition: border-color .2s ease, box-shadow .2s ease;
 
   &::placeholder {
-    color: $cand-ph;
+    color: #0F0E0E;
     opacity: 1;
   }
 
@@ -164,7 +164,7 @@ $cand-submit-w: 400;
   padding: 0 16px;
   overflow: hidden;
   font-family: 'Manrope Regular', 'Manrope', Arial, sans-serif;
-  font-size: cand-fluid(16, 14px);
+  font-size: cand-fluid(20, 14px);
   color: $cand-text;
   text-align: center;
   background: #fff;
