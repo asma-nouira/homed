@@ -12,6 +12,13 @@
  *       [vsc_courriel lien="non"]  → texte seulement
  *   - dans le footer (adresse, heures, Facebook, boutons)
  *
+ *   Réservation en ligne (lien du bouton « Prendre rendez-vous ») :
+ *       [vsc_rdv]                          → bouton brun « Prendre rendez-vous »
+ *       [vsc_rdv texte="Réserver en ligne" class="btn-beige"]
+ *       [vsc_rdv_lien]                     → l'adresse seule (texte)
+ *       /reserver/                         → lien à mettre dans N'IMPORTE QUEL bouton Visual Composer :
+ *                                            il redirige vers l'adresse réglée dans le Customizer
+ *
  * À inclure dans functions.php :  require get_template_directory() . '/inc/coordonnees.php';
  *
  * @package vsc-theme
@@ -83,6 +90,8 @@ add_action( 'customize_register', function ( $wp_customize ) {
 		'vsc_adresse'          => array( 'Adresse (une ligne par ligne affichée)', "17112 Chemin Sainte-Marie,\nKirkland, Qc, H9J 2K9", 'sanitize_textarea_field', 'textarea' ),
 		'vsc_heures'           => array( 'Heures d\'ouverture (une ligne par ligne affichée)', "Lun - Ven : 08.00 - 17.00\nMercredi : 07.00 - 16.00", 'sanitize_textarea_field', 'textarea' ),
 		'vsc_facebook'         => array( 'Lien de la page Facebook', '', 'esc_url_raw', 'url' ),
+		'vsc_header_rdv_url'   => array( 'Lien de réservation en ligne (bouton « Prendre rendez-vous »)', '', 'esc_url_raw', 'url' ),
+		'vsc_header_rdv_label' => array( 'Texte du bouton de réservation', 'Prendre rendez-vous', 'sanitize_text_field', 'text' ),
 	);
 
 	foreach ( $fields as $id => $f ) {
@@ -140,6 +149,56 @@ add_shortcode( 'vsc_courriel', function ( $atts ) {
 		esc_attr( antispambot( $email, 1 ) ),
 		esc_html( antispambot( $email ) )
 	);
+} );
+
+/* ---------- Réservation en ligne ---------- */
+
+// Le lien s'ouvre dans un nouvel onglet s'il mène vers un autre site (plateforme de réservation)
+function vsc_rdv_externe( $url ) {
+	$host = wp_parse_url( $url, PHP_URL_HOST );
+	return $host && $host !== wp_parse_url( home_url(), PHP_URL_HOST );
+}
+
+add_shortcode( 'vsc_rdv', function ( $atts ) {
+	$atts = shortcode_atts( array(
+		'texte' => vsc_rdv_label(),
+		'class' => 'btn-brun',
+	), $atts, 'vsc_rdv' );
+
+	$url = vsc_rdv_url();
+	return sprintf(
+		'<a class="%s" href="%s"%s>%s</a>',
+		esc_attr( $atts['class'] ),
+		esc_url( $url ),
+		vsc_rdv_externe( $url ) ? ' target="_blank" rel="noopener"' : '',
+		esc_html( $atts['texte'] )
+	);
+} );
+
+add_shortcode( 'vsc_rdv_lien', function () {
+	return esc_url( vsc_rdv_url() );
+} );
+
+// /reserver/ → redirige vers le lien de réservation réglé dans le Customizer.
+// Pratique pour les boutons Visual Composer, où l'on ne peut pas mettre de shortcode dans le lien.
+add_action( 'template_redirect', function () {
+	if ( ! is_404() ) {
+		return; // une vraie page /reserver/ existe : on ne touche à rien
+	}
+	$path = trim( (string) wp_parse_url( $_SERVER['REQUEST_URI'], PHP_URL_PATH ), '/' );
+	$home = trim( (string) wp_parse_url( home_url(), PHP_URL_PATH ), '/' );
+	if ( $home && 0 === strpos( $path, $home ) ) {
+		$path = trim( substr( $path, strlen( $home ) ), '/' );
+	}
+	if ( 'reserver' === $path ) {
+		$url = vsc_rdv_url();
+		if ( vsc_rdv_externe( $url ) ) {
+			wp_redirect( $url, 302 );        // vers la plateforme de réservation
+		} else {
+			wp_safe_redirect( $url, 302 );   // vers une page du site
+		}
+		exit;
+	}
 } );
 
 /* ---------- Contact Form 7 : pas de <p> et <br> ajoutés automatiquement ---------- */
