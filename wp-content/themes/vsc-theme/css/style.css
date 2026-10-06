@@ -2103,20 +2103,4 @@ body {
     font-size: 15px;
   }
 }
-
-.image-collante {
-  align-self: flex-start;
-  position: sticky;
-  top: 8.3333333333vw;
-}
-@media (max-width: 1199px) {
-  .image-collante {
-    top: 100px;
-  }
-}
-@media (max-width: 767px) {
-  .image-collante {
-    position: static;
-  }
-}
 /*# sourceMappingURL=../css/style.css.map */
