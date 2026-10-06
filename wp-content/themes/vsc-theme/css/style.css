@@ -2135,4 +2135,8 @@ body {
 .lien-rdv {
   text-decoration: underline;
 }
+
+.item-techno p {
+  letter-spacing: -0.55px;
+}
 /*# sourceMappingURL=../css/style.css.map */
