@@ -1043,3 +1043,14 @@ padding: calc(310vw / 19.2) calc(1160vw / 19.2) calc(325vw / 19.2) calc(230vw / 
     letter-spacing: -0.55px;
   }
 }
+.photo-zoom {
+  overflow: hidden;
+
+  img {
+    transition: transform .8s cubic-bezier(.22, .61, .36, 1);
+  }
+
+  &:hover img {
+    transform: scale(1.04);
+  }
+}

@@ -2147,4 +2147,14 @@ body {
 .item-techno p {
   letter-spacing: -0.55px;
 }
+
+.photo-zoom {
+  overflow: hidden;
+}
+.photo-zoom img {
+  transition: transform 0.8s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.photo-zoom:hover img {
+  transform: scale(1.04);
+}
 /*# sourceMappingURL=../css/style.css.map */
