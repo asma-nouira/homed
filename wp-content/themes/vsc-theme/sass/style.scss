@@ -1331,3 +1331,61 @@ $fleche-gap  : 28;   // espace entre le rond et le texte
   outline-offset: 8px;
   border-radius: widthCalc(30);
 }
+/* =========================================================
+   VERSION VISUAL COMPOSER
+   Colonne VC (svc-grid__item reveal) = Single Image (svc-card__media) + Raw HTML (a.svc-card)
+   ========================================================= */
+
+// Le voile du survol ne doit jamais bloquer les clics
+.svc-card__media::after {
+  pointer-events: none;
+}
+
+// Toute la colonne est cliquable : le lien du Raw HTML s'étend sur toute la carte
+.svc-grid__item {
+  position: relative;
+
+  .vce-col-inner,
+  .vce-col-content,
+  .vce-raw-html,
+  .vce-raw-html-wrapper,
+  .svc-card {
+    position: static !important;
+  }
+
+  .svc-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+  }
+}
+
+// L'image Visual Composer garde son propre format (padding-bottom: 125 %)
+.svc-grid__item .svc-card__media {
+  height: auto;
+  min-height: 0;
+
+  .vce-single-image-figure-inner {
+    width: 100% !important;
+  }
+
+  img {
+    transition: transform 1s cubic-bezier(.22, .61, .36, 1);
+  }
+}
+
+// Survol : on réagit au survol de toute la colonne (image + texte ensemble)
+@media (hover: hover) {
+  .svc-grid__item:hover {
+    .svc-card__media img { transform: scale(1.06); transition-delay: 0s; }
+    .svc-card__media::after { opacity: 1; }
+    .svc-card__title::after { transform: scaleX(1); }
+    .svc-card__arrow {
+      background: #fff;
+      transform: scale(1.08);
+      transition-delay: 0s;
+    }
+    .svc-card__arrow--svg svg { transform: rotate(45deg); }
+  }
+}

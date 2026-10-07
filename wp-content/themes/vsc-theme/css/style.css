@@ -2767,4 +2767,61 @@ horaire {
   outline-offset: 8px;
   border-radius: calc(30vw / 19.2);
 }
+
+/* =========================================================
+   VERSION VISUAL COMPOSER
+   Colonne VC (svc-grid__item reveal) = Single Image (svc-card__media) + Raw HTML (a.svc-card)
+   ========================================================= */
+.svc-card__media::after {
+  pointer-events: none;
+}
+
+.svc-grid__item {
+  position: relative;
+}
+.svc-grid__item .vce-col-inner,
+.svc-grid__item .vce-col-content,
+.svc-grid__item .vce-raw-html,
+.svc-grid__item .vce-raw-html-wrapper,
+.svc-grid__item .svc-card {
+  position: static !important;
+}
+.svc-grid__item .svc-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+}
+
+.svc-grid__item .svc-card__media {
+  height: auto;
+  min-height: 0;
+}
+.svc-grid__item .svc-card__media .vce-single-image-figure-inner {
+  width: 100% !important;
+}
+.svc-grid__item .svc-card__media img {
+  transition: transform 1s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+@media (hover: hover) {
+  .svc-grid__item:hover .svc-card__media img {
+    transform: scale(1.06);
+    transition-delay: 0s;
+  }
+  .svc-grid__item:hover .svc-card__media::after {
+    opacity: 1;
+  }
+  .svc-grid__item:hover .svc-card__title::after {
+    transform: scaleX(1);
+  }
+  .svc-grid__item:hover .svc-card__arrow {
+    background: #fff;
+    transform: scale(1.08);
+    transition-delay: 0s;
+  }
+  .svc-grid__item:hover .svc-card__arrow--svg svg {
+    transform: rotate(45deg);
+  }
+}
 /*# sourceMappingURL=../css/style.css.map */
