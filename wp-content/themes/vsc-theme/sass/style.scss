@@ -1290,7 +1290,7 @@ $fleche-gap  : 28;   // espace entre le rond et le texte
   background-color: #DCC7B3;
   width:calc(73vw / 19.2);
   height: calc(73vw / 19.2);
-
+  border-radius: 50%;
 
   &::after {
     display: none;            // on n'affiche pas la flèche CSS

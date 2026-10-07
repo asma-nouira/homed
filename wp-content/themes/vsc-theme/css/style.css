@@ -2722,6 +2722,7 @@ horaire {
   background-color: #DCC7B3;
   width: 3.8020833333vw;
   height: 3.8020833333vw;
+  border-radius: 50%;
 }
 .svc-card__arrow--svg::after {
   display: none;
