@@ -8,7 +8,7 @@
  */
 function vsc_map()
 {
-    $map = '<div id="map1" style="width: 100%;height:430px;min-height: 100%;"></div>';
+    $map = '<div id="map1" style="width: 100%;height:725px;min-height: 100%;"></div>';
     ?>
     <script>
 
@@ -59,7 +59,7 @@ function vsc_map()
                     });
                 });
             }
-            document.getElementById("year").innerHTML = new Date().getFullYear();
+        
         });
     </script>
     <?php return $map;

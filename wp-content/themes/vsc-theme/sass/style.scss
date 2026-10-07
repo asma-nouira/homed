@@ -1232,3 +1232,6 @@ $fleche-gap  : 28;   // espace entre le rond et le texte
 .vsc-anim .avec-fleche.reveal.is-visible::after {
   transition-delay: calc(var(--reveal-delay, 0s) + .35s), 0s, calc(var(--reveal-delay, 0s) + .35s);
 }
+#map1{
+  border-radius: 30px;
+}
