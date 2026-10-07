@@ -2718,7 +2718,10 @@ horaire {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: #7A4535;
+  color: #592C22;
+  background-color: #DCC7B3;
+  width: 3.8020833333vw;
+  height: 3.8020833333vw;
 }
 .svc-card__arrow--svg::after {
   display: none;

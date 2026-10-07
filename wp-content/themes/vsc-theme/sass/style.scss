@@ -1286,7 +1286,11 @@ $fleche-gap  : 28;   // espace entre le rond et le texte
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: $brown;
+  color: #592C22;
+  background-color: #DCC7B3;
+  width:calc(73vw / 19.2);
+  height: calc(73vw / 19.2);
+
 
   &::after {
     display: none;            // on n'affiche pas la flèche CSS
