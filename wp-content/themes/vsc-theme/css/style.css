@@ -2679,7 +2679,7 @@ horaire {
 
 .svc-card__head {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   gap: 16px;
   margin: calc(38vw / 19.2) 0 calc(22vw / 19.2);

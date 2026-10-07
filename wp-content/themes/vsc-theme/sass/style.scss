@@ -1247,7 +1247,7 @@ $fleche-gap  : 28;   // espace entre le rond et le texte
 }
 .svc-card__head {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   gap: 16px;
   margin: widthCalc(38) 0 widthCalc(22);
