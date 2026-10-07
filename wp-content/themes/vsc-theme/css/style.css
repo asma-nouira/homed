@@ -2680,10 +2680,10 @@ horaire {
 
 .svc-card__head {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
   gap: 16px;
-  margin: calc(28vw / 19.2) 0 calc(22vw / 19.2);
+  margin: calc(38vw / 19.2) 0 calc(22vw / 19.2);
 }
 @media (max-width: 767px) {
   .svc-card__head {
@@ -2694,7 +2694,6 @@ horaire {
 .svc-card__title {
   position: relative;
   margin: 0;
-  padding-bottom: 22px;
   font-family: "StackSansText", Arial, sans-serif;
   font-weight: 700;
   font-size: svc-fluid(28, 19px);
