@@ -2673,7 +2673,6 @@ horaire {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(89, 44, 34, 0) 50%, rgba(89, 44, 34, 0.35) 100%);
   opacity: 0;
   transition: opacity 0.5s ease;
 }
