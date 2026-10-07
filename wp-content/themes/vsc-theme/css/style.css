@@ -2899,7 +2899,7 @@ horaire {
   padding-bottom: 4px;
   font-family: "Manrope Light", "Manrope", Arial, sans-serif;
   font-weight: 300;
-  font-size: sd-fluid(45, 24px);
+  font-size: 2.34375vw;
   line-height: 1.15;
   color: #DED7CD;
 }

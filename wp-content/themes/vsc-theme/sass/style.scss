@@ -1461,7 +1461,7 @@ $fleche-gap  : 28;   // espace entre le rond et le texte
   padding-bottom: 4px;
   font-family: 'Manrope Light', 'Manrope', Arial, sans-serif;
   font-weight: 300;
-  font-size: sd-fluid(45, 24px);
+  font-size: calc(45vw / 19.2);
   line-height: 1.15;
   color: $beige;
  
