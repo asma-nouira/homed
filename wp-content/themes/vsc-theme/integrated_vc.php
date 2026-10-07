@@ -17,12 +17,12 @@ function vsc_map()
             if (!addedMap && jQuery(document).scrollTop() > 100) {
                 addedMap = true;
                 jQuery(function () {
-                    var points = new google.maps.LatLng(45.50769580633233, -73.56435486050708);
+                    var points = new google.maps.LatLng(45.4481339085689, -73.86111057570005);
                     var styles = [
                         {
                             "stylers": [
                                 {"visibility": "on"},
-                                {"hue": "#F1ECE9"}
+                                {"hue": "#592C22"}
                             ]
                         }
                     ];
@@ -43,8 +43,8 @@ function vsc_map()
                     var marker = new google.maps.Marker({
                         position: points,
                         map: map1,
-                        icon: '/wp-content/themes/vsc-theme/css/img/icon-map.svg',
-                        url: 'https://www.google.com/maps/place/Complexe+Desjardins/@45.5075266,-73.5669083,17z/data=!3m1!5s0x4cc91a45a1cf65b7:0x3310f1891dd11e56!4m14!1m7!3m6!1s0x4cc91a4fca1ae933:0x9e1c26554e8a2355!2sComplexe+Desjardins!8m2!3d45.5075229!4d-73.5643334!16zL20vMDR2NTJo!3m5!1s0x4cc91a4fca1ae933:0x9e1c26554e8a2355!8m2!3d45.5075229!4d-73.5643334!16zL20vMDR2NTJo?entry=ttu'
+                        icon: '/wp-content/uploads/2026/10/Icon-map.svg',
+                        url: 'https://www.google.com/maps/place/Clinique+Dentaire+HomeDental/@45.4479871,-73.8636211,17z/data=!3m1!4b1!4m6!3m5!1s0x4cc91b61e0dd3be9:0x59c4c05fdc939a49!8m2!3d45.4479834!4d-73.8610462!16s%2Fg%2F11g2zfnvnz?entry=ttu&g_ep=EgoyMDI2MTAwNC4wIKXMDSoASAFQAw%3D%3D'
                     });
                     marker.setAnimation(google.maps.Animation.BOUNCE);
 

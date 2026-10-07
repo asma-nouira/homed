@@ -122,7 +122,7 @@ function vsc_theme_scripts() {
 		wp_enqueue_script( 'vsc-slick-js',  $uri . '/slick-slider/slick.min.js', array( 'jquery' ), vsc_theme_ver( '/slick-slider/slick.min.js' ), true );
 		wp_enqueue_script( 'vsc-slick-run', $uri . '/slick-slider/run.js',       array( 'jquery', 'vsc-slick-js' ), vsc_theme_ver( '/slick-slider/run.js' ), true );
 	}
-
+wp_enqueue_script( 'api-google-maps',  'https://maps.googleapis.com/maps/api/js?key=AIzaSyBVMO7oJGbpoNzFxFCwJwh-FW8DlljIY4s', array(), null, true );
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
