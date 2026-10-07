@@ -121,3 +121,78 @@ $reveal-radius   : 20;                          // px @1920 : arrondi de la phot
     .parallax { transform: none !important; }
   }
 }
+ 
+/* =========================================================
+   ANIMATION D'APPARITION
+   1. la photo se dévoile (rideau du bas vers le haut + zoom arrière)
+   2. le titre et la flèche arrivent
+   3. le texte suit
+   Les 3 cartes d'une rangée partent l'une après l'autre (colonne 1 → 2 → 3).
+   ========================================================= */
+.vsc-anim .svc-grid__item.reveal {
+  // la carte elle-même ne bouge pas : ce sont ses parties qui s'animent
+  opacity: 1;
+  transform: none;
+ 
+  --svc-delay: 0s;
+  &:nth-child(3n + 2) { --svc-delay: .15s; }
+  &:nth-child(3n + 3) { --svc-delay: .3s; }
+ 
+  @media (max-width: 1199px) {
+    &:nth-child(3n + 2),
+    &:nth-child(3n + 3) { --svc-delay: 0s; }
+    &:nth-child(2n) { --svc-delay: .15s; }
+  }
+ 
+  .svc-card__media {
+    clip-path: inset(100% 0 0 0 round widthCalc($svc-radius));
+    transition: clip-path 1.1s $svc-ease var(--svc-delay);
+ 
+    img {
+      transform: scale(1.18);
+      transition: transform 1.6s $svc-ease var(--svc-delay);
+    }
+  }
+ 
+  .svc-card__head,
+  .svc-card__text {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity .7s ease, transform .8s $svc-ease;
+  }
+  .svc-card__head { transition-delay: calc(var(--svc-delay) + .45s); }
+  .svc-card__text { transition-delay: calc(var(--svc-delay) + .6s); }
+ 
+  .svc-card__arrow {
+    transform: scale(0);
+    transition: transform .6s cubic-bezier(.34, 1.56, .64, 1) calc(var(--svc-delay) + .7s), background-color .35s ease;
+  }
+ 
+  // ----- visible
+  &.is-visible {
+    .svc-card__media {
+      clip-path: inset(0 0 0 0 round widthCalc($svc-radius));
+      img { transform: none; }
+    }
+    .svc-card__head,
+    .svc-card__text {
+      opacity: 1;
+      transform: none;
+    }
+    .svc-card__arrow { transform: none; }
+  }
+ 
+  // ----- après l'apparition, le survol reprend sans délai
+  &.is-visible .svc-card:hover {
+    .svc-card__media img { transform: scale(1.06); transition-delay: 0s; }
+    .svc-card__arrow { transform: scale(1.08); transition-delay: 0s; }
+  }
+}
+ 
+@media (prefers-reduced-motion: reduce) {
+  .svc-card *,
+  .svc-card *::after {
+    transition: none !important;
+  }
+}
+ 

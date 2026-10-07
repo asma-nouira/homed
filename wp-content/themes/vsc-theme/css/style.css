@@ -2668,4 +2668,100 @@ horaire {
 #map1 {
   border-radius: 30px;
 }
+
+.svc-card__media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(89, 44, 34, 0) 50%, rgba(89, 44, 34, 0.35) 100%);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.svc-card__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin: calc(28vw / 19.2) 0 calc(22vw / 19.2);
+}
+@media (max-width: 767px) {
+  .svc-card__head {
+    margin: 18px 0 12px;
+  }
+}
+
+.svc-card__title {
+  position: relative;
+  margin: 0;
+  padding-bottom: 22px;
+  font-family: "StackSansText", Arial, sans-serif;
+  font-weight: 700;
+  font-size: svc-fluid(28, 19px);
+  line-height: 1.25;
+  color: #DED7CD;
+}
+.svc-card__title::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.svc-card__arrow--svg {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #7A4535;
+}
+.svc-card__arrow--svg::after {
+  display: none;
+}
+.svc-card__arrow--svg svg {
+  width: 38%;
+  height: auto;
+  transition: transform 0.45s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+@media (hover: hover) {
+  .svc-card:hover .svc-card__arrow--svg svg,
+  .svc-card:focus-visible .svc-card__arrow--svg svg {
+    transform: rotate(45deg);
+  }
+}
+/* ---------- Survol ---------- */
+@media (hover: hover) {
+  .svc-card:hover .svc-card__media img,
+  .svc-card:focus-visible .svc-card__media img {
+    transform: scale(1.06);
+  }
+  .svc-card:hover .svc-card__media::after,
+  .svc-card:focus-visible .svc-card__media::after {
+    opacity: 1;
+  }
+  .svc-card:hover .svc-card__title::after,
+  .svc-card:focus-visible .svc-card__title::after {
+    transform: scaleX(1);
+  }
+  .svc-card:hover .svc-card__arrow,
+  .svc-card:focus-visible .svc-card__arrow {
+    background: #fff;
+    transform: scale(1.08);
+  }
+  .svc-card:hover .svc-card__arrow::after,
+  .svc-card:focus-visible .svc-card__arrow::after {
+    transform: rotate(0deg);
+  }
+}
+.svc-card:focus-visible {
+  outline: 2px solid #DED7CD;
+  outline-offset: 8px;
+  border-radius: calc(30vw / 19.2);
+}
 /*# sourceMappingURL=../css/style.css.map */
