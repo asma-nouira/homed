@@ -2732,42 +2732,6 @@ horaire {
   transition: transform 0.45s cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
-@media (hover: hover) {
-  .svc-card:hover .svc-card__arrow--svg svg,
-  .svc-card:focus-visible .svc-card__arrow--svg svg {
-    transform: rotate(45deg);
-  }
-}
-/* ---------- Survol ---------- */
-@media (hover: hover) {
-  .svc-card:hover .svc-card__media img,
-  .svc-card:focus-visible .svc-card__media img {
-    transform: scale(1.06);
-  }
-  .svc-card:hover .svc-card__media::after,
-  .svc-card:focus-visible .svc-card__media::after {
-    opacity: 1;
-  }
-  .svc-card:hover .svc-card__title::after,
-  .svc-card:focus-visible .svc-card__title::after {
-    transform: scaleX(1);
-  }
-  .svc-card:hover .svc-card__arrow,
-  .svc-card:focus-visible .svc-card__arrow {
-    background: #fff;
-    transform: scale(1.08);
-  }
-  .svc-card:hover .svc-card__arrow::after,
-  .svc-card:focus-visible .svc-card__arrow::after {
-    transform: rotate(0deg);
-  }
-}
-.svc-card:focus-visible {
-  outline: 2px solid #DED7CD;
-  outline-offset: 8px;
-  border-radius: calc(30vw / 19.2);
-}
-
 /* =========================================================
    VERSION VISUAL COMPOSER
    Colonne VC (svc-grid__item reveal) = Single Image (svc-card__media) + Raw HTML (a.svc-card)
@@ -2822,6 +2786,37 @@ horaire {
   }
   .svc-grid__item:hover .svc-card__arrow--svg svg {
     transform: rotate(45deg);
+  }
+}
+.svc-grid__item > .vce-col-inner {
+  margin: calc(-22vw / 19.2) !important;
+  padding: calc(22vw / 19.2) calc(22vw / 19.2) calc(30vw / 19.2) !important;
+  background: transparent;
+  border-radius: calc(38vw / 19.2);
+  transition: background-color 0.45s ease, box-shadow 0.45s ease;
+}
+@media (max-width: 1199px) {
+  .svc-grid__item > .vce-col-inner {
+    margin: -14px !important;
+    padding: 14px 14px 20px !important;
+    border-radius: 26px;
+  }
+}
+
+@media (hover: hover) {
+  .svc-grid__item:hover > .vce-col-inner {
+    background: #2f2926;
+    box-shadow: 0 24px 50px rgba(0, 0, 0, 0.35);
+  }
+}
+.svc-grid__item .svc-card__media {
+  position: relative !important;
+  overflow: hidden;
+  border-radius: calc(30vw / 19.2);
+}
+@media (max-width: 1199px) {
+  .svc-grid__item .svc-card__media {
+    border-radius: 20px;
   }
 }
 /*# sourceMappingURL=../css/style.css.map */

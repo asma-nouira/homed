@@ -1302,35 +1302,6 @@ $fleche-gap  : 28;   // espace entre le rond et le texte
   }
 }
 
-// Survol : ↗ devient →
-@media (hover: hover) {
-  .svc-card:hover .svc-card__arrow--svg svg,
-  .svc-card:focus-visible .svc-card__arrow--svg svg {
-    transform: rotate(45deg);
-  }
-}
-
-/* ---------- Survol ---------- */
-@media (hover: hover) {
-  .svc-card:hover,
-  .svc-card:focus-visible {
-    .svc-card__media img { transform: scale(1.06); }
-    .svc-card__media::after { opacity: 1; }
-    .svc-card__title::after { transform: scaleX(1); }
-    .svc-card__arrow {
-      background: #fff;
-      transform: scale(1.08);
- 
-      &::after { transform: rotate(0deg); }   // ↗ devient →
-    }
-  }
-}
- 
-.svc-card:focus-visible {
-  outline: 2px solid $beige;
-  outline-offset: 8px;
-  border-radius: widthCalc(30);
-}
 /* =========================================================
    VERSION VISUAL COMPOSER
    Colonne VC (svc-grid__item reveal) = Single Image (svc-card__media) + Raw HTML (a.svc-card)
@@ -1387,5 +1358,38 @@ $fleche-gap  : 28;   // espace entre le rond et le texte
       transition-delay: 0s;
     }
     .svc-card__arrow--svg svg { transform: rotate(45deg); }
+  }
+}
+.svc-grid__item > .vce-col-inner {
+  // Le padding est toujours là (transparent) : rien ne bouge au survol.
+  // La marge négative garde les cartes alignées avec la grille.
+  margin: widthCalc(-22) !important;
+  padding: widthCalc(22) widthCalc(22) widthCalc(22 + 8) !important;
+  background: transparent;
+  border-radius: widthCalc(30 + 8);
+  transition: background-color .45s ease, box-shadow .45s ease;
+
+  @media (max-width: 1199px) {
+    margin: -14px !important;
+    padding: 14px 14px 20px !important;
+    border-radius: 26px;
+  }
+}
+
+@media (hover: hover) {
+  .svc-grid__item:hover > .vce-col-inner {
+    background: #2f2926;
+    box-shadow: 0 24px 50px rgba(0, 0, 0, .35);
+  }
+}
+
+// Le voile brun reste sur la photo seulement
+.svc-grid__item .svc-card__media {
+  position: relative !important;
+  overflow: hidden;
+  border-radius: widthCalc(30);
+
+  @media (max-width: 1199px) {
+    border-radius: 20px;
   }
 }
