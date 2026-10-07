@@ -2601,4 +2601,8 @@ horaire {
   border-color: #0F0E0E;
   transform: translateY(-2px);
 }
+
+#contact .rdv-form__submit {
+  text-align: center;
+}
 /*# sourceMappingURL=../css/style.css.map */
