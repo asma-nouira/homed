@@ -1166,3 +1166,61 @@ horaire {
     text-align: center;
   }
 }
+// Ta flèche → (le SVG de Visual Composer, encodé pour le CSS)
+$icon-fleche-droite: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 29.086 24.004'%3E%3Cg transform='translate(1 1.414)' fill='none' stroke='%23000' stroke-linecap='round' stroke-width='2'%3E%3Cpath d='M0,0,10.466,10.776,0,21.175' transform='translate(16.214)'/%3E%3Cpath d='M0,0H26.387' transform='translate(0 10.955)'/%3E%3C/g%3E%3C/svg%3E";
+
+.rond-fleche {
+  position: relative;
+  display: inline-flex;
+  flex-shrink: 0;
+  width: calc(60vw / 19.2);
+  height: calc(60vw / 19.2);
+  min-width: 44px;
+  min-height: 44px;
+  background: #dcc7b3;            // le rond beige
+  border-radius: 50%;
+  transition: background-color .3s ease;
+
+  // la flèche, dessinée par le masque
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    width: 42%;
+    height: 42%;
+    background-color: #592c22;    // couleur de la flèche
+    -webkit-mask: url($icon-fleche-droite) center / contain no-repeat;
+            mask: url($icon-fleche-droite) center / contain no-repeat;
+    transition: transform .5s cubic-bezier(.22, .61, .36, 1), background-color .3s ease;
+  }
+}
+
+// Variantes de direction
+.rond-fleche--haut-droite::after { transform: rotate(-45deg); }   // ↗
+.rond-fleche--bas-droite::after  { transform: rotate(45deg); }    // ↘
+.rond-fleche--bas::after         { transform: rotate(90deg); }    // ↓
+
+// Animation : la flèche « avance » quand le bloc apparaît…
+.vsc-anim .reveal .rond-fleche::after {
+  transform: translateX(-30%);
+  opacity: 0;
+}
+.vsc-anim .reveal.is-visible .rond-fleche::after {
+  transform: none;
+  opacity: 1;
+  transition: transform .6s cubic-bezier(.22, .61, .36, 1), opacity .4s ease;
+  transition-delay: calc(var(--reveal-delay, 0s) + .35s);
+}
+
+// … et au survol du bloc : petit élan vers la droite + rond qui fonce
+.reveal:hover .rond-fleche,
+a:hover .rond-fleche {
+  background: #592c22;
+
+  &::after {
+    background-color: #fff;
+    transform: translateX(15%);
+    transition-delay: 0s;
+  }
+}
