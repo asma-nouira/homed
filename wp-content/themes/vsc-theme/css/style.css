@@ -2923,7 +2923,7 @@ horaire {
   height: calc(68vw / 19.2);
   min-width: 42px;
   min-height: 42px;
-  margin-top: 2px;
+  margin-top: 0;
   background: #DCC7B3;
   border-radius: 50%;
   transition: background-color 0.35s ease, transform 0.45s cubic-bezier(0.22, 0.61, 0.36, 1);
