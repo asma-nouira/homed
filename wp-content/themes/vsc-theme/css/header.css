@@ -219,6 +219,14 @@ em {
     font-size: calc(22vw / 19.2);
   }
 }
+.fs28 h1, .fs28 h2, .fs28 p, .fs28 h3, .fs28 {
+  font-size: calc(28vw / 13.66);
+}
+@media (min-width: 1366px) {
+  .fs28 h1, .fs28 h2, .fs28 p, .fs28 h3, .fs28 {
+    font-size: calc(28vw / 19.2);
+  }
+}
 .fs35 h1, .fs35 h2, .fs35 p, .fs35 h3, .fs35 {
   font-size: calc(35vw / 13.66);
 }
@@ -298,6 +306,13 @@ em {
   line-height: 1.25;
 }
 .fs24 h1, .fs24 h2, .fs24 p, .fs24 h3 {
+  line-height: 1.25;
+}
+
+.fs28 {
+  line-height: 1.25;
+}
+.fs28 h1, .fs28 h2, .fs28 p, .fs28 h3 {
   line-height: 1.25;
 }
 
