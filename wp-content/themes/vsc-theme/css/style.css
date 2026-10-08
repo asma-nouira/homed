@@ -1562,6 +1562,7 @@ body input[type=text].wpcf7-not-valid, body input[type=email].wpcf7-not-valid, b
   .btn-brun {
     min-width: 200px;
     padding: 0 28px;
+    font-size: 15px;
   }
 }
 
