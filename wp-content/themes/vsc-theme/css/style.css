@@ -2440,6 +2440,11 @@ body {
   text-transform: uppercase;
   color: #DED7CD;
 }
+@media (max-width: 767px) {
+  .eyebrow {
+    font-size: 14px;
+  }
+}
 
 .fil-ariane {
   font-size: 0.7291666667vw;
