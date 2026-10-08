@@ -33,6 +33,11 @@
   background: #7A4535;
 }
 
+.stack {
+  font-family: "StackSansText";
+  font-weight: 700;
+}
+
 .light {
   font-family: "Manrope Light";
   font-weight: 300;
