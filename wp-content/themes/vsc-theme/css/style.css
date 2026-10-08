@@ -2389,7 +2389,7 @@ body {
   font-family: "Manrope Bold";
   font-weight: 700;
   color: #7A4535;
-  padding-right: 13.0208333333vw; /* pour laisser la place au rond à droite */
+  padding-right: 14.5833333333vw; /* pour laisser la place au rond à droite */
   position: relative;
 }
 @media (max-width: 767px) {
