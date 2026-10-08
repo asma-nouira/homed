@@ -1589,6 +1589,9 @@ body {
   margin: 0;
   color: #231F1D;
 }
+body p, body ul li {
+  letter-spacing: -0.5px;
+}
 
 .hero-slider .slider-col .vce-text-block {
   padding: 16.1458333333vw 60.4166666667vw 16.9270833333vw 11.9791666667vw;
