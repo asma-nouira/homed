@@ -867,7 +867,7 @@ padding: calc(310vw / 19.2) calc(1160vw / 19.2) calc(325vw / 19.2) calc(230vw / 
   font-family: 'Manrope Bold';
   font-weight: 700;
   color: $brown;
-  padding-right: calc(280vw / 19.2); /* pour laisser la place au rond à droite */
+  padding-right: calc(260vw / 19.2); /* pour laisser la place au rond à droite */
   position: relative;
    @media(max-width:767px){
     font-size: 18px;
