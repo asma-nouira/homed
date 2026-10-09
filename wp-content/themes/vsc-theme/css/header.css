@@ -186,6 +186,10 @@ em {
   border-radius: 30px;
 }
 
+.ls {
+  letter-spacing: -0.5px;
+}
+
 .fs85 h1, .fs85 h2, .fs85 p, .fs85 h3, .fs95 h1, .fs95 h2, .fs95 p, .fs95 h3, .fs95 {
   font-size: calc(95vw / 13.66);
 }

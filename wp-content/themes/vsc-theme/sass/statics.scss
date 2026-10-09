@@ -169,3 +169,6 @@ em{
 @function cta-fluid($px, $min) {
   @return unquote("max(#{$min}, #{widthCalc($px)})");
 }
+.ls{
+  letter-spacing: -0.5px;
+}

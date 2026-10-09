@@ -186,6 +186,10 @@ em {
   border-radius: 30px;
 }
 
+.ls {
+  letter-spacing: -0.5px;
+}
+
 /* =========================================================
    MOBILE — Homedental (≤ 767px)
    Compilé par gulp → css/mobile.css
