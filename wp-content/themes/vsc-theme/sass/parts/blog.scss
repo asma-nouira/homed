@@ -527,13 +527,13 @@
 .hd-mini__lien {
 	display: flex;
 	gap: 14px;
-	align-items: flex-start;
+	align-items: center;
 	padding: 12px 0;
 	text-decoration: none;
 }
 
 .hd-mini__image {
-	flex: 0 0 84px;
+	flex: 0 0 50%;
 	aspect-ratio: 1;
 	border-radius: 10px;
 	overflow: hidden;
