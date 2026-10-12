@@ -1800,10 +1800,10 @@ em {
    ========================================================== */
 .hd-article {
   /* Mêmes couleurs que le blogue — ajuste-les à la charte */
-  --hd-primaire: #1f4e5f;
-  --hd-accent: #8fb8b2;
-  --hd-texte: #3a3a3a;
-  --hd-texte-doux: #6f7477;
+  --hd-primaire: #7A4535;
+  --hd-accent: #592C22;
+  --hd-texte: #231F1D;
+  --hd-texte-doux: #0F0E0E;
   --hd-bordure: #e4e8e8;
   --hd-fond-doux: #f3f7f6;
   --hd-rayon: 14px;
