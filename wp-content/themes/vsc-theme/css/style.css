@@ -1865,8 +1865,10 @@ em {
 
 .hd-article__titre {
   margin: 0 0 16px;
-  font-size: clamp(30px, 4vw, 44px);
+  font-size: clamp(30px, 4vw, 55px);
   line-height: 1.15;
+  font-family: "Manrope Medium";
+  font-weight: 500;
   color: var(--hd-primaire);
   text-wrap: balance;
 }
@@ -1906,7 +1908,9 @@ em {
 .hd-article__contenu h2 {
   margin-top: 2em;
   margin-bottom: 0.5em;
-  font-size: clamp(24px, 2.6vw, 30px);
+  font-size: clamp(24px, 2.6vw, 45px);
+  font-family: "Manrope Light";
+  font-weight: 300;
   line-height: 1.25;
   color: var(--hd-primaire);
 }
