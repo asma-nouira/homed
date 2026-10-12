@@ -187,33 +187,13 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
 
-
-<?php
-/**
- * Shortcode : [hd_blogue]
- * Grille d'articles + pagination — Clinique dentaire Home Dental
- *
- * À coller dans functions.php du thème enfant, ou dans Code Snippets (PHP, « Exécuter partout »).
- *
- * Attributs :
- *   par_page   Nombre d'articles par page          (défaut : 9)
- *   categorie  Slug(s) de catégorie, séparés par , (défaut : toutes)
- *   colonnes   2, 3 ou 4                            (défaut : 3)
- *   extrait    Nombre de mots dans l'extrait        (défaut : 22)
- *
- * Exemples :
- *   [hd_blogue]
- *   [hd_blogue par_page="6" colonnes="2" categorie="orthodontie"]
- */
-
-// Active les images mises en avant si le thème ne le fait pas déjà
 add_action( 'after_setup_theme', function () {
 	add_theme_support( 'post-thumbnails' );
 }, 20 );
 
 // Image par défaut si l'article n'a aucune image (remplace l'URL par une image de la clinique)
 if ( ! defined( 'HD_BLOGUE_IMAGE_DEFAUT' ) ) {
-	define( 'HD_BLOGUE_IMAGE_DEFAUT', 'https://homed.viruscomm.dev/wp-content/uploads/2026/09/Notre-engagement-envers-vous.jpg' );
+	define( 'HD_BLOGUE_IMAGE_DEFAUT', '/wp-content/uploads/2026/09/Notre-engagement-envers-vous.jpg' );
 }
 
 /**
