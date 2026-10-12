@@ -26,7 +26,7 @@ while ( have_posts() ) : the_post();
 	}
 ?>
 
-<main id="content" class="hd-article" style="background-color:#DED7CD;">
+<main id="content" class="hd-article" style="background-color:rgba(222, 215, 205, 0.5);">
 	<div class="hd-article__mise-en-page">
 
 		<!-- Colonne principale -->
