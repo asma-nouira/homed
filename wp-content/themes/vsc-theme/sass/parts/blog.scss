@@ -242,12 +242,12 @@
 
 /* ---------- Mise en page 2 colonnes ---------- */
 .hd-article__mise-en-page {
-	max-width: 1200px;
+	max-width: 1400px;
 	margin: 0 auto;
 	display: grid;
-	grid-template-columns: minmax(0, 760px) 320px;
+	grid-template-columns: minmax(0, 960px) 420px;
 	justify-content: space-between;
-	gap: clamp(40px, 5vw, 72px);
+	gap: clamp(30px, 5vw, 50px);
 	align-items: start;
 }
 
