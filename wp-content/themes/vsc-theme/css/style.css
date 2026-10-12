@@ -1793,6 +1793,313 @@ em {
     padding: 20px 20px 24px;
   }
 }
+/* ==========================================================
+   Page article Home Dental (single.php)
+   À coller dans Apparence > Personnaliser > CSS additionnel,
+   sous le CSS du blogue (les cartes .hd-carte sont réutilisées)
+   ========================================================== */
+.hd-article {
+  /* Mêmes couleurs que le blogue — ajuste-les à la charte */
+  --hd-primaire: #1f4e5f;
+  --hd-accent: #8fb8b2;
+  --hd-texte: #3a3a3a;
+  --hd-texte-doux: #6f7477;
+  --hd-bordure: #e4e8e8;
+  --hd-fond-doux: #f3f7f6;
+  --hd-rayon: 14px;
+  --hd-largeur-texte: 720px;
+  color: var(--hd-texte);
+  font-family: inherit;
+  padding: clamp(40px, 6vw, 80px) 20px clamp(60px, 8vw, 100px);
+}
+
+/* ---------- En-tête ---------- */
+.hd-article__entete {
+  max-width: var(--hd-largeur-texte);
+  margin: 0 auto 36px;
+  text-align: center;
+}
+
+.hd-article__fil {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 24px;
+  font-size: 14px;
+  color: var(--hd-texte-doux);
+}
+
+.hd-article__fil a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.hd-article__fil a:hover {
+  color: var(--hd-primaire);
+  text-decoration: underline;
+}
+
+.hd-article__cat {
+  display: inline-block;
+  margin-bottom: 18px;
+  padding: 4px 14px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--hd-accent) 22%, transparent);
+  color: var(--hd-primaire);
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.hd-article__titre {
+  margin: 0 0 18px;
+  font-size: clamp(30px, 4.4vw, 48px);
+  line-height: 1.15;
+  color: var(--hd-primaire);
+  text-wrap: balance;
+}
+
+.hd-article__meta {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 6px 22px;
+  margin: 0;
+  font-size: 15px;
+  color: var(--hd-texte-doux);
+}
+
+/* ---------- Image principale ---------- */
+.hd-article__image {
+  max-width: 1080px;
+  margin: 0 auto clamp(40px, 5vw, 64px);
+}
+
+.hd-article__image img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 560px;
+  object-fit: cover;
+  border-radius: var(--hd-rayon);
+}
+
+/* ---------- Contenu ---------- */
+.hd-article__contenu {
+  max-width: var(--hd-largeur-texte);
+  margin: 0 auto;
+  font-size: 18px;
+  line-height: 1.75;
+}
+
+.hd-article__contenu > * + * {
+  margin-top: 1.1em;
+}
+
+.hd-article__contenu h2 {
+  margin-top: 2em;
+  margin-bottom: 0.5em;
+  font-size: clamp(24px, 2.6vw, 30px);
+  line-height: 1.25;
+  color: var(--hd-primaire);
+}
+
+.hd-article__contenu h3 {
+  margin-top: 1.8em;
+  margin-bottom: 0.4em;
+  font-size: clamp(20px, 2vw, 23px);
+  line-height: 1.3;
+  color: var(--hd-primaire);
+}
+
+.hd-article__contenu p {
+  margin-bottom: 0;
+}
+
+.hd-article__contenu a {
+  color: var(--hd-primaire);
+  text-decoration: underline;
+  text-decoration-color: var(--hd-accent);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
+.hd-article__contenu a:hover {
+  text-decoration-color: var(--hd-primaire);
+}
+
+.hd-article__contenu ul,
+.hd-article__contenu ol {
+  padding-left: 1.3em;
+}
+
+.hd-article__contenu li + li {
+  margin-top: 0.45em;
+}
+
+.hd-article__contenu li::marker {
+  color: var(--hd-accent);
+}
+
+.hd-article__contenu img {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--hd-rayon);
+}
+
+.hd-article__contenu blockquote {
+  margin: 2em 0;
+  padding: 4px 0 4px 24px;
+  border-left: 3px solid var(--hd-accent);
+  font-size: 1.1em;
+  font-style: italic;
+  color: var(--hd-primaire);
+}
+
+/* ---------- Encadré rendez-vous ---------- */
+.hd-article__rdv {
+  max-width: var(--hd-largeur-texte);
+  margin: clamp(48px, 6vw, 72px) auto 0;
+  padding: 32px 36px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  background: var(--hd-fond-doux);
+  border-radius: var(--hd-rayon);
+}
+
+.hd-article__rdv h2 {
+  margin: 0 0 6px;
+  font-size: 22px;
+  line-height: 1.3;
+  color: var(--hd-primaire);
+}
+
+.hd-article__rdv p {
+  margin: 0;
+  font-size: 16px;
+}
+
+.hd-article__rdv-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.hd-bouton {
+  display: inline-flex;
+  align-items: center;
+  min-height: 48px;
+  padding: 0 24px;
+  border: 2px solid var(--hd-primaire);
+  border-radius: 999px;
+  background: var(--hd-primaire);
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.hd-bouton:hover {
+  background: transparent;
+  color: var(--hd-primaire);
+}
+
+.hd-bouton--contour {
+  background: transparent;
+  color: var(--hd-primaire);
+}
+
+.hd-bouton--contour:hover {
+  background: var(--hd-primaire);
+  color: #fff;
+}
+
+/* ---------- Précédent / suivant ---------- */
+.hd-article__nav {
+  max-width: var(--hd-largeur-texte);
+  margin: 48px auto 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  padding-top: 32px;
+  border-top: 1px solid var(--hd-bordure);
+}
+
+.hd-article__nav-lien {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 18px 20px;
+  border: 1px solid var(--hd-bordure);
+  border-radius: var(--hd-rayon);
+  text-decoration: none;
+  transition: border-color 0.2s ease;
+}
+
+.hd-article__nav-lien:hover {
+  border-color: var(--hd-accent);
+}
+
+.hd-article__nav-lien--suiv {
+  grid-column: 2;
+  text-align: right;
+}
+
+.hd-article__nav-label {
+  font-size: 14px;
+  color: var(--hd-texte-doux);
+}
+
+.hd-article__nav-titre {
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--hd-primaire);
+}
+
+/* ---------- Articles connexes ---------- */
+.hd-article__connexes {
+  margin-top: clamp(64px, 8vw, 100px);
+  padding: 0;
+}
+
+.hd-article__connexes-titre {
+  margin: 0 0 28px;
+  font-size: clamp(24px, 2.6vw, 32px);
+  color: var(--hd-primaire);
+  text-align: center;
+}
+
+/* ---------- Accessibilité ---------- */
+.hd-article a:focus-visible {
+  outline: 2px solid var(--hd-primaire);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hd-article * {
+    transition: none !important;
+  }
+}
+/* ---------- Mobile ---------- */
+@media (max-width: 640px) {
+  .hd-article__contenu {
+    font-size: 17px;
+  }
+  .hd-article__rdv {
+    padding: 26px 22px;
+  }
+  .hd-article__nav {
+    grid-template-columns: 1fr;
+  }
+  .hd-article__nav-lien--suiv {
+    grid-column: auto;
+    text-align: left;
+  }
+}
 /**************/
 .wpcf7-not-valid-tip {
   display: none !important;
