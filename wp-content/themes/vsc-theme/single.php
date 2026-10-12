@@ -26,7 +26,7 @@ while ( have_posts() ) : the_post();
 	}
 ?>
 
-<main id="content" class="hd-article" style="background-color:rgba(222, 215, 205, 0.5);">
+<main id="content" class="hd-article">
 	<div class="hd-article__mise-en-page">
 
 		<!-- Colonne principale -->
@@ -120,17 +120,20 @@ while ( have_posts() ) : the_post();
 					<h2 id="hd-a-lire-aussi" class="hd-article__lateral-titre">À lire aussi</h2>
 
 					<ul class="hd-mini-liste">
-						<?php while ( $connexes->have_posts() ) : $connexes->the_post();
-							$img = function_exists( 'hd_blogue_image_url' )
-								? hd_blogue_image_url( get_the_ID() )
-								: get_the_post_thumbnail_url( get_the_ID(), 'medium' );
-						?>
+						<?php while ( $connexes->have_posts() ) : $connexes->the_post(); ?>
 							<li class="hd-mini">
 								<a class="hd-mini__lien" href="<?php the_permalink(); ?>">
 									<span class="hd-mini__image">
-										<?php if ( $img ) : ?>
-											<img src="<?php echo esc_url( $img ); ?>" alt="" loading="lazy">
-										<?php endif; ?>
+										<?php
+										if ( has_post_thumbnail() ) {
+											// srcset : le navigateur choisit lui-même la version assez grande pour l'écran
+											echo wp_get_attachment_image( get_post_thumbnail_id(), 'hd-mini', false, array(
+												'alt'     => '',
+												'loading' => 'lazy',
+												'sizes'   => '(max-width: 640px) 140px, 84px',
+											) );
+										}
+										?>
 									</span>
 									<span class="hd-mini__texte">
 										<span class="hd-mini__titre"><?php the_title(); ?></span>
