@@ -191,15 +191,7 @@ add_action( 'after_setup_theme', function () {
 	add_theme_support( 'post-thumbnails' );
 }, 20 );
 
-// Image par défaut si l'article n'a aucune image (remplace l'URL par une image de la clinique)
-if ( ! defined( 'HD_BLOGUE_IMAGE_DEFAUT' ) ) {
-	define( 'HD_BLOGUE_IMAGE_DEFAUT', '/wp-content/uploads/2026/09/Notre-engagement-envers-vous.jpg' );
-}
 
-/**
- * Retourne l'URL de la photo de l'article :
- * 1) image mise en avant  2) première image du contenu  3) image par défaut
- */
 if ( ! function_exists( 'hd_blogue_image_url' ) ) {
 	function hd_blogue_image_url( $post_id ) {
 
@@ -215,7 +207,7 @@ if ( ! function_exists( 'hd_blogue_image_url' ) ) {
 			return $m[1];
 		}
 
-		return HD_BLOGUE_IMAGE_DEFAUT;
+		return '';
 	}
 }
 
