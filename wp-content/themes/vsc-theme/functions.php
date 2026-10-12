@@ -193,7 +193,7 @@ if ( ! function_exists( 'hd_blogue_shortcode' ) ) {
 	function hd_blogue_shortcode( $atts ) {
 
 		$atts = shortcode_atts( array(
-			'par_page'  => 9,
+			'par_page'  => 6,
 			'categorie' => '',
 			'colonnes'  => 3,
 			'extrait'   => 22,
