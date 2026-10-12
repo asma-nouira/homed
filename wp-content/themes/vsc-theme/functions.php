@@ -187,16 +187,21 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
 
+/**
+ * Tailles d'images du blogue (recadrées, prévues pour les écrans Retina).
+ * post-thumbnails est déjà activé dans vsc_theme_setup().
+ */
 add_action( 'after_setup_theme', function () {
-	add_theme_support( 'post-thumbnails' );
+	add_image_size( 'hd-carte', 900, 600, true ); // cartes de la page Blogue (3:2)
+	add_image_size( 'hd-mini', 420, 420, true );  // vignettes « À lire aussi »
 }, 20 );
 
 
 if ( ! function_exists( 'hd_blogue_image_url' ) ) {
-	function hd_blogue_image_url( $post_id ) {
+	function hd_blogue_image_url( $post_id, $taille = 'hd-carte' ) {
 
 		if ( has_post_thumbnail( $post_id ) ) {
-			$url = get_the_post_thumbnail_url( $post_id, 'medium_large' );
+			$url = get_the_post_thumbnail_url( $post_id, $taille );
 			if ( $url ) {
 				return $url;
 			}
