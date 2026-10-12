@@ -2170,6 +2170,21 @@ body .wpcf7-mail-sent-ok {
   color: #1ea524;
 }
 
+.wpml-ls-legacy-list-horizontal .wpml-ls-item {
+  color: #fff;
+  background: #592C22;
+  border-radius: 999px;
+  height: 3.2291666667vw;
+  min-height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 0.5208333333vw;
+}
+.wpml-ls-legacy-list-horizontal .wpml-ls-item a {
+  color: #fff;
+}
+
 /***************/
 html {
   scroll-behavior: smooth;

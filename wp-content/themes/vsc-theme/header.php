@@ -67,7 +67,7 @@ if ( ! $vsc_rdv_url ) {
 				<?php if ( $vsc_rdv_label ) : ?>
 					<a class="header-btn header-btn--dark" href="<?php echo esc_url( $vsc_rdv_url ); ?>"<?php echo ( false === strpos( $vsc_rdv_url, home_url() ) ) ? '  rel="noopener"' : ''; ?>><?php echo esc_html( $vsc_rdv_label ); ?></a>
 				<?php endif; ?>
-				<?php echo do_shortcode('[wpml_language_selector_widget]'); ?>
+			<?php echo do_shortcode('[wpml_language_selector_widget]'); ?>
 			</div>
 		</nav><!-- #site-navigation -->
 	</header><!-- #masthead -->

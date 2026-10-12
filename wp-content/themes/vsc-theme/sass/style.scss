@@ -73,6 +73,22 @@ background: #e8ffe2;
 border: 1px solid #6fdf51;
 color: #1ea524;
 }
+
+.wpml-ls-legacy-list-horizontal .wpml-ls-item{
+  color: #fff;
+    background: #592C22;
+    border-radius: 999px;
+    height: calc(62vw / 19.2);
+    min-height: 42px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 calc(10vw / 19.2);
+    a{ 
+      color: #fff;
+
+    }
+}
 /***************/
 html{
 	scroll-behavior: smooth;
