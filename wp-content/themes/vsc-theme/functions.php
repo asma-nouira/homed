@@ -305,6 +305,6 @@ if ( ! function_exists( 'hd_blogue_shortcode' ) ) {
 	}
 
 	add_shortcode( 'hd_blogue', 'hd_blogue_shortcode' );
-
+}
 
 include_once 'integrated_vc.php';
