@@ -187,4 +187,124 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
 
+
+if ( ! function_exists( 'hd_blogue_shortcode' ) ) {
+
+	function hd_blogue_shortcode( $atts ) {
+
+		$atts = shortcode_atts( array(
+			'par_page'  => 9,
+			'categorie' => '',
+			'colonnes'  => 3,
+			'extrait'   => 22,
+		), $atts, 'hd_blogue' );
+
+		// Page courante (fonctionne sur une page statique comme /blogue/page/2/)
+		$paged = max( 1, (int) get_query_var( 'paged' ), (int) get_query_var( 'page' ) );
+
+		$args = array(
+			'post_type'           => 'post',
+			'post_status'         => 'publish',
+			'posts_per_page'      => absint( $atts['par_page'] ),
+			'paged'               => $paged,
+			'ignore_sticky_posts' => true,
+		);
+
+		if ( ! empty( $atts['categorie'] ) ) {
+			$args['category_name'] = sanitize_text_field( $atts['categorie'] );
+		}
+
+		$requete  = new WP_Query( $args );
+		$colonnes = min( 4, max( 2, absint( $atts['colonnes'] ) ) );
+
+		ob_start();
+
+		if ( $requete->have_posts() ) : ?>
+
+			<div class="hd-blogue" style="--hd-colonnes: <?php echo esc_attr( $colonnes ); ?>;">
+				<div class="hd-blogue__grille">
+
+					<?php while ( $requete->have_posts() ) : $requete->the_post();
+						$categories = get_the_category();
+						$cat        = ! empty( $categories ) ? $categories[0] : null;
+					?>
+
+						<article class="hd-carte">
+							<a class="hd-carte__image" href="<?php the_permalink(); ?>" tabindex="-1" aria-hidden="true">
+								<?php if ( has_post_thumbnail() ) :
+									the_post_thumbnail( 'medium_large', array( 'loading' => 'lazy', 'alt' => '' ) );
+								else : ?>
+									<span class="hd-carte__image-vide"></span>
+								<?php endif; ?>
+							</a>
+
+							<div class="hd-carte__contenu">
+								<p class="hd-carte__meta">
+									<?php if ( $cat ) : ?>
+										<a class="hd-carte__cat" href="<?php echo esc_url( get_category_link( $cat->term_id ) ); ?>">
+											<?php echo esc_html( $cat->name ); ?>
+										</a>
+									<?php endif; ?>
+									<time datetime="<?php echo esc_attr( get_the_date( 'c' ) ); ?>">
+										<?php echo esc_html( get_the_date( 'j F Y' ) ); ?>
+									</time>
+								</p>
+
+								<h3 class="hd-carte__titre">
+									<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+								</h3>
+
+								<p class="hd-carte__extrait">
+									<?php echo esc_html( wp_trim_words( get_the_excerpt(), absint( $atts['extrait'] ), '…' ) ); ?>
+								</p>
+
+								<a class="hd-carte__lien" href="<?php the_permalink(); ?>">
+									Lire l’article<span class="screen-reader-text"> : <?php the_title(); ?></span>
+								</a>
+							</div>
+						</article>
+
+					<?php endwhile; ?>
+
+				</div>
+
+				<?php
+				$liens = paginate_links( array(
+					'base'      => str_replace( 999999999, '%#%', esc_url( get_pagenum_link( 999999999 ) ) ),
+					'format'    => '?paged=%#%',
+					'current'   => $paged,
+					'total'     => $requete->max_num_pages,
+					'mid_size'  => 1,
+					'end_size'  => 1,
+					'prev_text' => '<span aria-hidden="true">‹</span><span class="hd-pagination__txt"> Précédent</span>',
+					'next_text' => '<span class="hd-pagination__txt">Suivant </span><span aria-hidden="true">›</span>',
+					'type'      => 'array',
+				) );
+
+				if ( ! empty( $liens ) ) : ?>
+					<nav class="hd-pagination" aria-label="Pagination du blogue">
+						<ul>
+							<?php foreach ( $liens as $lien ) : ?>
+								<li><?php echo $lien; // déjà échappé par WordPress ?></li>
+							<?php endforeach; ?>
+						</ul>
+					</nav>
+				<?php endif; ?>
+
+			</div>
+
+		<?php else : ?>
+
+			<p class="hd-blogue__vide">Aucun article publié pour le moment. Revenez bientôt.</p>
+
+		<?php endif;
+
+		wp_reset_postdata();
+
+		return ob_get_clean();
+	}
+
+	add_shortcode( 'hd_blogue', 'hd_blogue_shortcode' );
+
+
 include_once 'integrated_vc.php';

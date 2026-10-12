@@ -1577,6 +1577,222 @@ em {
   display: none;
 }
 
+.hd-blogue {
+  --hd-primaire: #1f4e5f; /* couleur principale (titres, boutons) */
+  --hd-accent: #8fb8b2; /* couleur secondaire (catégorie, survol) */
+  --hd-texte: #3a3a3a; /* texte courant */
+  --hd-texte-doux: #6f7477; /* date, méta */
+  --hd-fond-carte: #ffffff;
+  --hd-bordure: #e4e8e8;
+  --hd-rayon: 14px;
+  --hd-espace: clamp(20px, 3vw, 36px);
+  font-family: inherit; /* reprend la police du thème */
+  color: var(--hd-texte);
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* 2) Grille */
+.hd-blogue__grille {
+  display: grid;
+  grid-template-columns: repeat(var(--hd-colonnes, 3), minmax(0, 1fr));
+  gap: var(--hd-espace);
+}
+
+/* 3) Carte */
+.hd-carte {
+  display: flex;
+  flex-direction: column;
+  background: var(--hd-fond-carte);
+  border: 1px solid var(--hd-bordure);
+  border-radius: var(--hd-rayon);
+  overflow: hidden;
+  transition: border-color 0.25s ease;
+}
+
+.hd-carte:hover,
+.hd-carte:focus-within {
+  border-color: var(--hd-accent);
+}
+
+.hd-carte__image {
+  display: block;
+  aspect-ratio: 3/2;
+  overflow: hidden;
+  background: #eef2f2;
+}
+
+.hd-carte__image img,
+.hd-carte__image-vide {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.hd-carte:hover .hd-carte__image img {
+  transform: scale(1.04);
+}
+
+.hd-carte__contenu {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 24px 26px 28px;
+}
+
+.hd-carte__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 14px;
+  margin: 0 0 12px;
+  font-size: 14px;
+  color: var(--hd-texte-doux);
+}
+
+.hd-carte__cat {
+  color: var(--hd-primaire);
+  background: color-mix(in srgb, var(--hd-accent) 22%, transparent);
+  padding: 3px 10px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.hd-carte__titre {
+  margin: 0 0 12px;
+  font-size: clamp(19px, 1.6vw, 22px);
+  line-height: 1.3;
+  font-weight: 600;
+}
+
+.hd-carte__titre a {
+  color: var(--hd-primaire);
+  text-decoration: none;
+}
+
+.hd-carte__titre a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.hd-carte__extrait {
+  margin: 0 0 20px;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.hd-carte__lien {
+  margin-top: auto;
+  align-self: flex-start;
+  color: var(--hd-primaire);
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 2px solid var(--hd-accent);
+  padding-bottom: 2px;
+  transition: border-color 0.2s ease;
+}
+
+.hd-carte__lien:hover {
+  border-color: var(--hd-primaire);
+}
+
+/* 4) Pagination */
+.hd-pagination {
+  margin-top: calc(var(--hd-espace) * 1.5);
+}
+
+.hd-pagination ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.hd-pagination li {
+  margin: 0;
+}
+
+.hd-pagination .page-numbers {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  height: 44px;
+  padding: 0 14px;
+  border: 1px solid var(--hd-bordure);
+  border-radius: 999px;
+  color: var(--hd-primaire);
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.hd-pagination a.page-numbers:hover {
+  border-color: var(--hd-primaire);
+}
+
+.hd-pagination .page-numbers.current {
+  background: var(--hd-primaire);
+  border-color: var(--hd-primaire);
+  color: #fff;
+}
+
+.hd-pagination .page-numbers.dots {
+  border: 0;
+  min-width: auto;
+  padding: 0 4px;
+}
+
+/* 5) Accessibilité */
+.hd-blogue a:focus-visible {
+  outline: 2px solid var(--hd-primaire);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.hd-blogue .screen-reader-text {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.hd-blogue__vide {
+  text-align: center;
+  padding: 40px 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hd-blogue * {
+    transition: none !important;
+  }
+}
+/* 6) Responsive */
+@media (max-width: 1024px) {
+  .hd-blogue__grille {
+    grid-template-columns: repeat(min(var(--hd-colonnes, 3), 2), minmax(0, 1fr));
+  }
+}
+@media (max-width: 640px) {
+  .hd-blogue__grille {
+    grid-template-columns: 1fr;
+  }
+  .hd-pagination__txt {
+    display: none;
+  }
+  .hd-carte__contenu {
+    padding: 20px 20px 24px;
+  }
+}
 /**************/
 .wpcf7-not-valid-tip {
   display: none !important;
