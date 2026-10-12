@@ -1578,9 +1578,9 @@ em {
 }
 
 .hd-blogue {
-  --hd-primaire: #1f4e5f; /* couleur principale (titres, boutons) */
-  --hd-accent: #8fb8b2; /* couleur secondaire (catégorie, survol) */
-  --hd-texte: #3a3a3a; /* texte courant */
+  --hd-primaire: #592C22; /* couleur principale (titres, boutons) */
+  --hd-accent: #DED7CD; /* couleur secondaire (catégorie, survol) */
+  --hd-texte: #0F0E0E; /* texte courant */
   --hd-texte-doux: #6f7477; /* date, méta */
   --hd-fond-carte: #ffffff;
   --hd-bordure: #e4e8e8;
