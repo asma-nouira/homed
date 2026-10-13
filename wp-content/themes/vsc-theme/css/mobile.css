@@ -460,7 +460,7 @@ em {
     padding-left: 20px !important;
     padding-right: 20px !important;
   }
-  h1 em {
+  body:not(.home) h1 em {
     white-space: nowrap !important;
   }
   .pb-15 {
