@@ -281,6 +281,9 @@ $m-gutter  : 20px;   // marge gauche/droite du contenu sur mobile
     padding-right: $m-gutter !important;
   }
 
+  h1 em{
+    white-space: nowrap!important;
+  }
   // Bas
   .pb-15  { padding-bottom: 15px !important; }
   .pb-20  { padding-bottom: 15px !important; }
