@@ -403,6 +403,9 @@ em {
   li {
     font-size: inherit;
   }
+  .pr-20-mob {
+    padding-right: 20px;
+  }
   /* =======================================================
      2. CLASSES DE TAILLE .fs**
      (le mixin fontSize ne gère en mobile que 21, 24, 30, 35 et 45)
