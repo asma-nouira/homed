@@ -4021,6 +4021,11 @@ horaire {
   line-height: 1.15;
   color: #DED7CD;
 }
+@media (max-width: 767px) {
+  .svc-item__title {
+    font-size: 20px;
+  }
+}
 .svc-item__title::after {
   content: "";
   position: absolute;

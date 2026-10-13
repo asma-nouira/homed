@@ -1489,6 +1489,9 @@ $fleche-gap  : 28;   // espace entre le rond et le texte
   font-size: calc(45vw / 19.2);
   line-height: 1.15;
   color: $beige;
+  @media(max-width:767px){
+    font-size: 20px;
+  }
  
   // soulignement qui se dessine au survol
   &::after {
