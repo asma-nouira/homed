@@ -419,7 +419,7 @@ html.nav-locked {
    STRUCTURE
    ========================================================= */
 .site-header {
-  position: relative;
+  position: sticky;
   z-index: 100;
   display: flex;
   align-items: center;
@@ -430,6 +430,7 @@ html.nav-locked {
   min-height: 70px;
   padding: 0 calc(88vw / 19.2);
   background: #fff;
+  top: var(--wp-admin--admin-bar--height, 0px);
 }
 @media (max-width: 1199px) {
   .site-header {
