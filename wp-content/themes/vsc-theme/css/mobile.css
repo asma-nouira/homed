@@ -199,6 +199,12 @@ em {
   }
 }
 
+@media (max-width: 767px) {
+  .no-mobile {
+    display: none;
+  }
+}
+
 /* =========================================================
    MOBILE — Homedental (≤ 767px)
    Compilé par gulp → css/mobile.css
