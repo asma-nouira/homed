@@ -561,7 +561,7 @@ em {
   .no-pr.pr-85, .no-pr.pr-100, .no-pr.pr-76, .no-pr.pr-90, .no-pr.pr-110, .no-pr.pr-40, .no-pr.pr-120 {
     padding-right: 0 !important;
   }
-  .max-w-mob .vce-single-image-figure-inner {
+  .max-w-mob {
     width: 200px !important;
     height: auto !important;
   }
