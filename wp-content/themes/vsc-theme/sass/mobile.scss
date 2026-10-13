@@ -355,7 +355,7 @@ $m-gutter  : 20px;   // marge gauche/droite du contenu sur mobile
     }
 }
 .no-plr{
-  &.plr-50{
+  &.plr-50, &.plr-176{
     padding-left: 0!important;
     padding-right: 0!important;
   }
