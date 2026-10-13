@@ -3846,6 +3846,12 @@ horaire {
   height: 3.8020833333vw;
   border-radius: 50%;
 }
+@media (max-width: 767px) {
+  .svc-card__arrow--svg {
+    width: 30px;
+    height: 30px;
+  }
+}
 .svc-card__arrow--svg::after {
   display: none;
 }
