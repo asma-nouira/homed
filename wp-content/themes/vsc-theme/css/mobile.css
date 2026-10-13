@@ -190,6 +190,15 @@ em {
   letter-spacing: -0.5px;
 }
 
+.no-desktop {
+  display: none;
+}
+@media (max-width: 767px) {
+  .no-desktop {
+    display: block;
+  }
+}
+
 /* =========================================================
    MOBILE — Homedental (≤ 767px)
    Compilé par gulp → css/mobile.css

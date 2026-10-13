@@ -172,3 +172,9 @@ em{
 .ls{
   letter-spacing: -0.5px;
 }
+.no-desktop{
+  display: none;
+  @media(max-width:767px){
+    display: block;
+  }
+}
