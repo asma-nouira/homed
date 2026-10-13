@@ -352,8 +352,12 @@ $m-gutter  : 20px;   // marge gauche/droite du contenu sur mobile
     }
 }
 .max-w-mob{
+  .vce-single-image-figure-inner{
+width:200px!important;
+    height: auto!important;
+  }
   img{
-    width:200px!important;
+    width:100%!important;
     height: auto!important;
   }
 }
