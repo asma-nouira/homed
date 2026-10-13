@@ -164,13 +164,13 @@ $m-gutter  : 20px;   // marge gauche/droite du contenu sur mobile
     /* ---------- Classes d'espacement (padding.scss) ---------- */
 
   // Gauche / droite : marge tablette standard (40px)
-  .pl-278, .pl-280, .pl-300 {
+  .pl-278, .pl-280, .pl-300, .pl-416 {
     padding-left: 40px !important;
   }
   .pr-76, .pr-85, .pr-100 {
     padding-right: 30px !important;
   }
-  .pr-278, .pr-300 {
+  .pr-278, .pr-300, .pr-400 {
     padding-right: 40px !important;
   }
   .plr-176, .plr-400, .plr-525, .plr-485, .plr-512{
