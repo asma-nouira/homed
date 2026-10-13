@@ -354,6 +354,8 @@ $m-gutter  : 20px;   // marge gauche/droite du contenu sur mobile
 .max-w-mob{
   width:200px!important;
     height: auto!important;
+   margin-left:auto;
+   margin-right:auto;
   img{
     width:100%!important;
     height: auto!important;
