@@ -1563,3 +1563,207 @@ $fleche-gap  : 28;   // espace entre le rond et le texte
   outline-offset: 8px;
   border-radius: 8px;
 }
+
+/* =========================================================
+   PAGE 404
+   Valeurs en px @1920 → vw via widthCalc() (px / 19.2)
+   ========================================================= */
+
+$p404-bg     : #ded7cd;
+$p404-brown  : #592c22;
+$p404-brown2 : #7a4535;
+$p404-text   : #4a4542;
+
+@function p404-fluid($px, $min) {
+  @return unquote("max(#{$min}, #{widthCalc($px)})");
+}
+
+.page-404 {
+  position: relative;
+  font-family: 'Manrope Regular', 'Manrope', Arial, sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - #{widthCalc(125)});
+  padding: widthCalc(140) 20px widthCalc(160);
+  overflow: hidden;
+  text-align: center;
+  background: $p404-bg;
+
+  @media (max-width: $table-width) {
+    min-height: calc(100vh - 70px);
+    padding: 70px 20px 80px;
+  }
+}
+
+.page-404__inner {
+  position: relative;
+  z-index: 1;
+  max-width: widthCalc(760);
+  min-width: 0;
+
+  @media (max-width: 1199px) {
+    max-width: 620px;
+  }
+}
+
+// Grand « 404 » en filigrane derrière le titre
+.page-404__code {
+  margin: 0 0 widthCalc(-10);
+  font-family: 'Manrope Light', 'Manrope', Arial, sans-serif;
+  font-weight: 300;
+  font-size: p404-fluid(260, 120px);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: rgba(89, 44, 34, .12);
+  user-select: none;
+
+  @media (max-width: $table-width) {
+    margin-bottom: -20px;
+  }
+}
+
+.page-404__title {
+  margin: 0 0 widthCalc(24);
+  font-family: 'Manrope Regular', 'Manrope', Arial, sans-serif;
+  font-weight: 400;
+  font-size: p404-fluid(52, 30px);
+  line-height: 1.2;
+  color: $p404-brown2;
+  text-wrap: balance;
+}
+
+.page-404__text {
+  margin: 0 auto widthCalc(44);
+  max-width: widthCalc(600);
+  font-family: 'Manrope Regular', 'Manrope', Arial, sans-serif;
+  font-size: p404-fluid(18, 15px);
+  line-height: 1.6;
+  color: $p404-text;
+
+  @media (max-width: 1199px) {
+    max-width: none;
+  }
+  @media (max-width: $table-width) {
+    margin-bottom: 30px;
+  }
+}
+
+/* ---------- Boutons ---------- */
+.page-404__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: widthCalc(14);
+  margin-bottom: widthCalc(44);
+
+  @media (max-width: $table-width) {
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 30px;
+  }
+}
+
+.page-404__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: widthCalc(260);
+  height: widthCalc(60);
+  min-height: 48px;
+  padding: 0 widthCalc(36);
+  font-family: 'Manrope Medium', 'Manrope', Arial, sans-serif;
+  font-size: p404-fluid(17, 15px);
+  text-decoration: none;
+  border-radius: 999px;
+  transition: background-color .25s ease, color .25s ease, transform .25s ease;
+
+  &:hover,
+  &:focus-visible {
+    transform: translateY(-2px);
+  }
+
+  &--dark {
+    color: #fff;
+    background: $p404-brown;
+
+    &:hover,
+    &:focus-visible { color: #fff; background: $p404-brown2; }
+  }
+
+  &--light {
+    color: $p404-brown;
+    background: #fff;
+
+    &:hover,
+    &:focus-visible { color: #fff; background: $p404-brown; }
+  }
+
+  @media (max-width: $table-width) {
+    width: 100%;
+  }
+}
+
+/* ---------- Liens utiles ---------- */
+.page-404__links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px widthCalc(30);
+  margin-bottom: widthCalc(36);
+  padding-top: widthCalc(30);
+  border-top: 1px solid rgba(89, 44, 34, .15);
+
+  a {
+    position: relative;
+    font-family: 'Manrope Regular', 'Manrope', Arial, sans-serif;
+    font-size: p404-fluid(16, 15px);
+    color: $p404-text;
+    text-decoration: none;
+    transition: color .2s ease;
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -3px;
+      height: 1px;
+      background: currentColor;
+      transform: scaleX(0);
+      transform-origin: left center;
+      transition: transform .35s ease;
+    }
+
+    &:hover,
+    &:focus-visible {
+      color: $p404-brown;
+
+      &::after { transform: scaleX(1); }
+    }
+  }
+
+  @media (max-width: $table-width) {
+    gap: 10px 22px;
+    margin-bottom: 26px;
+    padding-top: 24px;
+  }
+}
+
+.page-404__help {
+  margin: 0;
+  font-family: 'Manrope Regular', 'Manrope', Arial, sans-serif;
+  font-size: p404-fluid(16, 14px);
+  color: $p404-text;
+
+  a {
+    font-family: 'Manrope Bold', 'Manrope', Arial, sans-serif;
+    font-weight: 700;
+    color: $p404-brown;
+    white-space: nowrap;
+    text-decoration: none;
+
+    &:hover,
+    &:focus-visible { text-decoration: underline; }
+  }
+}
