@@ -348,6 +348,9 @@ em {
   .pb-25 {
     padding-bottom: 14px !important;
   }
+  .pb-45 {
+    padding-bottom: 25px !important;
+  }
   .pb-50 {
     padding-bottom: max(24px, 2.6041666667vw) !important;
   }
@@ -363,8 +366,14 @@ em {
   .pb-100 {
     padding-bottom: max(44px, 5.2083333333vw) !important;
   }
+  .pb-120 {
+    padding-bottom: max(44px, 6.25vw) !important;
+  }
   .pt-100 {
     padding-top: max(44px, 5.2083333333vw) !important;
+  }
+  .pt-120 {
+    padding-top: max(44px, 6.25vw) !important;
   }
 }
 @media (max-width: 767px) {
