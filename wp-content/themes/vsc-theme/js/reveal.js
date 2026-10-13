@@ -7,21 +7,26 @@
  *   reveal-right  glisse depuis la droite
  *   reveal-image  rideau du bas vers le haut + léger zoom arrière
  *   reveal-line   séparateur qui se dessine de gauche à droite
- *   reveal-group  les éléments animés à l'intérieur apparaissent un par un
+ *   reveal-group  (facultatif) les éléments qui apparaissent ENSEMBLE partent l'un après l'autre
  *   count-up      le chiffre compte de 0 à sa valeur (ex. « 5K », « 13 », « 30+ »)
  *   reveal-words  le texte « s'allume » mot par mot pendant le défilement (citations)
  *   parallax      l'élément se déplace plus lentement que la page (data-speed="0.15")
  *   delay-1 … delay-6  retard manuel (0,15 s par cran)
+ *
+ * Cascade : le retard est calculé au moment où les éléments apparaissent,
+ * seulement entre ceux qui arrivent à l'écran en même temps, et plafonné.
+ * → même avec 10 éléments « reveal » dans un bloc, le dernier n'attend jamais longtemps.
  */
 ( function () {
 	'use strict';
 
 	window.vscReveal = true;
 
-	var html   = document.documentElement;
-	var SEL    = '.reveal, .reveal-left, .reveal-right, .reveal-image, .reveal-line';
-	var STEP   = 150; // ms entre deux éléments d'un reveal-group
-	var reduce = window.matchMedia && window.matchMedia( '(prefers-reduced-motion: reduce)' ).matches;
+	var html      = document.documentElement;
+	var SEL       = '.reveal, .reveal-left, .reveal-right, .reveal-image, .reveal-line';
+	var STEP      = 110; // ms entre deux éléments qui apparaissent ensemble
+	var MAX_DELAY = 440; // ms : retard maximum, peu importe le nombre d'éléments
+	var reduce    = window.matchMedia && window.matchMedia( '(prefers-reduced-motion: reduce)' ).matches;
 
 	function showAll() {
 		Array.prototype.forEach.call( document.querySelectorAll( SEL + ', .count-up' ), function ( el ) {
@@ -30,9 +35,6 @@
 		html.classList.remove( 'vsc-anim' );
 	}
 
-	// Pas d'animation : mouvement réduit, vieux navigateur, ou éditeur Visual Composer
-	// (l'éditeur est détecté par l'adresse de la page : Visual Composer peut mettre ses classes
-	//  sur <body> aussi sur le site public, ce qui désactivait toutes les animations)
 	// L'éditeur Visual Composer affiche la page dans une iframe : on ne touche à rien,
 	// sinon VC enregistre les classes « is-visible » et les retards dans le HTML de la page.
 	var inEditor = /vcv-(editable|action|source-id)/.test( window.location.search ) ||
@@ -45,10 +47,9 @@
 	}
 
 	/* ---------- Nettoyage : état enregistré par erreur dans le HTML ---------- */
-	// (is-visible et --reveal-delay ajoutés quand le script a tourné dans l'éditeur)
 	Array.prototype.forEach.call( document.querySelectorAll( SEL + ', .count-up' ), function ( el ) {
 		el.classList.remove( 'is-visible' );
-		if ( el.closest( '.reveal-group' ) ) {
+		if ( ! /(^|\s)delay-\d/.test( el.className ) ) {
 			el.style.removeProperty( '--reveal-delay' );
 		}
 	} );
@@ -59,8 +60,6 @@
 	}
 
 	/* ---------- Ce qui est déjà à l'écran reste visible ---------- */
-	// Le haut de la page n'est jamais caché puis ré-affiché : seuls les éléments
-	// plus bas dans la page attendent leur tour.
 	var vh = window.innerHeight;
 	Array.prototype.forEach.call( document.querySelectorAll( SEL ), function ( el ) {
 		var r = el.getBoundingClientRect();
@@ -69,22 +68,10 @@
 		}
 	} );
 
-	// C'est le script (et non plus le <head>) qui active l'état « caché » :
-	// si le script ne tourne pas — éditeur, erreur JS — tout reste visible.
+	// C'est le script qui active l'état « caché » : s'il ne tourne pas, tout reste visible.
 	html.classList.add( 'vsc-anim' );
 
-	/* ---------- Retards en cascade dans les groupes ---------- */
-	Array.prototype.forEach.call( document.querySelectorAll( '.reveal-group' ), function ( group ) {
-		Array.prototype.forEach.call( group.querySelectorAll( SEL ), function ( el, i ) {
-			// on respecte un retard déjà choisi (delay-1 … delay-6 ou style en ligne)
-			if ( ! el.style.getPropertyValue( '--reveal-delay' ) && ! /(^|\s)delay-\d/.test( el.className ) ) {
-				el.style.setProperty( '--reveal-delay', ( i * STEP ) + 'ms' );
-			}
-		} );
-	} );
-
 	/* ---------- Compteur ---------- */
-	// Anime seulement le 1er texte qui contient un chiffre : le reste du bloc (titres, liens, gras) reste intact.
 	function firstNumberNode( root ) {
 		var walker = document.createTreeWalker( root, NodeFilter.SHOW_TEXT, null, false );
 		var node;
@@ -98,15 +85,12 @@
 
 	var counters = [];
 
-	// Prépare le compteur et affiche 0 tout de suite (évite de voir « 5K » puis « 0 »)
 	function prepareCounter( el ) {
 		var node = firstNumberNode( el );
 		if ( ! node ) {
 			return;
 		}
-		var raw = node.nodeValue;
-
-		// « 5K » → 5 + « K » ; « 1 500+ » → 1500 + « + » ; « 4,8 » → 4.8
+		var raw   = node.nodeValue;
 		var match = raw.match( /^([^\d]*?)(\d[\d\s.,]*\d|\d)(.*)$/ );
 		if ( ! match ) {
 			return;
@@ -128,55 +112,64 @@
 			return prefix + v.toFixed( decimals ).replace( '.', sep ) + suffix;
 		}
 
-		node.nodeValue = format( 0 );
-
-		counters.push( { el: el, run: function () {
-			window.requestAnimationFrame( frame );
-		} } );
-
 		function frame( t ) {
 			if ( ! start ) {
 				start = t;
 			}
 			var p     = Math.min( ( t - start ) / duration, 1 );
-			var eased = 1 - Math.pow( 1 - p, 3 ); // ralentit à la fin
+			var eased = 1 - Math.pow( 1 - p, 3 );
 			node.nodeValue = p < 1 ? format( target * eased ) : raw;
 			if ( p < 1 ) {
 				window.requestAnimationFrame( frame );
 			}
 		}
 
+		node.nodeValue = format( 0 );
+		counters.push( { el: el, run: function () { window.requestAnimationFrame( frame ); } } );
 	}
 
-	function countUp( el ) {
+	function countUp( el, delay ) {
 		counters.forEach( function ( c ) {
 			if ( c.el === el ) {
-				c.run();
+				window.setTimeout( c.run, delay + 200 );
 			}
 		} );
 	}
 
-	/* ---------- Observateur ---------- */
+	/* ---------- Observateur : cascade calculée à l'apparition ---------- */
 	var observer = new IntersectionObserver( function ( entries ) {
+		// Les éléments qui arrivent à l'écran dans le même lot, dans l'ordre de la page
+		var batch = [];
 		entries.forEach( function ( entry ) {
 			if ( ! entry.isIntersecting ) {
 				return;
 			}
-			var targets = entry.target.__revealTargets || [ entry.target ];
-			targets.forEach( function ( t ) {
-				t.classList.add( 'is-visible' );
+			( entry.target.__revealTargets || [ entry.target ] ).forEach( function ( t ) {
+				batch.push( t );
 			} );
-			var el = entry.target;
+			observer.unobserve( entry.target );
+		} );
+
+		batch.sort( function ( a, b ) {
+			return a.compareDocumentPosition( b ) & Node.DOCUMENT_POSITION_FOLLOWING ? -1 : 1;
+		} );
+
+		batch.forEach( function ( el, i ) {
+			var manual = /(^|\s)delay-\d/.test( el.className );
+			var delay  = Math.min( i * STEP, MAX_DELAY );
+
+			// un retard manuel (delay-1 … delay-6) est toujours respecté
+			if ( ! manual ) {
+				el.style.setProperty( '--reveal-delay', delay + 'ms' );
+			} else {
+				delay = parseFloat( getComputedStyle( el ).getPropertyValue( '--reveal-delay' ) ) * 1000 || 0;
+			}
+
+			el.classList.add( 'is-visible' );
 
 			if ( el.classList.contains( 'count-up' ) ) {
-				// Le compteur démarre avec le retard du bloc qui le contient
-				var host  = el.closest( SEL );
-				var delay = host ? parseInt( getComputedStyle( host ).getPropertyValue( '--reveal-delay' ), 10 ) || 0 : 0;
-				window.setTimeout( function () {
-					countUp( el );
-				}, delay + 200 );
+				countUp( el, delay );
 			}
-			observer.unobserve( entry.target );
 		} );
 	}, {
 		threshold: 0.15,
@@ -186,6 +179,9 @@
 	Array.prototype.forEach.call( document.querySelectorAll( '.count-up' ), prepareCounter );
 
 	Array.prototype.forEach.call( document.querySelectorAll( SEL + ', .count-up' ), function ( el ) {
+		if ( el.classList.contains( 'is-visible' ) && ! el.classList.contains( 'count-up' ) ) {
+			return; // déjà à l'écran au chargement
+		}
 		// Un élément entièrement masqué par clip-path n'est jamais « visible » pour l'observateur :
 		// pour reveal-image, on observe son parent à la place.
 		if ( el.classList.contains( 'reveal-image' ) && el.parentElement ) {
@@ -198,7 +194,6 @@
 	} );
 
 	/* ---------- Texte qui s'allume mot par mot (reveal-words) ---------- */
-	// Chaque mot passe de pâle à sa couleur normale selon la position dans l'écran.
 	var wordBlocks = [];
 
 	function splitWords( el ) {
@@ -212,7 +207,7 @@
 		}
 		var words = [];
 		nodes.forEach( function ( textNode ) {
-			var frag  = document.createDocumentFragment();
+			var frag = document.createDocumentFragment();
 			textNode.nodeValue.split( /(\s+)/ ).forEach( function ( part ) {
 				if ( ! part ) {
 					return;
@@ -241,32 +236,28 @@
 	var parallaxEls = Array.prototype.slice.call( document.querySelectorAll( '.parallax' ) );
 
 	function onScroll() {
-		var vh       = window.innerHeight;
+		var h        = window.innerHeight;
 		var atBottom = ( window.innerHeight + window.pageYOffset ) >= ( document.documentElement.scrollHeight - 4 );
 
 		wordBlocks.forEach( function ( block ) {
-			var r = block.el.getBoundingClientRect();
-			// 0 quand le haut de la citation entre à 95 % de l'écran,
-			// 1 (tout allumé) quand elle arrive vers le milieu de l'écran (55 %)
-			var start    = vh * .95;
-			var end      = vh * .55;
+			var r        = block.el.getBoundingClientRect();
+			var start    = h * .95;
+			var end      = h * .55;
 			var progress = ( start - r.top ) / ( start - end );
-			// Bas de page atteint (ou citation entièrement visible et en haut) : tout allumé
-			if ( atBottom || r.bottom < vh * .6 ) {
+			if ( atBottom || r.bottom < h * .6 ) {
 				progress = 1;
 			}
 			progress = Math.max( 0, Math.min( 1, progress ) );
 			var lit = progress * block.words.length;
 			block.words.forEach( function ( w, i ) {
-				var o = Math.max( 0, Math.min( 1, lit - i ) );
-				w.style.setProperty( '--rw', o.toFixed( 3 ) );
+				w.style.setProperty( '--rw', Math.max( 0, Math.min( 1, lit - i ) ).toFixed( 3 ) );
 			} );
 		} );
 
 		parallaxEls.forEach( function ( el ) {
 			var speed = parseFloat( el.getAttribute( 'data-speed' ) ) || .15;
 			var r     = el.getBoundingClientRect();
-			var delta = ( r.top + r.height / 2 ) - vh / 2;
+			var delta = ( r.top + r.height / 2 ) - h / 2;
 			el.style.setProperty( '--parallax-y', ( -delta * speed ).toFixed( 1 ) + 'px' );
 		} );
 	}
