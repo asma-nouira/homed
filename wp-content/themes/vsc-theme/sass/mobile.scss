@@ -354,6 +354,12 @@ $m-gutter  : 20px;   // marge gauche/droite du contenu sur mobile
         padding-right: 0!important;
     }
 }
+.no-plr{
+  &.plr-50{
+    padding-left: 0!important;
+    padding-right: 0!important;
+  }
+}
 .max-w-mob{
   width:200px!important;
     height: auto!important;
