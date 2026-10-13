@@ -4115,7 +4115,7 @@ horaire {
 }
 @media (max-width: 767px) {
   .page-404 {
-    min-height: calc(100vh - 70px);
+    min-height: calc(50vh - 70px);
     padding: 70px 20px 80px;
   }
 }

@@ -1591,7 +1591,7 @@ $p404-text   : #4a4542;
   background: $p404-bg;
 
   @media (max-width: $table-width) {
-    min-height: calc(100vh - 70px);
+    min-height: calc(50vh - 70px);
     padding: 70px 20px 80px;
   }
 }
