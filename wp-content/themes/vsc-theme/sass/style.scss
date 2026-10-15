@@ -1767,3 +1767,32 @@ $p404-text   : #4a4542;
     &:focus-visible { text-decoration: underline; }
   }
 }
+
+/* ---------- Photo qui accompagne le défilement (pages services) ----------
+   Classe « photo-defilante » sur la COLONNE de la photo (Visual Composer)       */
+.photo-defilante {
+  // la colonne et son contenu prennent toute la hauteur de la rangée
+  > .vce-col-inner,
+  > .vce-col-inner > .vce-col-content {
+    height: 100%;
+  }
+
+  // la photo reste sous le header pendant la lecture
+  .vce-single-image-container,
+  .svc-detail__photo{
+    position: sticky;
+    top: calc(130vw / 19.2);   // hauteur du header compact (90px @1920) + un peu d'air
+
+    @media (max-width: 1199px) {
+      top: 100px;
+    }
+  }
+
+  // Mobile : les colonnes sont empilées → pas de défilement accompagné
+  @media (max-width: 767px) {
+    .vce-single-image-container,
+    .svc-detail__photo {
+      position: static;
+    }
+  }
+}

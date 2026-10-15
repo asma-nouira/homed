@@ -4292,4 +4292,28 @@ horaire {
 .page-404__help a:hover, .page-404__help a:focus-visible {
   text-decoration: underline;
 }
+
+/* ---------- Photo qui accompagne le défilement (pages services) ----------
+   Classe « photo-defilante » sur la COLONNE de la photo (Visual Composer)       */
+.photo-defilante > .vce-col-inner,
+.photo-defilante > .vce-col-inner > .vce-col-content {
+  height: 100%;
+}
+.photo-defilante .vce-single-image-container,
+.photo-defilante .svc-detail__photo {
+  position: sticky;
+  top: 6.7708333333vw;
+}
+@media (max-width: 1199px) {
+  .photo-defilante .vce-single-image-container,
+  .photo-defilante .svc-detail__photo {
+    top: 100px;
+  }
+}
+@media (max-width: 767px) {
+  .photo-defilante .vce-single-image-container,
+  .photo-defilante .svc-detail__photo {
+    position: static;
+  }
+}
 /*# sourceMappingURL=../css/style.css.map */
