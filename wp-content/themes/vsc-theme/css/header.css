@@ -520,7 +520,7 @@ html.nav-locked {
 }
 
 .main-navigation .menu-btn > a,
-.main-navigation .header-btn, .cta-btn > a {
+.main-navigation .header-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -538,7 +538,7 @@ html.nav-locked {
 }
 .main-navigation .menu-btn > a:hover, .main-navigation .menu-btn > a:focus-visible,
 .main-navigation .header-btn:hover,
-.main-navigation .header-btn:focus-visible, .cta-btn > a:hover, .cta-btn > a:focus-visible {
+.main-navigation .header-btn:focus-visible {
   color: #fff !important;
   background: #592C22;
 }
