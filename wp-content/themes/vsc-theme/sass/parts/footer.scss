@@ -190,7 +190,7 @@ $ft-icon-size  : 46;
   height: widthCalc($ft-icon-size);
   min-width: 45px;
   min-height: 45px;
-  color: $ft-icon;
+  color: $ft-icon!important;
   border: 2px solid $ft-icon;
   border-radius: 50%;
   transition: color .25s ease, background-color .25s ease, border-color .25s ease;
