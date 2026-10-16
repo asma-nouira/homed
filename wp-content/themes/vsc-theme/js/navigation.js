@@ -33,11 +33,6 @@
 		if ( li.querySelector( ':scope > .sub-menu > li > .sub-menu' ) ) {
 			li.classList.add( 'has-mega' );
 		}
-		// Bouton « Contactez-nous »
-		var a = li.querySelector( ':scope > a' );
-		if ( a && 0 === a.textContent.trim().toLowerCase().indexOf( 'contact' ) ) {
-			li.classList.add( 'menu-btn' );
-		}
 		// Survol desktop : ferme le sous-menu ouvert au clic sur un autre item
 		li.addEventListener( 'mouseenter', function () {
 			if ( ! isMobile() ) {
