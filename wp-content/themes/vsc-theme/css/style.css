@@ -3129,9 +3129,6 @@ body {
 .vsc-anim .reveal.is-visible .service-card:hover .service-card__media--circle {
   transform: scale(1.06);
 }
-.vsc-anim .reveal.is-visible .service-card:hover .service-card__media--cutout {
-  transform: translateY(-10px) scale(1.03);
-}
 .vsc-anim .reveal.is-visible .service-card:hover .service-card__arrow {
   transform: scale(1.08);
 }
