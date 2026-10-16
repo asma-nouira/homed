@@ -14,6 +14,7 @@ $vsc_courriel = function_exists( 'vsc_coord_courriel' ) ? vsc_coord_courriel() :
 $vsc_adresse  = function_exists( 'vsc_coord_adresse' ) ? vsc_coord_adresse() : '';
 $vsc_heures   = function_exists( 'vsc_coord_heures' ) ? vsc_coord_heures() : '';
 $vsc_facebook = function_exists( 'vsc_coord_facebook' ) ? vsc_coord_facebook() : '';
+$vsc_instagram = function_exists( 'vsc_coord_instagram' ) ? vsc_coord_instagram() : '';
 $vsc_rdv      = function_exists( 'vsc_rdv_url' ) ? vsc_rdv_url() : home_url( '/contactez-nous/' );
 $vsc_rdv_txt  = function_exists( 'vsc_rdv_label' ) ? vsc_rdv_label() : 'Prendre rendez-vous';
 $vsc_externe  = ( false === strpos( $vsc_rdv, home_url() ) );
@@ -72,17 +73,29 @@ $vsc_externe  = ( false === strpos( $vsc_rdv, home_url() ) );
 					?>
 				</nav>
 
-				<?php if ( $vsc_facebook ) : ?>
-					<a class="site-footer__social" href="<?php echo esc_url( $vsc_facebook ); ?>" target="_blank" rel="noopener">
-						<span><?php esc_html_e( 'Suivez-nous sur Facebook', 'vsc-theme' ); ?></span>
-						<span class="site-footer__social-icon" aria-hidden="true">
-							<svg xmlns="http://www.w3.org/2000/svg" width="15.907" height="30.615" viewBox="0 0 15.907 30.615">
-  <path id="Tracé_430" data-name="Tracé 430" d="M767.886,40.49H762.2V26.521h-4.651V21.1h4.629c.011-.229.025-.408.028-.587.027-1.511-.018-3.027.09-4.532a6.28,6.28,0,0,1,6.352-6.093c1.44-.042,2.884.071,4.326.121a3.4,3.4,0,0,1,.482.09v4.869c-.581,0-1.117-.012-1.652,0-.745.021-1.5.012-2.233.105a1.659,1.659,0,0,0-1.59,1.594c-.08,1.45-.022,2.906-.022,4.412h5.315c-.236,1.834-.465,3.611-.7,5.44h-4.685Z" transform="translate(-757.546 -9.875)" fill="#726248"/>
-</svg>
+			<?php if ( $vsc_facebook || $vsc_instagram ) : ?>
+	<div class="site-footer__social">
+		<span><?php esc_html_e( 'Suivez-nous', 'vsc-theme' ); ?></span>
 
-						</span>
-					</a>
-				<?php endif; ?>
+		<?php if ( $vsc_facebook ) : ?>
+			<a class="site-footer__social-icon" href="<?php echo esc_url( $vsc_facebook ); ?>" target="_blank" rel="noopener" aria-label="Facebook">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.907 30.615" aria-hidden="true">
+					<path d="M767.886,40.49H762.2V26.521h-4.651V21.1h4.629c.011-.229.025-.408.028-.587.027-1.511-.018-3.027.09-4.532a6.28,6.28,0,0,1,6.352-6.093c1.44-.042,2.884.071,4.326.121a3.4,3.4,0,0,1,.482.09v4.869c-.581,0-1.117-.012-1.652,0-.745.021-1.5.012-2.233.105a1.659,1.659,0,0,0-1.59,1.594c-.08,1.45-.022,2.906-.022,4.412h5.315c-.236,1.834-.465,3.611-.7,5.44h-4.685Z" transform="translate(-757.546 -9.875)" fill="currentColor"/>
+				</svg>
+			</a>
+		<?php endif; ?>
+
+		<?php if ( $vsc_instagram ) : ?>
+			<a class="site-footer__social-icon" href="<?php echo esc_url( $vsc_instagram ); ?>" target="_blank" rel="noopener" aria-label="Instagram">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+					<rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.8"/>
+					<circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.8"/>
+					<circle cx="17.3" cy="6.7" r="1.2" fill="currentColor"/>
+				</svg>
+			</a>
+		<?php endif; ?>
+	</div>
+<?php endif; ?>
 			</div>
 
 			<!-- Boutons -->
