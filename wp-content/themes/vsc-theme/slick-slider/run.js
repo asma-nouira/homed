@@ -52,7 +52,7 @@ jQuery(function ($) {
     /* =========================================================
        1. SLIDER D'ACCUEIL (hero)
        ========================================================= */
-    nettoyer($(".hero-slider > .vce-row-content")).slick({
+  /*  nettoyer($(".hero-slider > .vce-row-content")).slick({
         centerMode: true,
         centerPadding: '0',
         slidesToShow: 1,
@@ -65,7 +65,7 @@ jQuery(function ($) {
     })
     .on('setPosition', function (event, slick) {
         slick.$slides.css('height', slick.$slideTrack.height() + 'px');
-    });
+    });*/
 
     /* =========================================================
        2. CARROUSEL SERVICES : 3 cartes, avance par 3 → 01 / 02
