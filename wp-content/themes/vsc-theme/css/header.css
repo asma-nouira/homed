@@ -519,7 +519,6 @@ html.nav-locked {
   transform: rotate(225deg);
 }
 
-.main-navigation .menu-btn > a,
 .main-navigation .header-btn {
   display: inline-flex;
   align-items: center;
@@ -536,9 +535,7 @@ html.nav-locked {
   border-radius: 999px;
   transition: color 0.2s ease, background-color 0.2s ease;
 }
-.main-navigation .menu-btn > a:hover, .main-navigation .menu-btn > a:focus-visible,
-.main-navigation .header-btn:hover,
-.main-navigation .header-btn:focus-visible {
+.main-navigation .header-btn:hover, .main-navigation .header-btn:focus-visible {
   color: #fff !important;
   background: #592C22;
 }
