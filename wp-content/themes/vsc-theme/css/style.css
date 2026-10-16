@@ -4316,4 +4316,9 @@ horaire {
     position: static;
   }
 }
+
+.vce-faq-toggle-title-text,
+h1, h2, h3 {
+  font-variant-position: super;
+}
 /*# sourceMappingURL=../css/style.css.map */
