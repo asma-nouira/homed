@@ -717,7 +717,7 @@ html.nav-locked {
     display: flex;
     align-items: center;
     gap: calc(10vw / 19.2);
-    margin-left: calc(10vw / 19.2);
+    margin-left: 1.25vw;
   }
 }
 /* =========================================================

@@ -372,7 +372,7 @@ html.nav-locked {
     display: flex;
     align-items: center;
     gap: widthCalc($btn-gap);
-    margin-left: widthCalc($btn-gap);
+    margin-left: calc(24vw / 19.2);
   }
 }
 
