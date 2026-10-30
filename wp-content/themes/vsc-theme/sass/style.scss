@@ -1795,7 +1795,10 @@ $p404-text   : #4a4542;
     }
   }
 }
-.vce-faq-toggle-title-text,
-h1, h2, h3 {
-  font-variant-position: super;
-}
+  // Symboles de marque ® ™ : petits et surélevés, sans décaler la ligne
+  sup.marque {
+    font-size: .5em;
+    line-height: 0;
+    vertical-align: super;
+    margin-left: .05em;
+  }

@@ -4314,8 +4314,10 @@ horaire {
   }
 }
 
-.vce-faq-toggle-title-text,
-h1, h2, h3 {
-  font-variant-position: super;
+sup.marque {
+  font-size: 0.5em;
+  line-height: 0;
+  vertical-align: super;
+  margin-left: 0.05em;
 }
 /*# sourceMappingURL=../css/style.css.map */
