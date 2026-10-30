@@ -4315,9 +4315,9 @@ horaire {
 }
 
 sup.marque {
-  font-size: 0.5em;
+  font-size: 0.9em;
   line-height: 0;
-  vertical-align: super;
+  vertical-align: baseline;
   margin-left: 0.05em;
 }
 /*# sourceMappingURL=../css/style.css.map */

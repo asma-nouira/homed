@@ -1797,8 +1797,8 @@ $p404-text   : #4a4542;
 }
   // Symboles de marque ® ™ : petits et surélevés, sans décaler la ligne
   sup.marque {
-    font-size: .5em;
+    font-size: .9em;
     line-height: 0;
-    vertical-align: super;
+    vertical-align: baseline;
     margin-left: .05em;
   }
